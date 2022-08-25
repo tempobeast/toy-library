@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect} from "react"
+import { Routes, Route, Link } from 'react-router-dom';
+
 
 function App() {
 
@@ -15,7 +17,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Count: {count}</h1>
+      <Routes>
+        <Route path="/testing" element={<h1>Test Route</h1>}/>
+        <Route path="/count" element={<h1>Count: {count}</h1>}/>
+      </Routes>
     </div>
   );
 }
