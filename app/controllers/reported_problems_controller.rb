@@ -1,0 +1,2 @@
+class ReportedProblemsController < ApplicationController
+end
