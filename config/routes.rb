@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :toys
   resources :users
 
-  get '/hello', to: 'application#hello_world'
+  get '/me', to: 'user#show'
 
   get '*path',
     to: 'fallback#index',
