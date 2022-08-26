@@ -3,6 +3,7 @@ import './App.css';
 import React, {useState, useEffect} from "react"
 import { Routes, Route, Link } from 'react-router-dom';
 import ToyContainer from './components/ToyContainer';
+import LoginPage from './components/LoginPage';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/testing" element={<h1>Test Route</h1>}/>
+        <Route path="/login" element={<LoginPage/>}/>
         <Route path="/" element={<ToyContainer toys={toys}/>}/>
       </Routes>
     </div>

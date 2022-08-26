@@ -1,3 +1,3 @@
 class ToySerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :sku, :purchase_price, :inventory, :age_range
+  attributes :id, :name, :description, :sku, :purchase_price, :inventory, :age_range, :img_url
 end
