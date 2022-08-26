@@ -9,6 +9,7 @@ import LoginPage from './components/LoginPage';
 function App() {
 
   const [toys, setToys] = useState([]);
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     fetch("/toys")
@@ -16,10 +17,11 @@ function App() {
       .then((data) => setToys(data))
   }, [])
 
-  console.log(toys)
+  if (!user) return <LoginPage onLogin={setUser} />
 
   return (
     <div className="App">
+      <h1>Hello {user.username}</h1>
       <Routes>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/" element={<ToyContainer toys={toys}/>}/>

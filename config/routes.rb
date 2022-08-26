@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :users
 
   get '/me', to: 'user#show'
+  post '/signup', to: 'user#create'
+  post '/login', to: 'sessions#create'
+  post '/logout', to: 'sessions#destroy'
 
   get '*path',
     to: 'fallback#index',
