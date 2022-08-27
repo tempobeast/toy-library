@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/me', to: 'users#show'
   post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
-  post '/logout', to: 'sessions#destroy'
+  delete '/logout', to: 'sessions#destroy'
 
   get '*path',
     to: 'fallback#index',
