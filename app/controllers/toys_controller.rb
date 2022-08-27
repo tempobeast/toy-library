@@ -13,7 +13,7 @@ class ToysController < ApplicationController
     private
 
     def toy_params
-        permit.params(:name, :description, :sku, :purchase_price, :inventory, :age_range, :img_url)
+        params.permit(:name, :description, :sku, :purchase_price, :inventory, :age_range, :img_url)
     end
 
 end

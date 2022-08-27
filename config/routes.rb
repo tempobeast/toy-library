@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :toys
   resources :users
 
-  get '/me', to: 'user#show'
-  post '/signup', to: 'user#create'
+  get '/me', to: 'users#show'
+  post '/signup', to: 'users#create'
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 

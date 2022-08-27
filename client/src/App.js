@@ -1,15 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import { Routes, Route, Link } from 'react-router-dom';
 import ToyContainer from './components/ToyContainer';
 import LoginPage from './components/LoginPage';
+import { UserContext } from "./context/user";
 
 
 function App() {
 
   const [toys, setToys] = useState([]);
-  const [user, setUser] = useState(null)
+  const { user } = useContext(UserContext)
 
   useEffect(() => {
     fetch("/toys")
@@ -17,16 +18,16 @@ function App() {
       .then((data) => setToys(data))
   }, [])
 
-  if (!user) return <LoginPage onLogin={setUser} />
+  if (!user) return <LoginPage  />
 
   return (
-    <div className="App">
-      <h1>Hello {user.username}</h1>
-      <Routes>
-        <Route path="/login" element={<LoginPage/>}/>
-        <Route path="/" element={<ToyContainer toys={toys}/>}/>
-      </Routes>
-    </div>
+      <div className="App">
+        <h1>Hello {user.username}</h1>
+        <Routes>
+          {/* <Route path="/login" element={<LoginPage/>}/> */}
+          <Route path="/" element={<ToyContainer toys={toys}/>}/>
+        </Routes>
+      </div>
   );
 }
 
