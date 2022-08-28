@@ -1,5 +1,7 @@
 class ToysController < ApplicationController
 
+    skip_before_action :authorize, only: :index
+
     def index
         toys = Toy.all
         render json: toys, status: :ok
