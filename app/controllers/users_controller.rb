@@ -17,7 +17,17 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        user = User.find(session[:user_id])
+        user.destroy
+        head :no_content
+    end 
+
     private
+
+    def render_not_found_response
+        render json: { errors: ["User Not Found"]}, status: :not_found
+    end
 
     def user_params
         params.permit(:username, :password, :first_name, :last_name, :email, :telephone)

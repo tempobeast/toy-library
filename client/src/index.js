@@ -5,13 +5,16 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/user';
+import { ToysProvider } from './context/toys';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <UserProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ToysProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ToysProvider>
   </UserProvider>
 );
 
