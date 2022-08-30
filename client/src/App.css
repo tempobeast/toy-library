@@ -48,3 +48,18 @@
   background-color:rgb(53, 136, 53);
   padding: 5px 0 5px 0;
 }
+
+.toy-card {
+  text-align: center;
+  width: 23%;
+  float: left;
+  background-color: aquamarine;
+  margin: 1%;
+  padding-top: 1%;
+  border-radius: 12px;
+}
+
+.toy-card-img {
+  width: 90%;
+  border-radius: 12px
+}

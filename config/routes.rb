@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # resources :user_addresses
-  # resources :cart_items
-  # resources :shopping_sessions
+  resources :cart_items
+  resources :shopping_sessions
   # resources :user_payment_methods
   # resources :reported_problems
   # resources :watch_lists
