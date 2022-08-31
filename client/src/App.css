@@ -63,3 +63,7 @@
   width: 90%;
   border-radius: 12px
 }
+
+#cart_thumb {
+  text-align: right;
+}
