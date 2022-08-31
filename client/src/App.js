@@ -10,17 +10,21 @@ import Home from './components/Home'
 import UserProfile from './components/UserProfile';
 import { UserContext } from "./context/user";
 import { ToysContext } from './context/toys';
-
+import { CartContext } from './context/cart'
 
 function App() {
 
+  const {cart, setCart} = useContext(CartContext)
   const { user, setUser } = useContext(UserContext);
   const { setToys } = useContext(ToysContext)
 
   useEffect(() => {
     fetch("/me")
     .then((res) => res.json())
-    .then((user) => setUser(user))
+    .then((user) => {
+      setUser(user)
+      setCart(user.shopping_session)
+    })
   }, [])
 
   useEffect(() => {
