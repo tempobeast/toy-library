@@ -1,8 +1,9 @@
 {
     "name": "toy-library",
     "description": "Build scripts for Heroku",
+    "version": "16.13.2",
     "engines": {
-        "node": ">= 14"
+        "node": "16.x"
     },
     "scripts": {
         "build": "npm install --prefix client && npm run build --prefix client",
