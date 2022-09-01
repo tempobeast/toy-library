@@ -11,15 +11,15 @@ import { CartProvider } from './context/cart'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <UserProvider>
-    <ToysProvider>
-    <CartProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-      </CartProvider>
-    </ToysProvider>
-  </UserProvider>
+  <CartProvider>
+    <UserProvider>
+      <ToysProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ToysProvider>
+    </UserProvider>
+  </CartProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
