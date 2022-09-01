@@ -67,3 +67,7 @@
 #cart_thumb {
   text-align: right;
 }
+
+.cart-item-image {
+  width: 150px;
+}

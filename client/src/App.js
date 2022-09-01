@@ -8,24 +8,31 @@ import Header from './components/Header'
 import Nav from './components/Nav';
 import Home from './components/Home'
 import UserProfile from './components/UserProfile';
+import CartPage from './components/CartPage'
+import UpdateUserInfo from './components/UpdateUserInfo';
 import { UserContext } from "./context/user";
 import { ToysContext } from './context/toys';
 import { CartContext } from './context/cart'
 
 function App() {
 
-  const {cart, setCart} = useContext(CartContext)
+  const { cart, setCart} = useContext(CartContext)
   const { user, setUser } = useContext(UserContext);
   const { setToys } = useContext(ToysContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("/me")
     .then((res) => res.json())
-    .then((user) => {
-      setUser(user)
-      setCart(user.shopping_session)
+    .then((data) => {
+      const currentUser = data[0]
+      setUser(currentUser)
+      const currentCart = data[1]
+      setCart(currentCart)
+      navigate(`/user_profiles/${currentUser.id}`)
     })
   }, [])
+
 
   useEffect(() => {
     fetch("/toys")
@@ -49,11 +56,13 @@ function App() {
 
     return (
         <div className="App">
-          <Header />
+          <Header cart={cart} user={user}/>
           <Nav />
           <Routes>
             <Route path="/view_all_toys" element={<ToyContainer/>}/>
             <Route path={`/user_profiles/:id`} element={<UserProfile/>} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/update_user" element={<UpdateUserInfo />} />
             <Route path="/" element={<Home/>} />
           </Routes>
         </div>
