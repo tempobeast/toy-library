@@ -26,7 +26,7 @@ function Header() {
                 cart ? 
                 <h2 onClick={handleCartClick} id="cart_thumb">{`🛒 ${cart.total_items} items`}</h2> 
                 : 
-                <h2 id="cart_thumb">🛒 Sign up or log in to add items</h2>
+                <h2 id="cart_thumb" onClick={() => navigate('/user_login')}>🛒 Sign up or log in to add items</h2>
                 // <h2 id="cart_thumb">🛒 0 items </h2> 
                 }
             {/* </Link> */}

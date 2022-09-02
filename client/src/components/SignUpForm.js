@@ -10,7 +10,7 @@ function SignUpForm() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("")
-    const [telephone, setTelephone] = useState("")
+    const [telephone, setTelephone] = useState("(   )   -    ")
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState([]) 
 
@@ -52,10 +52,9 @@ function SignUpForm() {
         }
     }
 
-    // function handlePhoneChange(e) {
-    //     const phone = e.target.value.replace(/\D/g, '');
-    //     setTelephone(poh)
-    // }
+    function handlePhoneChange(e) {
+        
+    }
 
     return (
     <div>
@@ -127,7 +126,7 @@ function SignUpForm() {
                 id="telephone"
                 autoComplete="off"
                 value={telephone}
-                onChange={(e) => setTelephone(e.target.value)}
+                onChange={(e) => handlePhoneChange}
             /> 
             <br />
             <button type='submit'> {isLoading ? "Loading..." : "Sign Up"} </button>

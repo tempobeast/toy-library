@@ -5,8 +5,6 @@ const CartContext = React.createContext();
 function CartProvider ({ children }) {
     const [cart, setCart] = useState([]);
 
-    console.log(cart)
-
     return (
         <CartContext.Provider value = {{ cart, setCart }}>
             {children}

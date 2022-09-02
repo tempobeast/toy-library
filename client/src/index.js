@@ -7,19 +7,22 @@ import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/user';
 import { ToysProvider } from './context/toys';
 import { CartProvider } from './context/cart'
+import { WatchListProvider } from './context/watchList';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <CartProvider>
-    <UserProvider>
-      <ToysProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ToysProvider>
-    </UserProvider>
-  </CartProvider>
+  <WatchListProvider>
+    <CartProvider>
+      <UserProvider>
+        <ToysProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ToysProvider>
+      </UserProvider>
+    </CartProvider>
+  </WatchListProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

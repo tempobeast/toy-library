@@ -1,13 +1,19 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cart";
-import { ToysContext } from "../context/toys"
+import { ToysContext } from "../context/toys";
+import { UserContext } from "../context/user";
+import { WatchListContext } from "../context/watchList"
 
 function ToyCard({toy}) {
 
     const [selectedQuantity, setSelectedQuantity] = useState(1);
+    const navigate = useNavigate()
    
     const { toys, setToys } = useContext(ToysContext) 
     const { setCart } = useContext(CartContext) 
+    const { user } = useContext(UserContext)
+    const { watchList, setWatchList } = useContext(WatchListContext)
     
     const nums = []
 
@@ -41,18 +47,47 @@ function ToyCard({toy}) {
             })
     }
 
+    function handleWatchListClick(e) {
+        fetch('/watch_lists', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({toy_id: toy.id})
+        })
+        .then((res) => res.json())
+        .then((watch) => setWatchList([...watchList, watch]))
+    }
+
+    function handleQuantityChange(e) {
+        setSelectedQuantity(e.target.value)
+    }
+
+    function handleCardClick(e) {
+        navigate(`/toy_pages/${toy.id}`)
+    }
 
     return (
-        <div className="toy-card">
-            <img className="toy-card-img" src={toy.img_url}/>
-            <h3>{toy.name}</h3>
-            <h5>Inventory: {toy.inventory}</h5>
-            <h5>Age Range: {toy.age_range}</h5>
-            <label>Quantity:</label>
-            <select onChange={(e) => setSelectedQuantity(e.target.value)}>
+        <div className="toy-card" >
+            <div onClick={handleCardClick} id={toy.id}>
+                <img className="toy-card-img" src={toy.img_url}/>
+                <h3>{toy.name}</h3>
+                <h5>Inventory: {toy.inventory}</h5>
+                <h5>Age Range: {toy.age_range}</h5>
+            </div>
+            {user && toy.inventory > 0 ?
+            <>
+            <label>Quantity: </label>
+            <select onChange={handleQuantityChange}>
                 {selectOptions}
             </select>
             <button onClick={handleAddToCartClick}>add to cart</button>
+            </> : user && toy.inventory === 0 ?
+            <>
+            <label>Unavailble: </label>
+            <button onClick={handleWatchListClick}>Add to Watch List</button>
+            </> : null
+            }
         </div>
     )
 }

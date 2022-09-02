@@ -6,10 +6,6 @@ class ShoppingSessionsController < ApplicationController
         render json: shopping_session, status: :ok
     end
 
-    def show
-        
-    end
-
     private
 
     def cart_item_params

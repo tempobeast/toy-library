@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect, useContext} from "react"
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
@@ -10,6 +9,7 @@ import Home from './components/Home'
 import UserProfile from './components/UserProfile';
 import CartPage from './components/CartPage'
 import UpdateUserInfo from './components/UpdateUserInfo';
+import ToyPage from './components/ToyPage';
 import { UserContext } from "./context/user";
 import { ToysContext } from './context/toys';
 import { CartContext } from './context/cart'
@@ -48,6 +48,7 @@ function App() {
         <Routes>
           <Route path="/user_login" element={<LoginPage/>}/>
           <Route path="/view_all_toys" element={<ToyContainer/>}/>
+          <Route path="/toy_pages/:id" element={<ToyPage />} />
           <Route path="/" element={<Home/>} />
         </Routes>
       </div>
@@ -60,9 +61,10 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/view_all_toys" element={<ToyContainer/>}/>
-            <Route path={`/user_profiles/:id`} element={<UserProfile/>} />
+            <Route path="/user_profiles/:id" element={<UserProfile/>} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/update_user" element={<UpdateUserInfo />} />
+            <Route path="/toy_pages/:id" element={<ToyPage />} />
             <Route path="/" element={<Home/>} />
           </Routes>
         </div>
