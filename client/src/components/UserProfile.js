@@ -2,18 +2,17 @@ import React, { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../context/user"
 import { CartContext } from "../context/cart"
-import { WatchListContext } from "../context/watchList"
+// import { WatchListContext } from "../context/watchList"
 
 function UserProfile() {
 
     const {user, setUser} = useContext(UserContext)
     const {setCart} = useContext(CartContext)
-    const { watchList } = useContext(WatchListContext)
+    // const { watchList } = useContext(WatchListContext)
     const navigate = useNavigate()
 
-    const {first_name, last_name, watch_list_toys, username, id} = user
+    const {first_name, last_name, watch_lists, username, id} = user
 
-    console.log(watchList)
 
     function handleDeleteClick(e) {
         fetch(`/users/${id}`, {
@@ -35,10 +34,16 @@ function UserProfile() {
         <div>
             <h1>{`${first_name} ${last_name}'s Profile`}</h1>
             <h2>{`Hello, ${username}!`}</h2>
-            {watch_list_toys ? 
+            {watch_lists ? 
             <>
                 <h3>Watch List: </h3>
-                {watch_list_toys.map((toy) => <h4>{toy.name}</h4>)}
+                {watch_lists.map((watch) => 
+                    <div key={watch.toy.id}>
+                        <h4 >{watch.toy.name}</h4>
+                        <p>{watch.queue == 1 ? `You're next in line` : `There are ${watch.queue} customers in line ahead of you`}</p>
+                    </div>
+                
+                )}
             </>
             : null
             }

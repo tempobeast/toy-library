@@ -1,5 +1,5 @@
 class WatchListSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :toy_id
+  attributes :id, :queue, :toy
 
   belongs_to :toy
 end

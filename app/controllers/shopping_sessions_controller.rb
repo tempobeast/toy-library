@@ -6,6 +6,12 @@ class ShoppingSessionsController < ApplicationController
         render json: shopping_session, status: :ok
     end
 
+    def show
+        user = find_user
+        shopping_session = user.shopping_session
+        render json: shopping_session, status: :ok
+    end
+
     private
 
     def cart_item_params
