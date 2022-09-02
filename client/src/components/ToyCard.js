@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cart";
 import { ToysContext } from "../context/toys";
 import { UserContext } from "../context/user";
-import { WatchListContext } from "../context/watchList"
+// import { WatchListContext } from "../context/watchList"
 
 function ToyCard({toy}) {
 
@@ -12,8 +12,8 @@ function ToyCard({toy}) {
    
     const { toys, setToys } = useContext(ToysContext) 
     const { setCart } = useContext(CartContext) 
-    const { user } = useContext(UserContext)
-    const { watchList, setWatchList } = useContext(WatchListContext)
+    const { user, setUser } = useContext(UserContext)
+    // const { watchList, setWatchList } = useContext(WatchListContext)
     
     const nums = []
 
@@ -56,7 +56,8 @@ function ToyCard({toy}) {
             body: JSON.stringify({toy_id: toy.id})
         })
         .then((res) => res.json())
-        .then((watch) => setWatchList([...watchList, watch]))
+        // returns user
+        .then((user) => setUser(user))
     }
 
     function handleQuantityChange(e) {

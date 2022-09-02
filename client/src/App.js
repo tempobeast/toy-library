@@ -12,13 +12,15 @@ import UpdateUserInfo from './components/UpdateUserInfo';
 import ToyPage from './components/ToyPage';
 import { UserContext } from "./context/user";
 import { ToysContext } from './context/toys';
-import { CartContext } from './context/cart'
+import { CartContext } from './context/cart';
+import { WatchListContext } from './context/watchList'
 
 function App() {
 
   const { cart, setCart} = useContext(CartContext)
   const { user, setUser } = useContext(UserContext);
   const { setToys } = useContext(ToysContext)
+  const { setWatchList } = useContext(WatchListContext)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -29,16 +31,21 @@ function App() {
       setUser(currentUser)
       const currentCart = data[1]
       setCart(currentCart)
+      const currentWatch = data[2]
+      console.log(currentWatch)
       navigate(`/user_profiles/${currentUser.id}`)
     })
   }, [])
 
+  console.log(user)
 
   useEffect(() => {
     fetch("/toys")
       .then((res) => res.json())
       .then((data) => setToys(data))
   }, [user])
+
+
 
   if (!user) {
     return (

@@ -11,10 +11,12 @@ function UserProfile() {
     const { watchList } = useContext(WatchListContext)
     const navigate = useNavigate()
 
+    const {first_name, last_name, watch_list_toys, username, id} = user
+
     console.log(watchList)
 
     function handleDeleteClick(e) {
-        fetch(`/users/${user.id}`, {
+        fetch(`/users/${id}`, {
             method: "DELETE",
         }).then((res) => {
             if (res.ok) {
@@ -31,10 +33,15 @@ function UserProfile() {
 
     return (
         <div>
-            <h1>{`${user.first_name} ${user.last_name}'s Profile`}</h1>
-            <h2>{`Hello, ${user.username}!`}</h2>
-            <h3>Watch List: </h3>
-            {}
+            <h1>{`${first_name} ${last_name}'s Profile`}</h1>
+            <h2>{`Hello, ${username}!`}</h2>
+            {watch_list_toys ? 
+            <>
+                <h3>Watch List: </h3>
+                {watch_list_toys.map((toy) => <h4>{toy.name}</h4>)}
+            </>
+            : null
+            }
             <button onClick={handleDeleteClick}>Delete Account</button>
             <button onClick={handleUpdateClick}> Update Account </button>
         </div>

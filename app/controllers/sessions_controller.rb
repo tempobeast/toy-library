@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
                 user.shopping_session.create(total: 0)
             end
             shopping_session = user.shopping_session
-            render json: [user, shopping_session], status: :ok
+            render json: [user, shopping_session ], status: :ok
         else
             render json: { errors: ["Invalid username or password"] }, status: :unauthorized
         end
