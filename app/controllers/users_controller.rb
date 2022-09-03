@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     def create
         user = User.create!(user_params)
         session[:user_id] = user.id
-        shopping_session = ShoppingSession.create(user_id: user.id)
+        shopping_session = ShoppingSession.create(user_id: user.id, is_ordered: false)
         render json: [user, shopping_session], status: :ok
     end
 

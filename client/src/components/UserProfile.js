@@ -29,7 +29,7 @@ function UserProfile() {
     function handleUpdateClick(e) {
         navigate("/update_user")
     }
-
+console.log(user)
     return (
         <div>
             <h1>{`${first_name} ${last_name}'s Profile`}</h1>
@@ -39,8 +39,8 @@ function UserProfile() {
                 <h3>Watch List: </h3>
                 {watch_lists.map((watch) => 
                     <div key={watch.toy.id}>
+                        <p>{watch.queue == 1 ? `You're next in line for:` : `There are ${watch.queue} customers in line ahead of you for:`}</p>
                         <h4 >{watch.toy.name}</h4>
-                        <p>{watch.queue == 1 ? `You're next in line` : `There are ${watch.queue} customers in line ahead of you`}</p>
                     </div>
                 
                 )}

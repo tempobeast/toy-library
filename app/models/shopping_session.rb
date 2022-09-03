@@ -1,5 +1,7 @@
 class ShoppingSession < ApplicationRecord
 
+    # validates that there is only one active session
+
     def total_price
         self.cart_items.sum {|item| item.quantity * item.toy.purchase_price}
     end

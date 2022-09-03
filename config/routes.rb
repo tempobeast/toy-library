@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :shopping_sessions, only: [:create, :show]
   # resources :user_payment_methods
   # resources :reported_problems
-  resources :watch_lists, only: [:create]
+  resources :watch_lists, only: [:create, :destroy]
   resources :toys, only: [:index, :create]
   resources :users
 

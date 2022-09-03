@@ -14,7 +14,7 @@ function ToyCard({toy}) {
     const { setCart } = useContext(CartContext) 
     const { user, setUser } = useContext(UserContext)
     // const { watchList, setWatchList } = useContext(WatchListContext)
-    
+
     const nums = []
 
         if (toy.inventory) {
@@ -57,6 +57,18 @@ function ToyCard({toy}) {
         })
         .then((res) => res.json())
         // returns user
+        .then((user) => {
+            setUser(user)
+        })
+    }
+
+    function handleWatchListRemoveClick(e) {
+        const watchToRemove = user.watch_lists.find(watch => watch.toy.id === toy.id)
+       
+        fetch(`/watch_lists/${watchToRemove.id}`, {
+            method: "DELETE",
+        })
+        .then((res) => res.json())
         .then((user) => setUser(user))
     }
 
@@ -82,11 +94,14 @@ function ToyCard({toy}) {
             <select onChange={handleQuantityChange}>
                 {selectOptions}
             </select>
-            <button onClick={handleAddToCartClick}>add to cart</button>
+            <button onClick={handleAddToCartClick} id={toy.id}>add to cart</button>
             </> : user && toy.inventory === 0 ?
             <>
             <label>Unavailble: </label>
-            <button onClick={handleWatchListClick}>Add to Watch List</button>
+            { user.watch_lists.some(watch => watch.toy.id === toy.id) ? <button onClick={handleWatchListRemoveClick}>Remove from Watch List</button>
+            : 
+            <button onClick={handleWatchListClick} id={toy.id}>Add to Watch List</button>
+             } 
             </> : null
             }
         </div>

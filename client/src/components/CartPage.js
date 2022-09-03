@@ -7,9 +7,7 @@ function CartPage() {
     console.log(cart)
 
     function handleSubmitCartClick(e) {
-        fetch(`/shopping_sessions/${cart.id}`)
-        .then((res) => res.json())
-        .then((data) => console.log(data))
+        
     }
 
     return (

@@ -19,7 +19,7 @@ function App() {
 
   const { cart, setCart} = useContext(CartContext)
   const { user, setUser } = useContext(UserContext);
-  const { setToys } = useContext(ToysContext)
+  const { setToys, toys } = useContext(ToysContext)
   // const { setWatchList } = useContext(WatchListContext)
   const navigate = useNavigate()
 
@@ -40,8 +40,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => setToys(data))
   }, [user])
-
-
 
   if (!user) {
     return (
