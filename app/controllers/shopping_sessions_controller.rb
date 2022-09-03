@@ -1,7 +1,7 @@
 class ShoppingSessionsController < ApplicationController
 
     def create
-        shopping_session = ShoppingSession.create(user_id: params[:user_id], is_ordered: false)
+        shopping_session = ShoppingSession.create(user_id: params[:user_id], status: "active")
         shopping_session.cart_items.create(cart_item_params)
         render json: shopping_session, status: :ok
     end
@@ -16,6 +16,6 @@ class ShoppingSessionsController < ApplicationController
     private
 
     def cart_item_params
-        params.permit(:toy_id, :quantity, :is_ordered)
+        params.permit(:toy_id, :quantity, :status)
     end
 end
