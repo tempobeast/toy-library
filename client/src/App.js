@@ -23,13 +23,16 @@ function App() {
   // const { setWatchList } = useContext(WatchListContext)
   const navigate = useNavigate()
 
+  console.log(user)
+  console.log(cart)
+
   useEffect(() => {
     fetch("/me")
     .then((res) => res.json())
     .then((data) => {
-      const currentUser = data[0]
+      const currentUser = data.user
       setUser(currentUser)
-      const currentCart = data[1]
+      const currentCart = data.cart
       setCart(currentCart)
       navigate(`/user_profiles/${currentUser.id}`)
     })

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :orders
   # resources :user_addresses
   resources :cart_items, only: [:create]
-  resources :shopping_sessions, only: [:create, :show]
+  resources :shopping_sessions, only: [:create, :index]
   # resources :user_payment_methods
   # resources :reported_problems
   resources :watch_lists, only: [:create, :destroy]

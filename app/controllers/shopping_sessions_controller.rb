@@ -1,16 +1,15 @@
 class ShoppingSessionsController < ApplicationController
 
-    def create
-        shopping_session = ShoppingSession.create(user_id: params[:user_id], status: "active")
-        shopping_session.cart_items.create(cart_item_params)
-        render json: shopping_session, status: :ok
-    end
+    # def create
+    #     current_shopping_session = ShoppingSession.create(user_id: params[:user_id], status: "active")
+    #     render json: shopping_session, status: :ok
+    # end
 
-    def show
-        user = find_user
-        shopping_session = user.shopping_session
-        render json: shopping_session, status: :ok
-    end
+    # def index
+    #     user = find_user
+    #     shopping_sessions = user.shopping_sessions.where.not(status: "active")
+    #     render json: shopping_sessions, status: :ok
+    # end
 
 
     private

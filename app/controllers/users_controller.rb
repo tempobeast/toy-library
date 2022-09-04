@@ -5,15 +5,15 @@ class UsersController < ApplicationController
     def create
         user = User.create!(user_params)
         session[:user_id] = user.id
-        shopping_session = ShoppingSession.create(user_id: user.id, status: "active")
+        shopping_session = user.shopping_sessions.create!(user_id: user.id, status: "active")
         render json: [user, shopping_session], status: :ok
     end
 
     def show
-        user = User.find_by(id: session[:user_id])
-        shopping_session = user.shopping_session
+        user = find_user
+        current_shopping_session = user.shopping_sessions.find_by(status: "active")
         if user
-            render json: [user, shopping_session ], status: :ok
+            render json: {user: user, cart: current_shopping_session} , status: :ok
         else
             render json: { errors: ["Not Authorized"] }, status: :unauthorized
         end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        user = User.find(session[:user_id])
+        user = find_user
         user.destroy
         head :no_content
     end 

@@ -2,7 +2,8 @@ class CartItemsController < ApplicationController
 
     def create
         user = find_user
-        cart_item = user.shopping_session.cart_items.create(cart_item_params)
+        current_shopping_session = user.shopping_sessions.where(status: "active")
+        current_shopping_session.cart_items.create(cart_item_params)
         cart_item.update_inventory
         toy = cart_item.toy
         shop_sesh = cart_item.shopping_session
