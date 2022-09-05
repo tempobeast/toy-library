@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         user = find_user
         current_shopping_session = user.shopping_sessions.find_by(status: "active")
         if user
-            render json: {user: user, cart: current_shopping_session} , status: :ok
+            render json: [user, current_shopping_session] , status: :ok
         else
             render json: { errors: ["Not Authorized"] }, status: :unauthorized
         end

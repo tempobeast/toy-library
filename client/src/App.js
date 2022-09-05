@@ -24,15 +24,14 @@ function App() {
   const navigate = useNavigate()
 
   console.log(user)
-  console.log(cart)
 
   useEffect(() => {
     fetch("/me")
     .then((res) => res.json())
     .then((data) => {
-      const currentUser = data.user
+      const currentUser = data[0]
       setUser(currentUser)
-      const currentCart = data.cart
+      const currentCart = data[1]
       setCart(currentCart)
       navigate(`/user_profiles/${currentUser.id}`)
     })

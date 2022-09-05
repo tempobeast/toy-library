@@ -26,6 +26,12 @@ function UserProfile() {
         })
     }
 
+    function handlePreviousOrderClick(e) {
+        fetch('/shopping_sessions')
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+    }
+
     function handleUpdateClick(e) {
         navigate("/update_user")
     }
@@ -34,6 +40,7 @@ function UserProfile() {
         <div>
             <h1>{`${first_name} ${last_name}'s Profile`}</h1>
             <h2>{`Hello, ${username}!`}</h2>
+            <button onClick={handlePreviousOrderClick}>View Previous Orders</button>
             {watch_lists ? 
             <>
                 <h3>Watch List: </h3>

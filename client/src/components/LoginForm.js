@@ -28,8 +28,8 @@ function LoginForm() {
             if (res.ok) {
                 res.json().then((data) => {
                     console.log(data)
-                    const user = data.user
-                    const cart = data.cart
+                    const user = data[0]
+                    const cart = data[1]
                     setUser(user);
                     setCart(cart)
                     navigate(`/user_profiles/${user.id}`);

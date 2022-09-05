@@ -5,11 +5,11 @@ class ShoppingSessionsController < ApplicationController
     #     render json: shopping_session, status: :ok
     # end
 
-    # def index
-    #     user = find_user
-    #     shopping_sessions = user.shopping_sessions.where.not(status: "active")
-    #     render json: shopping_sessions, status: :ok
-    # end
+    def index
+        user = find_user
+        shopping_sessions = user.shopping_sessions.where.not(status: "active")
+        render json: shopping_sessions, status: :ok
+    end
 
 
     private

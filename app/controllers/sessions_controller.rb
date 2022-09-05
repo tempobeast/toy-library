@@ -10,11 +10,10 @@ class SessionsController < ApplicationController
             #     user.shopping_session.create(total: 0)
             # end
             current_shopping_session = user.shopping_sessions.find_by(status: "active")
-            render json: {user: user, cart: current_shopping_session} , status: :ok
+            render json: [user, current_shopping_session] , status: :ok
         else
             render json: { errors: ["Invalid username or password"] }, status: :unauthorized
         end
-        byebug
     end
 
     def destroy
