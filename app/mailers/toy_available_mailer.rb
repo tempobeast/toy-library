@@ -1,0 +1,2 @@
+class ToyAvailableMailer < ApplicationMailer
+end
