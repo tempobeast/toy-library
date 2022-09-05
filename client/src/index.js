@@ -7,12 +7,12 @@ import reportWebVitals from './reportWebVitals';
 import { UserProvider } from './context/user';
 import { ToysProvider } from './context/toys';
 import { CartProvider } from './context/cart'
-import { WatchListProvider } from './context/watchList';
+import { PreviousOrdersProvider } from './context/previousOrders';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <WatchListProvider>
+  <PreviousOrdersProvider>
     <CartProvider>
       <UserProvider>
         <ToysProvider>
@@ -22,7 +22,7 @@ root.render(
         </ToysProvider>
       </UserProvider>
     </CartProvider>
-  </WatchListProvider>
+  </PreviousOrdersProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

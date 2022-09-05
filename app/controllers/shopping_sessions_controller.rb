@@ -11,6 +11,14 @@ class ShoppingSessionsController < ApplicationController
         render json: shopping_sessions, status: :ok
     end
 
+    def update
+        user = find_user
+        order = user.shopping_sessions.find(params[:id])
+        order.update!(status: params[:status])
+        shopping_session = user.shopping_sessions.create(status: "active")
+        render json: [order, shopping_session], status: :ok
+    end
+
 
     private
 

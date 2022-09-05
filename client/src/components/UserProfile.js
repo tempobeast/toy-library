@@ -1,18 +1,20 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../context/user"
 import { CartContext } from "../context/cart"
+import { PreviousOrdersContext } from "../context/previousOrders"
+import PreviousOrdersCard from "./PreviousOrderCard"
 // import { WatchListContext } from "../context/watchList"
 
 function UserProfile() {
 
     const {user, setUser} = useContext(UserContext)
     const {setCart} = useContext(CartContext)
-    // const { watchList } = useContext(WatchListContext)
+    const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
+    const [ previousOrdersClick, setPreviousOrdersClick] = useState(false)
     const navigate = useNavigate()
 
     const {first_name, last_name, watch_lists, username, id} = user
-
 
     function handleDeleteClick(e) {
         fetch(`/users/${id}`, {
@@ -27,9 +29,16 @@ function UserProfile() {
     }
 
     function handlePreviousOrderClick(e) {
-        fetch('/shopping_sessions')
-        .then((res) => res.json())
-        .then((data) => console.log(data))
+        // if (!previousOrders) {
+            fetch('/shopping_sessions')
+            .then((res) => res.json())
+            .then((data) => {
+                setPreviousOrders(data)
+                setPreviousOrdersClick(!previousOrdersClick)
+            })
+        // } else {
+        //     setPreviousOrdersClick(!previousOrdersClick)
+        // }
     }
 
     function handleUpdateClick(e) {
@@ -40,7 +49,8 @@ function UserProfile() {
         <div>
             <h1>{`${first_name} ${last_name}'s Profile`}</h1>
             <h2>{`Hello, ${username}!`}</h2>
-            <button onClick={handlePreviousOrderClick}>View Previous Orders</button>
+            <button onClick={handlePreviousOrderClick}>{!previousOrdersClick ? "View Previous Orders" : "Close Previous Orders"}</button>
+            {previousOrdersClick ? <PreviousOrdersCard /> : null}
             {watch_lists ? 
             <>
                 <h3>Watch List: </h3>
