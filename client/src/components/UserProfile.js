@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../context/user"
 import { CartContext } from "../context/cart"
-import { PreviousOrdersContext } from "../context/previousOrders"
+// import { PreviousOrdersContext } from "../context/previousOrders"
 import PreviousOrdersCard from "./PreviousOrderCard"
 // import { WatchListContext } from "../context/watchList"
 
@@ -10,7 +10,7 @@ function UserProfile() {
 
     const {user, setUser} = useContext(UserContext)
     const {setCart} = useContext(CartContext)
-    const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
+    // const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
     const [ previousOrdersClick, setPreviousOrdersClick] = useState(false)
     const navigate = useNavigate()
 
@@ -28,19 +28,6 @@ function UserProfile() {
         })
     }
 
-    function handlePreviousOrderClick(e) {
-        // if (!previousOrders) {
-            fetch('/shopping_sessions')
-            .then((res) => res.json())
-            .then((data) => {
-                setPreviousOrders(data)
-                setPreviousOrdersClick(!previousOrdersClick)
-            })
-        // } else {
-        //     setPreviousOrdersClick(!previousOrdersClick)
-        // }
-    }
-
     function handleUpdateClick(e) {
         navigate("/update_user")
     }
@@ -49,7 +36,7 @@ function UserProfile() {
         <div>
             <h1>{`${first_name} ${last_name}'s Profile`}</h1>
             <h2>{`Hello, ${username}!`}</h2>
-            <button onClick={handlePreviousOrderClick}>{!previousOrdersClick ? "View Previous Orders" : "Close Previous Orders"}</button>
+            <button onClick={() => setPreviousOrdersClick(!previousOrdersClick)}>{!previousOrdersClick ? "View Previous Orders" : "Close Previous Orders"}</button>
             {previousOrdersClick ? <PreviousOrdersCard /> : null}
             {watch_lists ? 
             <>

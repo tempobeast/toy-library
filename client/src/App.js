@@ -13,17 +13,19 @@ import ToyPage from './components/ToyPage';
 import { UserContext } from "./context/user";
 import { ToysContext } from './context/toys';
 import { CartContext } from './context/cart';
-// import { WatchListContext } from './context/watchList'
+import { PreviousOrdersContext } from './context/previousOrders'
 
 function App() {
 
   const { cart, setCart} = useContext(CartContext)
   const { user, setUser } = useContext(UserContext);
   const { setToys, toys } = useContext(ToysContext)
-  // const { setWatchList } = useContext(WatchListContext)
+  const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
   const navigate = useNavigate()
 
+  console.log(cart)
   console.log(user)
+  console.log(previousOrders)
 
   useEffect(() => {
     fetch("/me")
@@ -42,6 +44,12 @@ function App() {
       .then((res) => res.json())
       .then((data) => setToys(data))
   }, [user])
+
+  useEffect(() => {
+    fetch("/shopping_sessions")
+      .then((res) => res.json())
+      .then((orders) => setPreviousOrders(orders))
+  }, [])
 
   if (!user) {
     return (
