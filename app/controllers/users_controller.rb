@@ -6,6 +6,7 @@ class UsersController < ApplicationController
         user = User.create!(user_params)
         session[:user_id] = user.id
         shopping_session = user.shopping_sessions.create!(user_id: user.id, status: "active")
+        ToyAvailableMailer.with(user: user).welcome_email.deliver_later
         render json: [user, shopping_session], status: :ok
     end
 

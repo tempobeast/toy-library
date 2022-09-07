@@ -39,7 +39,6 @@ function ToyCard({toy}) {
             .then((res) => res.json())
             // [0] returns cart, [1] returns updated item
             .then((data) => {
-                console.log(data)
                 const updatedCart = data[0]
                 const updatedToy = data[1]
                 setCart(updatedCart)

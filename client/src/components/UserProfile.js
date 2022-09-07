@@ -43,7 +43,7 @@ function UserProfile() {
                 <h3>Watch List: </h3>
                 {watch_lists.map((watch) => 
                     <div key={watch.toy.id}>
-                        <p>{watch.queue == 1 ? `You're next in line for:` : `There are ${watch.queue} customers in line ahead of you for:`}</p>
+                        <p>{watch.queue == 1 ? `You're next in line for:` : watch.queue == 2 ? "There is 1 customer ahead of you for:" :`There are ${watch.queue - 1} customers in line ahead of you for:`}</p>
                         <h4 >{watch.toy.name}</h4>
                     </div>
                 

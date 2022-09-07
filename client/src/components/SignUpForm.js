@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user';
+import { CartContext } from '../context/cart'
 import { useNavigate } from 'react-router-dom';
 
 function SignUpForm() {
@@ -15,6 +16,7 @@ function SignUpForm() {
     const [errors, setErrors] = useState([]) 
 
     const { setUser } = useContext(UserContext)
+    const { setCart } = useContext(CartContext)
     const navigate = useNavigate()
 
     function handleSubmit(e) {
@@ -41,8 +43,11 @@ function SignUpForm() {
             }).then((res) => {
                 setIsLoading(false);
                 if (res.ok) {
-                    res.json().then((user) => {
+                    res.json().then((data) => {
+                        const user = data[0]
                         setUser(user)
+                        const cart = data[1]
+                        setCart(cart)
                         navigate(`/user_profiles/${user.id}`)
                     })
                 } else {

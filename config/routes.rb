@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :order_items
   resources :orders
-  # resources :user_addresses
+  resources :user_addresses
   resources :cart_items, only: [:create]
   resources :shopping_sessions, only: [:create, :index, :update]
   # resources :user_payment_methods

@@ -3,4 +3,5 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :shopping_sessions
   has_many :watch_lists
+  has_one :user_address
 end

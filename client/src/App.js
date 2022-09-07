@@ -23,9 +23,7 @@ function App() {
   const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
   const navigate = useNavigate()
 
-  console.log(cart)
   console.log(user)
-  console.log(previousOrders)
 
   useEffect(() => {
     fetch("/me")
@@ -49,7 +47,7 @@ function App() {
     fetch("/shopping_sessions")
       .then((res) => res.json())
       .then((orders) => setPreviousOrders(orders))
-  }, [])
+  }, [user])
 
   if (!user) {
     return (
