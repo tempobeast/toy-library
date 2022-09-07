@@ -7,8 +7,15 @@ class UserAddressesController < ApplicationController
     end
 
     def create
+        byebug
         user = find_user
-        user.user_address.create!(user_address_params)
+        UserAddress.create!({
+            user_id: params[:user_id],
+            street: params[:street],
+            city: params[:city],
+            state: params[:state],
+            zip: params[:zip]
+        })
         render json: user, status: :ok
     end
 

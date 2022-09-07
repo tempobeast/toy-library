@@ -18,12 +18,13 @@ function AddressForm({editAddress, setEditAddress}) {
     function handleAddSubmit(e) {
         e.preventDefault();
         setIsLoading(true);
-        fetch(`/user_addresses/${user.user_address.id}`, {
-            method: "PATCH",
+        fetch(`/user_addresses/`, {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                user_id: user.id,
                 street: street, 
                 city: city,
                 state: state,
@@ -71,8 +72,8 @@ function AddressForm({editAddress, setEditAddress}) {
 
     return (
         <div>
-            <h1>{editAddress ? "Edit Address" : "Add Address"}</h1>
-            <form onSubmit={user.user_address ? {handleUpdateSubmit} : {handleAddSubmit}}>
+            <h2>{editAddress ? "Edit Address" : "Shipping Address"}</h2>
+            <form onSubmit={user.user_address ? handleUpdateSubmit : handleAddSubmit}>
                 <label htmlFor="street">Street: </label>
                 <input 
                     type="text"

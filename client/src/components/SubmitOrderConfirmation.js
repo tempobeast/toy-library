@@ -4,6 +4,7 @@ import { PreviousOrdersContext } from '../context/previousOrders'
 import { UserContext } from '../context/user'
 import CartItemCard from './CartItemCard'
 import AddressForm from './AddressForm'
+import { useNavigate } from 'react-router-dom'
 
 function SubmitOrderConfirmation({setSubmitClick}) {
 
@@ -11,6 +12,7 @@ function SubmitOrderConfirmation({setSubmitClick}) {
     const { user } = useContext(UserContext)
     const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
     const [editAddress, setEditAddress] = useState(false)
+    const navigate = useNavigate()
 
     function handleConfirmSubmitCartClick(e) {
         fetch(`/shopping_sessions/${cart.id}`, {
@@ -27,6 +29,7 @@ function SubmitOrderConfirmation({setSubmitClick}) {
             const newCart = data[1];
             setCart(newCart)
             setSubmitClick(false)
+            navigate(`/user_profiles/${user.id}`)
         })
     }
 

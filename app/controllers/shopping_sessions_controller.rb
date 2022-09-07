@@ -14,8 +14,13 @@ class ShoppingSessionsController < ApplicationController
     def update
         user = find_user
         order = user.shopping_sessions.find(params[:id])
-        order.update!(status: params[:status])
-        shopping_session = user.shopping_sessions.create(status: "active")
+        if order.status == "active"
+            order.update!(status: params[:status])
+            OrderDetailsMailer.with(user: user, order: order).details.deliver_later
+            shopping_session = user.shopping_sessions.create(status: "active")
+        else
+            order.update!(status: params[:status])
+        end
         render json: [order, shopping_session], status: :ok
     end
 
