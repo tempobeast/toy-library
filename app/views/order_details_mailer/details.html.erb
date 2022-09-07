@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order <%= @order.id %> is processing!</h1>
+    <p>
+      You have <%= @total_items%> shipping to <%= @user_address %>.<br>
+    </p>
+    <p>
+      To cancel or change this your order login to <%= @url %> and select "View Previous Orders".
+    </p>
+    <p>Thanks for your order!</p>
+  </body>
+</html>
