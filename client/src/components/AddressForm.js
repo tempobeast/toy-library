@@ -15,9 +15,33 @@ function AddressForm({editAddress, setEditAddress}) {
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState([])
 
-    console.log(user.user_address.id)
+    function handleAddSubmit(e) {
+        e.preventDefault();
+        setIsLoading(true);
+        fetch(`/user_addresses/${user.user_address.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                street: street, 
+                city: city,
+                state: state,
+                zip: zip
+            })
+        }).then((res) => {
+            if (res.ok) {
+                res.json().then((user) => {
+                    setUser(user);
+                    setEditAddress(false)
+                });
+            } else {
+                res.json().then((data) => setErrors(data.errors));
+            }
+        })
+    }
 
-    function handleSubmit(e) {
+    function handleUpdateSubmit(e) {
         e.preventDefault();
         setIsLoading(true);
         fetch(`/user_addresses/${user.user_address.id}`, {
@@ -45,11 +69,10 @@ function AddressForm({editAddress, setEditAddress}) {
 
 
 
-
     return (
         <div>
             <h1>{editAddress ? "Edit Address" : "Add Address"}</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={user.user_address ? {handleUpdateSubmit} : {handleAddSubmit}}>
                 <label htmlFor="street">Street: </label>
                 <input 
                     type="text"
@@ -90,7 +113,7 @@ function AddressForm({editAddress, setEditAddress}) {
                     required
                 />
                 <br />
-                <button type='submit'> {isLoading ? "Loading..." : "Submit Changes"} </button>
+                <button type='submit'> {isLoading ? "Loading..." : isLoading && user.user_address ? "Submit Changes" : "Add Address"} </button>
                 {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
             </form>
         </div>
