@@ -21,8 +21,6 @@ function SignUpForm() {
     const { setCart } = useContext(CartContext)
     const navigate = useNavigate()
 
-    console.log(telephone)
-
     function handleSubmit(e) {
         e.preventDefault();
         if (password !== passwordConfirmation) {

@@ -1,5 +1,5 @@
-class OrderItem < ApplicationRecord
+# class OrderItem < ApplicationRecord
 
-    belongs_to :order
-    belongs_to :toy
-end
+#     belongs_to :order
+#     belongs_to :toy
+# end

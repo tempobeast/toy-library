@@ -2,10 +2,12 @@ class User < ApplicationRecord
     has_secure_password
 
     validates :username, presence: true, uniqueness: true, on: :create
-    validates :password, presence: true, on: :create
-    #validates :email is real
-    #validates :telephone is 10 digits
-    #validates names are all letters
+    validates :password, presence: true, :length => { minimum: 8, maximum: 16}, on: :create
+    validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP}
+    validates :first_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, message: "only allows letters" }
+    validates :last_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, message: "only allows letters" }
+
+    validates :telephone, presence: true, numericality: true, :length => { minimum: 11, maximum: 16}
 
 
     has_one :user_payment_method
