@@ -33,7 +33,7 @@ function App() {
       setUser(currentUser)
       const currentCart = data[1]
       setCart(currentCart)
-      navigate(`/user_profiles/${currentUser.id}`)
+      // navigate(`/user_profiles/${currentUser.id}`)
     })
   }, [])
 
@@ -57,7 +57,10 @@ function App() {
         <Routes>
           <Route path="/user_login" element={<LoginPage/>}/>
           <Route path="/view_all_toys" element={<ToyContainer/>}/>
-          <Route path="/toy_pages/:id" element={<ToyPage />} />
+          {/* <Route path="/view_toys" element={<ToyContainer />}>
+            <Route path="/:toyId" element={<ToyPage />}/>
+          </Route> */}
+          {/* <Route path="/toy_pages/:id" element={<ToyPage />} /> */}
           <Route path="/" element={<Home/>} />
         </Routes>
       </div>

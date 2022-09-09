@@ -14,5 +14,4 @@ Toy.create({name: "Rex", description: "Fearful T-Rex", sku: 2323, purchase_price
 Toy.create({name: "Trixie", description: "Blue Triceratops", sku: 2324, purchase_price: 22, inventory: 5, age_range: "5+", img_url: "https://i5.walmartimages.com/asr/ffa7a948-beb7-40a0-ba1c-2917db35334f_1.150adc44aac94256bb7b0bfdb6932a2a.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"})
 
 
-
 puts "done seeding"

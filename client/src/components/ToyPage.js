@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { ToysContext } from '../context/toys'
-import {useParams} from 'react-router-dom'
+import {useParams, Outlet} from 'react-router-dom'
 import { CartContext } from '../context/cart'
 import { UserContext } from '../context/user'
 
@@ -13,7 +13,10 @@ function ToyPage() {
     const [selectedQuantity, setSelectedQuantity] = useState(1);
 
     const toyToView = toys.find((toy) => toy.id === parseInt(id))
+    console.log(id)
     console.log(toys)
+    console.log(toyToView)
+    console.log(user)
 
     const { name, description, purchase_price, inventory, img_url, sku } = toyToView
 
@@ -68,6 +71,7 @@ function handleAddToCartClick(e) {
             </>
             : null
             }   
+            <Outlet/>
         </div>
     )
 }

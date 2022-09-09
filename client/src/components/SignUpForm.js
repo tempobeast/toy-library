@@ -1,4 +1,6 @@
 import React, { useState, useContext } from 'react';
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
 import { UserContext } from '../context/user';
 import { CartContext } from '../context/cart'
 import { useNavigate } from 'react-router-dom';
@@ -11,13 +13,15 @@ function SignUpForm() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("")
-    const [telephone, setTelephone] = useState("(   )   -    ")
+    const [telephone, setTelephone] = useState("")
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState([]) 
 
     const { setUser } = useContext(UserContext)
     const { setCart } = useContext(CartContext)
     const navigate = useNavigate()
+
+    console.log(telephone)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -55,10 +59,6 @@ function SignUpForm() {
                 }
             })  
         }
-    }
-
-    function handlePhoneChange(e) {
-        
     }
 
     return (
@@ -126,12 +126,11 @@ function SignUpForm() {
             />
               <br />
             <label htmlFor="telephone">Telephone: </label>
-            <input 
-                type="text"
+            <PhoneInput 
                 id="telephone"
-                autoComplete="off"
+                defaultCountry= "US"
                 value={telephone}
-                onChange={(e) => handlePhoneChange}
+                onChange={setTelephone}
             /> 
             <br />
             <button type='submit'> {isLoading ? "Loading..." : "Sign Up"} </button>
