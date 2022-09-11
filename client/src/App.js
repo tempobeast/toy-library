@@ -55,13 +55,13 @@ function App() {
         <Header />
         <Nav />
         <Routes>
-          <Route path="/user_login" element={<LoginPage/>}/>
-          <Route path="/view_all_toys" element={<ToyContainer/>}/>
-          {/* <Route path="/view_toys" element={<ToyContainer />}>
-            <Route path="/:toyId" element={<ToyPage />}/>
-          </Route> */}
-          {/* <Route path="/toy_pages/:id" element={<ToyPage />} /> */}
           <Route path="/" element={<Home/>} />
+          <Route path="user_login" element={<LoginPage/>}/>
+          <Route path="/view_all_toys" element={<ToyContainer/>}/>
+          {/* <Route path="view_toys" element={<ToyContainer />}>
+            <Route path=":toyId" element={<ToyPage />}/>
+          </Route> */}
+          <Route path="/toy_pages/:toyId" element={<ToyPage />} />
         </Routes>
       </div>
     )
@@ -72,11 +72,11 @@ function App() {
           <Header cart={cart} user={user}/>
           <Nav />
           <Routes>
+            <Route path="/toy_pages/:id" element={<ToyPage />} />
             <Route path="/view_all_toys" element={<ToyContainer/>}/>
             <Route path="/user_profiles/:id" element={<UserProfile/>} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/update_user" element={<UpdateUserInfo />} />
-            <Route path="/toy_pages/:id" element={<ToyPage />} />
             <Route path="/" element={<Home/>} />
           </Routes>
         </div>

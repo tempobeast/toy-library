@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import { Outlet } from 'react-router-dom'
 import { ToysContext } from "../context/toys"
 import ToyCard from "./ToyCard"
 

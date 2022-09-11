@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/user'
 import { CartContext } from '../context/cart'
 
@@ -6,7 +6,7 @@ import { CartContext } from '../context/cart'
 function AddressForm({editAddress, setEditAddress}) {
 
     const { user, setUser } = useContext(UserContext)
-    const { setCart } = useContext(CartContext)
+    // const { setCart } = useContext(CartContext)
 
     const [street, setStreet] = useState("")
     const [city, setCity] = useState("")

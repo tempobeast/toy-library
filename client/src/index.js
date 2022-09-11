@@ -12,17 +12,17 @@ import { PreviousOrdersProvider } from './context/previousOrders';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <PreviousOrdersProvider>
-    <CartProvider>
-      <UserProvider>
-        <ToysProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </ToysProvider>
-      </UserProvider>
-    </CartProvider>
-  </PreviousOrdersProvider>
+  <BrowserRouter>
+    <PreviousOrdersProvider>
+      <CartProvider>
+        <UserProvider>
+          <ToysProvider>
+              <App />
+          </ToysProvider>
+        </UserProvider>
+      </CartProvider>
+    </PreviousOrdersProvider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

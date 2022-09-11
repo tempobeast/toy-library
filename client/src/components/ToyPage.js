@@ -1,19 +1,19 @@
-import { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ToysContext } from '../context/toys'
-import {useParams, Outlet} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { CartContext } from '../context/cart'
 import { UserContext } from '../context/user'
 
 function ToyPage() {
 
+    const { toyId } = useParams()
     const { toys, setToys } = useContext(ToysContext)
     const { setCart } = useContext(CartContext)
     const { user } = useContext(UserContext)
-    const {id} = useParams()
     const [selectedQuantity, setSelectedQuantity] = useState(1);
 
-    const toyToView = toys.find((toy) => toy.id === parseInt(id))
-    console.log(id)
+    const toyToView = toys.find((toy) => toy.id === parseInt(toyId))
+    console.log(toyId)
     console.log(toys)
     console.log(toyToView)
     console.log(user)
@@ -37,7 +37,7 @@ function handleAddToCartClick(e) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ 
-                    toy_id: id,
+                    toy_id: toyId,
                     quantity: selectedQuantity,
                 })
         })
@@ -71,7 +71,6 @@ function handleAddToCartClick(e) {
             </>
             : null
             }   
-            <Outlet/>
         </div>
     )
 }

@@ -85,7 +85,7 @@ function ToyCard({toy}) {
             <div onClick={handleCardClick} id={toy.id}>
                 <img className="toy-card-img" src={toy.img_url}/>
                 <h3>{toy.name}</h3>
-                <h5>Inventory: {toy.inventory}</h5>
+                {/* <h5>Inventory: {toy.inventory}</h5> */}
                 <h5>Age Range: {toy.age_range}</h5>
             </div>
             {user && toy.inventory > 0 ?

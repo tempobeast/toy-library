@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { CartContext } from '../context/cart'
 import { PreviousOrdersContext } from '../context/previousOrders'
 import CartItemCard from './CartItemCard'
@@ -17,7 +17,9 @@ function CartPage() {
             :
             <>
             {submitClick ? <SubmitOrderConfirmation setSubmitClick={setSubmitClick}/> : null}
-            {cart.cart_items.map((item) => <CartItemCard key={item.id} item={item}/>)}
+            <div className='all-cart-items'>
+                {cart.cart_items.map((item) => <CartItemCard key={item.id} item={item}/>)}
+            </div>
             <button onClick={() => setSubmitClick(true)}>Confirm Order</button>
             <button>Cancel Order</button>
             </>
