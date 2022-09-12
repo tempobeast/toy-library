@@ -51,7 +51,7 @@
 .last-cart-item {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 12px
 }
@@ -63,6 +63,10 @@
 
 .cart-item-image {
   width: 100px;
+}
+
+.watch-item-image {
+  width: 150px;
 }
 
 button{
@@ -91,8 +95,7 @@ button:hover{
 #nav {
   background-color:rgb(53, 136, 53);
   text-align: right;
-  padding: 5px;
-  
+  padding: 12px;
 }
 
 .nav-link {
@@ -100,6 +103,7 @@ button:hover{
   color: white;
   background-color:rgb(53, 136, 53);
   padding: 12px 12px;
+  font-size: 15px;
   font-weight: bold;
   border-radius: 10px
 }
@@ -199,4 +203,37 @@ button:hover{
 
 hr {
   width: 60%
+}
+
+.previous-order-card{
+  border-width: 2px;
+  border-style: solid;
+  width: 80%;
+  margin: 10px auto;
+  padding-top: 20px;
+}
+
+.previous-order-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 10%
+}
+
+form {
+  background-color: rgb(240, 238, 238);
+  margin: 0 10%;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+input {
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 15%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box
 }

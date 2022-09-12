@@ -1,12 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { CartContext } from '../context/cart'
-import { PreviousOrdersContext } from '../context/previousOrders'
 import CartItemCard from './CartItemCard'
 import SubmitOrderConfirmation from './SubmitOrderConfirmation'
 
 function CartPage() {
     const { cart, setCart } = useContext(CartContext)
-    const {previousOrders, setPreviousOrders} = useContext(PreviousOrdersContext)
     const [submitClick, setSubmitClick] = useState(false)
 
 

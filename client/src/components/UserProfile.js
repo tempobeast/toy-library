@@ -46,6 +46,7 @@ function UserProfile() {
                 {watch_lists.map((watch) => 
                     <div key={watch.toy.id}>
                         <p>{watch.queue === 1 ? `You're next in line for:` : watch.queue === 2 ? "There is 1 customer ahead of you for:" :`There are ${watch.queue - 1} customers in line ahead of you for:`}</p>
+                        <img src={watch.toy.img_url} alt={watch.toy.name} className="watch-item-image"/>
                         <h4 >{watch.toy.name}</h4>
                     </div>
                 
