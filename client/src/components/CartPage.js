@@ -11,13 +11,13 @@ function CartPage() {
 
 
     return (
-        <div>
+        <div className='cart-page'>
         {cart.total_items < 1 ? 
             <h3>Your Cart is Empty</h3> 
             :
             <>
             {submitClick ? <SubmitOrderConfirmation setSubmitClick={setSubmitClick}/> : null}
-            <div className='all-cart-items'>
+            <div className={submitClick ? 'inactive-cart-items' :'all-cart-items'}>
                 {cart.cart_items.map((item) => <CartItemCard key={item.id} item={item}/>)}
             </div>
             <button onClick={() => setSubmitClick(true)}>Confirm Order</button>

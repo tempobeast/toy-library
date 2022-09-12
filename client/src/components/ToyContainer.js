@@ -12,10 +12,12 @@ function ToyContainer() {
     return(
         <div>
             <h2>Toys!!!</h2>
-            {toysToDisplay.map((toy) => (
-                <ToyCard key={toy.id} toy={toy}/>
-                )
-            )}
+            <div className='toy-container'>
+                {toysToDisplay.map((toy) => (
+                    <ToyCard key={toy.id} toy={toy}/>
+                    )
+                )}
+            </div>
         </div>
     )
 }

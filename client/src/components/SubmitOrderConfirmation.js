@@ -37,21 +37,22 @@ function SubmitOrderConfirmation({setSubmitClick}) {
     return (
         <div className='order-confirmation'>
             <h2>Order Confirmation</h2>
-            {cart.cart_items.map((item) => <CartItemCard key={item.id} item={item}/>)}
+            {cart.cart_items.map((item) => <CartItemCard id="order-confirmation" key={item.id} item={item}/>)}
             {user.user_address ? 
                 <>
-                    <p>Ship to: {user.user_address.street}, {user.user_address.city}, {user.user_address.state} {user.user_address.zip} </p>
-                    <button onClick={() => setEditAddress(true)}>Edit Shipping Information</button>
+                    <hr/>
+                    <p className='order-confirmation-shipping'>Ship to: {user.user_address.street}, {user.user_address.city}, {user.user_address.state} {user.user_address.zip} </p>
+                    <p id="edit-address" onClick={() => setEditAddress(true)}>Edit Shipping Information</p>
                 </>
                 :
                 <AddressForm editAddress={editAddress} setEditAddress={setEditAddress} />
             }
             {editAddress ? <AddressForm editAddress={editAddress} setEditAddress={setEditAddress}/> : null}
-            <br/>
-            <button onClick={handleConfirmSubmitCartClick}>Submit Order</button>
-            <button>Cancel Order</button>
-            <br/>
-            <button onClick={() => setSubmitClick(false)}>Back</button>
+            <hr />
+            <button id="order-confirmation-button" onClick={handleConfirmSubmitCartClick}>Submit Order</button>
+            <button id="order-confirmation-button">Cancel Order</button>
+            <hr />
+            <button id="order-confirmation-button" onClick={() => setSubmitClick(false)}>Back</button>
         </div>
     )
 }
