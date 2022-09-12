@@ -17,9 +17,7 @@ function PreviousOrdersCard() {
     }
 
     function orderStatusTag(status) {
-        if (status === "processing"){
-            return "submitted"
-        } else if (status === "shipped") {
+        if (status === "shipped") {
             return "shipped"
         } else if (status === "returned") {
             return "returned"
@@ -33,6 +31,8 @@ function PreviousOrdersCard() {
             {previousOrders.map((order) => {
                 return (
                 <div key={order.id} className="previous-order-card">
+                    <h3 className="previous-card-titles">Order Status: </h3>
+                    <h3 className="previous-card-titles" style={{color: orderStatusColor(order.status)}}>{order.status}</h3>
                     {order.cart_items.map((item) => {
                         return (
                         <div key={item.id} className="previous-order-item">
@@ -42,8 +42,8 @@ function PreviousOrdersCard() {
                         </div>
                         )
                     })}
-                    <h3>Order {orderStatusTag(order.status)}: {order.last_update}</h3>
-                    <h3 style={{color: orderStatusColor(order.status)}}>{order.status}</h3>
+                    <h4>Order submitted: {order.when_created}</h4>
+                    {order.status !== "processing" ? <h4>Order {orderStatusTag(order.status)}: {order.last_update}</h4> : null}
                 </div>
                 )
             })}

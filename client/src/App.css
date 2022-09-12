@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin-bottom: 50px;
 }
 
 #header {
@@ -236,4 +237,9 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box
+}
+
+.previous-card-titles{
+  display: inline;
+  padding: 25px
 }

@@ -25,7 +25,7 @@ function SubmitOrderConfirmation({setSubmitClick}) {
         .then((res) => res.json())
         .then((data) => {
             const order = data[0];
-            setPreviousOrders([...previousOrders, order]);
+            setPreviousOrders([order, ...previousOrders]);
             const newCart = data[1];
             setCart(newCart)
             setSubmitClick(false)
