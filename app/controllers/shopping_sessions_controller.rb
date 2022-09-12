@@ -7,7 +7,7 @@ class ShoppingSessionsController < ApplicationController
 
     def index
         user = find_user
-        shopping_sessions = user.shopping_sessions.where.not(status: "active")
+        shopping_sessions = user.shopping_sessions.where.not(status: "active").order(created_at: :desc)
         render json: shopping_sessions, status: :ok
     end
 
