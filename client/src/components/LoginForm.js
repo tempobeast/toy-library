@@ -53,9 +53,9 @@ function LoginForm() {
 
     return (
         <div>
-            <h1>Login</h1>
+            <h1>Login:</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username: </label>
+                <label className="label" htmlFor="username">Username: </label>
                 <input 
                     type="text"
                     id="username"
@@ -65,7 +65,7 @@ function LoginForm() {
                     required
                 />        
                 <br />
-                <label htmlFor="password">Password: </label>
+                <label className="label" htmlFor="password">Password: </label>
                 <input 
                     type="password"
                     id="password"

@@ -61,7 +61,7 @@ function SignUpForm() {
 
     return (
     <div>
-        <h1>Login</h1>
+        <h1>Signup: </h1>
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username: </label>
             <input 
@@ -126,7 +126,7 @@ function SignUpForm() {
             <label htmlFor="telephone">Telephone: </label>
             <PhoneInput 
                 id="telephone"
-                defaultCountry= "US"
+                defaultCountry="US"
                 value={telephone}
                 onChange={setTelephone}
             /> 

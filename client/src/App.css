@@ -224,7 +224,7 @@ hr {
 
 form {
   background-color: rgb(240, 238, 238);
-  margin: 0 10%;
+  margin: 0 15%;
   padding: 25px;
   border-radius: 15px;
 }
@@ -239,7 +239,30 @@ input {
   box-sizing: border-box
 }
 
+label{
+  margin: 15%;
+  padding: 0px
+}
+
+button[type=submit]{
+  margin: 10px 15% 0px
+}
+
+.PhoneInputFlag{
+  background-color: green;
+}
+
 .previous-card-titles{
   display: inline;
   padding: 25px
+}
+
+.watch-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: 1px dashed; 
+  width: 80%;
+  margin: 10px auto;
 }
