@@ -12,9 +12,15 @@ function SubmitOrderConfirmation({setSubmitClick}) {
     const { user } = useContext(UserContext)
     const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
     const [editAddress, setEditAddress] = useState(false)
+    const [ isLoading, setIsLoading ] = useState(false)
+    const [ errors, setErrors ] = useState([])
     const navigate = useNavigate()
 
+    console.log(previousOrders)
+
     function handleConfirmSubmitCartClick(e) {
+        setErrors([]);
+        setIsLoading(true);
         fetch(`/shopping_sessions/${cart.id}`, {
             method: 'PATCH', 
             headers: {
@@ -22,15 +28,23 @@ function SubmitOrderConfirmation({setSubmitClick}) {
             },
             body: JSON.stringify({status: "processing"})
         })
-        .then((res) => res.json())
-        .then((data) => {
-            const order = data[0];
-            setPreviousOrders([order, ...previousOrders]);
-            const newCart = data[1];
-            setCart(newCart)
-            setSubmitClick(false)
-            navigate(`/user_profiles/${user.id}`)
+        .then((res) => {
+            setIsLoading(false);
+            if (res.ok) {
+            res.json()
+            .then((data) => {
+                const order = data[0];
+                setPreviousOrders([order, ...previousOrders]);
+                const newCart = data[1];
+                setCart(newCart)
+                setSubmitClick(false)
+                navigate(`/user_profiles/${user.id}`)
+            })
+            } else {
+                res.json().then((err) => setErrors(err.errors))
+            }
         })
+        
     }
 
    
@@ -49,8 +63,9 @@ function SubmitOrderConfirmation({setSubmitClick}) {
             }
             {editAddress ? <AddressForm editAddress={editAddress} setEditAddress={setEditAddress}/> : null}
             <hr />
-            <button id="order-confirmation-button" onClick={handleConfirmSubmitCartClick}>Submit Order</button>
+            <button id="order-confirmation-button" onClick={handleConfirmSubmitCartClick}>{isLoading ? "Loading..." : "Submit Order"}</button>
             <button id="order-confirmation-button">Cancel Order</button>
+            {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
             <hr />
             <button id="order-confirmation-button" onClick={() => setSubmitClick(false)}>Back</button>
         </div>
