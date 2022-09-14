@@ -1,6 +1,6 @@
 import './App.css';
-import React, {useState, useEffect, useContext} from "react"
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useContext} from "react"
+import { Routes, Route, withRouter } from 'react-router-dom';
 import ToyContainer from './components/ToyContainer';
 import LoginPage from './components/LoginPage';
 import Header from './components/Header'
@@ -19,11 +19,8 @@ function App() {
 
   const { cart, setCart} = useContext(CartContext)
   const { user, setUser } = useContext(UserContext);
-  const { setToys, toys } = useContext(ToysContext)
-  const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
-  const navigate = useNavigate()
-
-  console.log(user)
+  const { toys, setToys } = useContext(ToysContext)
+  const { setPreviousOrders } = useContext(PreviousOrdersContext)
 
   useEffect(() => {
     fetch("/me")
@@ -33,21 +30,20 @@ function App() {
       setUser(currentUser)
       const currentCart = data[1]
       setCart(currentCart)
-      // navigate(`/user_profiles/${currentUser.id}`)
     })
-  }, [])
+  }, [setCart, setUser])
 
   useEffect(() => {
     fetch("/toys")
       .then((res) => res.json())
       .then((data) => setToys(data))
-  }, [user])
+  }, [setToys])
 
   useEffect(() => {
     fetch("/shopping_sessions")
       .then((res) => res.json())
       .then((orders) => setPreviousOrders(orders))
-  }, [user])
+  }, [setPreviousOrders])
 
   if (!user) {
     return (
@@ -57,11 +53,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="user_login" element={<LoginPage/>}/>
-          <Route path="/view_all_toys" element={<ToyContainer/>}/>
-          {/* <Route path="view_toys" element={<ToyContainer />}>
-            <Route path=":toyId" element={<ToyPage />}/>
-          </Route> */}
-          <Route path="/toy_pages/:toyId" element={<ToyPage />} />
+          {/* <Route path="/view_all_toys" element={<ToyContainer/>}/> */}
+          <Route path="/view_toys/:toyId" element={<ToyPage />} />
+
+          <Route path="view_toys" element={<ToyContainer />}/>
         </Routes>
       </div>
     )
@@ -72,11 +67,14 @@ function App() {
           <Header cart={cart} user={user}/>
           <Nav />
           <Routes>
-            <Route path="/toy_pages/:id" element={<ToyPage />} />
-            <Route path="/view_all_toys" element={<ToyContainer/>}/>
-            <Route path="/user_profiles/:id" element={<UserProfile/>} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/update_user" element={<UpdateUserInfo />} />
+            <Route path="view_toys/:toyId" element={<ToyPage />} />
+            {/* <Route path="/view_all_toys" element={<ToyContainer/>}/> */}
+            <Route path="view_toys" element={<ToyContainer/>}>
+              {/* <Route path=":toyId" element={<ToyPage />}/> */}
+            </Route>
+            <Route path="user_profiles/:id" element={<UserProfile/>} />
+            <Route path="cart" element={<CartPage />} />
+            <Route path="update_user" element={<UpdateUserInfo />} />
             <Route path="/" element={<Home/>} />
           </Routes>
         </div>

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cart";
 import { ToysContext } from "../context/toys";
 import { UserContext } from "../context/user";
-// import { WatchListContext } from "../context/watchList"
 
 function ToyCard({toy}) {
 
@@ -77,13 +76,13 @@ function ToyCard({toy}) {
     }
 
     function handleCardClick(e) {
-        navigate(`/toy_pages/${toy.id}`)
+        navigate(`/view_toys/${toy.id}`)
     }
 
     return (
         <div className="toy-card" >
             <div onClick={handleCardClick} id={toy.id}>
-                <img className="toy-card-img" src={toy.img_url}/>
+                <img className="toy-card-img" src={toy.img_url} alt={toy.name}/>
                 <h3>{toy.name}</h3>
                 {/* <h5>Inventory: {toy.inventory}</h5> */}
                 <h5>Age Range: {toy.age_range}</h5>

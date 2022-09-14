@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import {useContext} from 'react'
 import { UserContext } from '../context/user'
 import { CartContext } from '../context/cart'
@@ -24,10 +24,10 @@ function Nav() {
     if (user) {
         return (
             <div id="nav">
-                <NavLink to="view_all_toys" className="nav-link">
+                <NavLink to="view_toys" className="nav-link">
                     View Toys
                 </NavLink>
-                <NavLink to="user_profiles/:user_id" className="nav-link">
+                <NavLink to={`user_profiles/${user.id}`} className="nav-link">
                     My Account
                 </NavLink>
                 <button onClick={handleLogout} className="nav-link">
@@ -38,7 +38,7 @@ function Nav() {
     } else {
         return (
             <div id="nav">
-                <NavLink to="/view_all_toys" className="nav-link">
+                <NavLink to="/view_toys" className="nav-link">
                     View Toys
                 </NavLink>
                 <NavLink to="/user_login" className="nav-link">

@@ -1,6 +1,6 @@
 class ToysController < ApplicationController
 
-    skip_before_action :authorize, only: :index
+    skip_before_action :authorize, only: [:index, :show]
 
     def index
         toys = Toy.all
@@ -10,6 +10,11 @@ class ToysController < ApplicationController
     def create
         toy = Toy.create!(toy_params)
         render json: toy, status: :created
+    end
+
+    def show
+        toy = Toy.find(params[:id])
+        render json: toy, status: :ok
     end
 
     private

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # resources :user_payment_methods
   # resources :reported_problems
   resources :watch_lists, only: [:create, :destroy]
-  resources :toys, only: [:index, :create]
+  resources :toys, only: [:index, :create, :show]
   resources :users
 
   get '/me', to: 'users#show'

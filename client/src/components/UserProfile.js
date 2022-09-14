@@ -16,8 +16,6 @@ function UserProfile() {
 
     const {first_name, last_name, watch_lists, username, id} = user
 
-    console.log(previousOrders)
-
     function handleDeleteClick(e) {
         fetch(`/users/${id}`, {
             method: "DELETE",

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ToysContext } from '../context/toys'
 import { useParams } from 'react-router-dom'
 import { CartContext } from '../context/cart'
@@ -6,24 +6,23 @@ import { UserContext } from '../context/user'
 
 function ToyPage() {
 
-    const { toyId } = useParams()
+    let params = useParams()
     const { toys, setToys } = useContext(ToysContext)
     const { setCart } = useContext(CartContext)
     const { user } = useContext(UserContext)
     const [selectedQuantity, setSelectedQuantity] = useState(1);
+    const [toyToView, setToyToView] = useState({})
 
-    const toyToView = toys.find((toy) => toy.id === parseInt(toyId))
-    console.log(toyId)
-    console.log(toys)
-    console.log(toyToView)
-    console.log(user)
-
-    const { name, description, purchase_price, inventory, img_url, sku } = toyToView
+    useEffect(() => {
+        fetch(`/toys/${params.toyId}`)
+        .then((res) => res.json())
+        .then((toy) => setToyToView(toy))
+    }, [])
 
     const nums = []
 
-    if (inventory) {
-        for (let i = 1; i <= inventory; i++) {
+    if (toyToView.inventory) {
+        for (let i = 1; i <= toyToView.inventory; i++) {
             nums.push(i)
         }      
     }
@@ -37,7 +36,7 @@ function handleAddToCartClick(e) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ 
-                    toy_id: toyId,
+                    toy_id: toyToView.id,
                     quantity: selectedQuantity,
                 })
         })
@@ -56,11 +55,11 @@ function handleAddToCartClick(e) {
 
     return (
         <div>
-            <img src={img_url} alt={name}/>
-            <h1>{name}</h1>
-            <h3>Purchase Price: {purchase_price}</h3>
-            <h3>Inventory: {inventory}</h3>
-            <p>{description}</p>
+            <img src={toyToView.img_url} alt={toyToView.name}/>
+            <h1>{toyToView.name}</h1>
+            <h3>Purchase Price: {toyToView.purchase_price}</h3>
+            <h3>Inventory: {toyToView.inventory}</h3>
+            <p>{toyToView.description}</p>
             { user ?
             <>
             <label>Quantity:</label>

@@ -5,12 +5,15 @@ import ToyCard from "./ToyCard"
 
 function ToyContainer() {
 
-    const { toys } = useContext(ToysContext)
+    const { toys, setToys } = useContext(ToysContext)
 
     const toysToDisplay = toys.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0)
     
+    console.log(toysToDisplay)
+
     return(
         <div>
+            <Outlet/>
             <h2>Toys!!!</h2>
             <div className='toy-container'>
                 {toysToDisplay.map((toy) => (
