@@ -9,9 +9,10 @@ function ToyPage() {
     let params = useParams()
     const { toys, setToys } = useContext(ToysContext)
     const { setCart } = useContext(CartContext)
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
     const [selectedQuantity, setSelectedQuantity] = useState(1);
     const [toyToView, setToyToView] = useState({})
+    const [errors, setErrors] = useState([])
 
     useEffect(() => {
         fetch(`/toys/${params.toyId}`)
@@ -19,6 +20,7 @@ function ToyPage() {
         .then((toy) => setToyToView(toy))
     }, [])
 
+    console.log(toyToView)
     const nums = []
 
     if (toyToView.inventory) {
@@ -51,25 +53,57 @@ function handleAddToCartClick(e) {
         })
 }
 
+function handleWatchListClick(e) {
+    fetch('/watch_lists', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({toy_id: toyToView.id})
+    })
+    .then((res) => res.json())
+    // returns user
+    .then((user) => {
+        setUser(user)
+    })
+}
+
+function handleWatchListRemoveClick(e) {
+    const watchToRemove = user.watch_lists.find(watch => watch.toy.id === toyToView.id)
+   
+    fetch(`/watch_lists/${watchToRemove.id}`, {
+        method: "DELETE",
+    })
+    .then((res) => res.json())
+    .then((user) => setUser(user))
+}
 
 
     return (
-        <div>
-            <img src={toyToView.img_url} alt={toyToView.name}/>
-            <h1>{toyToView.name}</h1>
-            <h3>Purchase Price: {toyToView.purchase_price}</h3>
-            <h3>Inventory: {toyToView.inventory}</h3>
-            <p>{toyToView.description}</p>
-            { user ?
+        <div className="toy-page" >
+            <div id={toyToView.id}>
+                <img className="toy-page-img" src={toyToView.img_url} alt={toyToView.name}/>
+                <h3>{toyToView.name}</h3>
+                <p>{toyToView.description}</p>
+                <h5>Age Range: {toyToView.age_range}</h5>
+            </div>
+            {user && toyToView.inventory > 0 ?
             <>
-            <label>Quantity:</label>
-            <select onChange={(e) => setSelectedQuantity(e.target.value)}>
+            <label>Quantity: </label>
+            <select onChange={(e) => setSelectedQuantity}>
                 {selectOptions}
             </select>
-            <button onClick={handleAddToCartClick}>add to cart</button>
-            </>
-            : null
-            }   
+            <button onClick={handleAddToCartClick} id={toyToView.id}>add to cart</button>
+            {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
+            </> : user && toyToView.inventory === 0 ?
+            <>
+            <label>Unavailble: </label>
+            { user.watch_lists.some(watch => watch.toy.id === toyToView.id) ? <button onClick={handleWatchListRemoveClick}>Remove from Watch List</button>
+            : 
+            <button onClick={handleWatchListClick} id={toyToView.id}>Add to Watch List</button>
+             } 
+            </> : null
+            }
         </div>
     )
 }
