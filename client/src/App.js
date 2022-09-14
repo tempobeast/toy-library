@@ -21,15 +21,22 @@ function App() {
   const { user, setUser } = useContext(UserContext);
   const { toys, setToys } = useContext(ToysContext)
   const { setPreviousOrders } = useContext(PreviousOrdersContext)
+  
 
   useEffect(() => {
     fetch("/me")
-    .then((res) => res.json())
-    .then((data) => {
-      const currentUser = data[0]
-      setUser(currentUser)
-      const currentCart = data[1]
-      setCart(currentCart)
+    .then((res) => {
+      if (res.ok) {
+        res.json()
+        .then((data) => {
+          const currentUser = data[0]
+          setUser(currentUser)
+          const currentCart = data[1]
+          setCart(currentCart)
+        })
+      } else {
+        res.json().then((err) => console.log(err))
+      }
     })
   }, [setCart, setUser])
 

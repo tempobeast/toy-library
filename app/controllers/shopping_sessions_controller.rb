@@ -26,8 +26,11 @@ class ShoppingSessionsController < ApplicationController
 
     def cancel
         user = find_user
-        shopping_session = user.shopping_sessions.find_by(status: "active").cart_items.destroy_all
-        render json: shopping_session, status: :ok
+        shopping_session = user.shopping_sessions.find_by(status: "active")
+        shopping_session.restock
+        shopping_session.cart_items.destroy_all
+        toys = Toy.all
+        render json: toys, status: :ok
     end
 
 

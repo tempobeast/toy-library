@@ -6,7 +6,7 @@ import CartItemCard from './CartItemCard'
 import AddressForm from './AddressForm'
 import { useNavigate } from 'react-router-dom'
 
-function SubmitOrderConfirmation({setSubmitClick}) {
+function SubmitOrderConfirmation({setSubmitClick, handleCancelOrderClick}) {
 
     const { cart, setCart } = useContext(CartContext)
     const { user } = useContext(UserContext)
@@ -45,11 +45,6 @@ function SubmitOrderConfirmation({setSubmitClick}) {
             }
         })
     }
-
-    function handleCancelOrderClick(e){
-        console.log(e.target.value)
-    }
-
    
     return (
         <div className='order-confirmation'>
