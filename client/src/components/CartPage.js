@@ -6,6 +6,19 @@ import SubmitOrderConfirmation from './SubmitOrderConfirmation'
 function CartPage() {
     const { cart, setCart } = useContext(CartContext)
     const [submitClick, setSubmitClick] = useState(false)
+    const [errors, setErrors] = useState(null)
+
+    function handleCancelOrderClick(e){
+        fetch(`/cancel_shopping_session/${cart.id}`, {
+            method: 'DELETE'
+        }).then((res) => {
+            if (res.ok){
+            setCart({...cart, cart_items: [], total_items: 0})
+            } else {
+                res.json().then((err) => setErrors(err))
+            }
+        })
+    }
 
 
     return (
@@ -19,7 +32,7 @@ function CartPage() {
                 {cart.cart_items.map((item) => <CartItemCard key={item.id} item={item}/>)}
             </div>
             <button onClick={() => setSubmitClick(true)}>Confirm Order</button>
-            <button>Cancel Order</button>
+            <button onClick={handleCancelOrderClick}>Cancel Order</button>
             </>
         }
         </div>

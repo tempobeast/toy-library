@@ -24,6 +24,12 @@ class ShoppingSessionsController < ApplicationController
         render json: [order, shopping_session], status: :ok
     end
 
+    def cancel
+        user = find_user
+        shopping_session = user.shopping_sessions.find_by(status: "active").cart_items.destroy_all
+        render json: shopping_session, status: :ok
+    end
+
 
     private
 

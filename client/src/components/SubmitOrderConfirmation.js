@@ -44,7 +44,10 @@ function SubmitOrderConfirmation({setSubmitClick}) {
                 res.json().then((err) => setErrors(err.errors))
             }
         })
-        
+    }
+
+    function handleCancelOrderClick(e){
+        console.log(e.target.value)
     }
 
    
@@ -64,7 +67,7 @@ function SubmitOrderConfirmation({setSubmitClick}) {
             {editAddress ? <AddressForm editAddress={editAddress} setEditAddress={setEditAddress}/> : null}
             <hr />
             <button id="order-confirmation-button" onClick={handleConfirmSubmitCartClick}>{isLoading ? "Loading..." : "Submit Order"}</button>
-            <button id="order-confirmation-button">Cancel Order</button>
+            <button id="order-confirmation-button" onClick={handleCancelOrderClick}>Cancel Order</button>
             {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
             <hr />
             <button id="order-confirmation-button" onClick={() => setSubmitClick(false)}>Back</button>

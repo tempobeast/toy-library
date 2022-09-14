@@ -20,7 +20,6 @@ function ToyPage() {
         .then((toy) => setToyToView(toy))
     }, [])
 
-    console.log(toyToView)
     const nums = []
 
     if (toyToView.inventory) {
