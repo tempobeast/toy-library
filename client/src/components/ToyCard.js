@@ -12,7 +12,7 @@ function ToyCard({toy}) {
     const { toys, setToys } = useContext(ToysContext) 
     const { setCart } = useContext(CartContext) 
     const { user, setUser } = useContext(UserContext)
-    // const { watchList, setWatchList } = useContext(WatchListContext)
+    const [ errors, setErrors ] = useState([])
 
     const nums = []
 
@@ -35,16 +35,22 @@ function ToyCard({toy}) {
                         quantity: selectedQuantity,
                     })
             })
-            .then((res) => res.json())
+            .then((res) => { 
+                if (res.ok) {
+                    res.json()
             // [0] returns cart, [1] returns updated item
-            .then((data) => {
-                const updatedCart = data[0]
-                const updatedToy = data[1]
-                setCart(updatedCart)
-                const newToyArray = toys.filter((toy) => toy.id !== updatedToy.id)
-                setToys([...newToyArray, updatedToy])
-            })
-    }
+                    .then((data) => {
+                        const updatedCart = data[0]
+                        const updatedToy = data[1]
+                        setCart(updatedCart)
+                        const newToyArray = toys.filter((toy) => toy.id !== updatedToy.id)
+                        setToys([...newToyArray, updatedToy])
+                    })
+                } else {
+                    res.json().then((err) => setErrors(err.errors))
+                }
+            })    
+}
 
     function handleWatchListClick(e) {
         fetch('/watch_lists', {
@@ -94,6 +100,7 @@ function ToyCard({toy}) {
                 {selectOptions}
             </select>
             <button onClick={handleAddToCartClick} id={toy.id}>add to cart</button>
+            {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
             </> : user && toy.inventory === 0 ?
             <>
             <label>Unavailble: </label>
