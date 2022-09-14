@@ -42,14 +42,20 @@ function handleAddToCartClick(e) {
                     quantity: selectedQuantity,
                 })
         })
-        .then((res) => res.json())
+        .then((res) => { 
+            if (res.ok) {
+                res.json()
         // [0] returns cart, [1] returns updated item
-        .then((data) => {
-            const updatedCart = data[0]
-            const updatedToy = data[1]
-            setCart(updatedCart)
-            const newToyArray = toys.filter((toy) => toy.id !== updatedToy.id)
-            setToys([...newToyArray, updatedToy])
+                .then((data) => {
+                    const updatedCart = data[0]
+                    const updatedToy = data[1]
+                    setCart(updatedCart)
+                    const newToyArray = toys.filter((toy) => toy.id !== updatedToy.id)
+                    setToys([...newToyArray, updatedToy])
+                })
+            } else {
+                res.json().then((err) => setErrors(err.errors))
+            }
         })
 }
 
@@ -81,29 +87,29 @@ function handleWatchListRemoveClick(e) {
 
     return (
         <div className="toy-page" >
-            <div id={toyToView.id}>
-                <img className="toy-page-img" src={toyToView.img_url} alt={toyToView.name}/>
-                <h3>{toyToView.name}</h3>
-                <p>{toyToView.description}</p>
-                <h5>Age Range: {toyToView.age_range}</h5>
+            <img className="toy-page-img" src={toyToView.img_url} alt={toyToView.name}/>
+            <div className='toy-page-details' id={toyToView.id}>
+                    <h3>{toyToView.name}</h3>
+                    <p>{toyToView.description}</p>
+                    <h5>Age Range: {toyToView.age_range}</h5>
+                {user && toyToView.inventory > 0 ?
+                <div>
+                    <label>Quantity: </label>
+                    <select onChange={(e) => setSelectedQuantity}>
+                        {selectOptions}
+                    </select>
+                    <button onClick={handleAddToCartClick} id={toyToView.id}>add to cart</button>
+                    {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
+                </div> : user && toyToView.inventory === 0 ?
+                <div>
+                    <label>Unavailble: </label>
+                    { user.watch_lists.some(watch => watch.toy.id === toyToView.id) ? <button onClick={handleWatchListRemoveClick}>Remove from Watch List</button>
+                    : 
+                    <button onClick={handleWatchListClick} id={toyToView.id}>Add to Watch List</button>
+                    } 
+                </div> : null
+                }
             </div>
-            {user && toyToView.inventory > 0 ?
-            <>
-            <label>Quantity: </label>
-            <select onChange={(e) => setSelectedQuantity}>
-                {selectOptions}
-            </select>
-            <button onClick={handleAddToCartClick} id={toyToView.id}>add to cart</button>
-            {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
-            </> : user && toyToView.inventory === 0 ?
-            <>
-            <label>Unavailble: </label>
-            { user.watch_lists.some(watch => watch.toy.id === toyToView.id) ? <button onClick={handleWatchListRemoveClick}>Remove from Watch List</button>
-            : 
-            <button onClick={handleWatchListClick} id={toyToView.id}>Add to Watch List</button>
-             } 
-            </> : null
-            }
         </div>
     )
 }
