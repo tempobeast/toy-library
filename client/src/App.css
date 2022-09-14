@@ -116,9 +116,9 @@ button:hover{
 .toy-container{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
-  margin: 2% 10% 
+  margin: 2% 10%;
 }
 
 .toy-card {
@@ -296,6 +296,9 @@ button[type=submit]{
 
 .toy-page-details p{
   font-size: 1.25rem;
+  margin: 20px;
+  text-align: center;
+  padding: 5px 0
 }
 
 .toy-page-details h5{
