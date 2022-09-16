@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect, useContext} from "react"
-import { Routes, Route, withRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ToyContainer from './components/ToyContainer';
 import LoginPage from './components/LoginPage';
 import Header from './components/Header'
