@@ -38,6 +38,7 @@ gem "bootsnap", require: false
 
 gem 'figaro'
 
+
 group :development, :test do
   gem 'listen', '~> 3.3'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
