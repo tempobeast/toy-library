@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect, useContext} from "react"
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import ToyContainer from './components/ToyContainer';
 import LoginPage from './components/LoginPage';
 import Header from './components/Header'
@@ -10,6 +10,7 @@ import UserProfile from './components/UserProfile';
 import CartPage from './components/CartPage'
 import UpdateUserInfo from './components/UpdateUserInfo';
 import ToyPage from './components/ToyPage';
+import AddToy from './components/AddToy';
 import { UserContext } from "./context/user";
 import { ToysContext } from './context/toys';
 import { CartContext } from './context/cart';
@@ -58,10 +59,10 @@ function App() {
         <Header />
         <Nav />
         <Routes>
-          <Route path="/home" element={<Home/>} />
+          <Route path="home" element={<Home/>} />
           <Route path="user_login" element={<LoginPage/>}/>
           {/* <Route path="/view_all_toys" element={<ToyContainer/>}/> */}
-          <Route path="/view_toys/:toyId" element={<ToyPage />} />
+          <Route path="view_toys/:toyId" element={<ToyPage />} />
 
           <Route path="view_toys" element={<ToyContainer />}/>
         </Routes>
@@ -82,7 +83,8 @@ function App() {
             <Route path="user_profiles/:id" element={<UserProfile/>} />
             <Route path="cart" element={<CartPage />} />
             <Route path="update_user" element={<UpdateUserInfo />} />
-            <Route path="/home" element={<Home/>} />
+            <Route path="add_toy" element={user.is_admin ? <AddToy/> : <Navigate replace to={"/home"}/>} />
+            <Route path="home" element={<Home/>} />
           </Routes>
         </div>
     )

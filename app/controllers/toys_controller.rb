@@ -8,8 +8,13 @@ class ToysController < ApplicationController
     end
 
     def create
-        toy = Toy.create!(toy_params)
-        render json: toy, status: :created
+        user = find_user
+        if user.is_admin
+            toy = Toy.create!(toy_params)
+            render json: toy, status: :created
+        else
+            render json: { errors: ["Unauthorized"]}
+        end
     end
 
     def show
