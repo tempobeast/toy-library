@@ -16,7 +16,7 @@ function Nav() {
             if (res.ok) {
                 setUser(null);
                 setCart(null)
-                navigate("/")
+                navigate("/home")
             }
         });
       }

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
+  # namespace :api do
     resources :user_addresses, only: [:update, :create]
     resources :cart_items, only: [:create]
     resources :shopping_sessions, only: [:create, :index, :update]
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     post '/signup', to: 'users#create'
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
-  end
+  # end
 
   get '*path',
     to: 'fallback#index',

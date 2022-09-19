@@ -58,7 +58,7 @@ function App() {
         <Header />
         <Nav />
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/home" element={<Home/>} />
           <Route path="user_login" element={<LoginPage/>}/>
           {/* <Route path="/view_all_toys" element={<ToyContainer/>}/> */}
           <Route path="/view_toys/:toyId" element={<ToyPage />} />
@@ -82,7 +82,7 @@ function App() {
             <Route path="user_profiles/:id" element={<UserProfile/>} />
             <Route path="cart" element={<CartPage />} />
             <Route path="update_user" element={<UpdateUserInfo />} />
-            <Route path="/" element={<Home/>} />
+            <Route path="/home" element={<Home/>} />
           </Routes>
         </div>
     )
