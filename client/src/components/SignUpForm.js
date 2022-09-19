@@ -12,10 +12,11 @@ function SignUpForm() {
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("")
-    const [telephone, setTelephone] = useState("")
+    const [email, setEmail] = useState("");
+    const [telephone, setTelephone] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [errors, setErrors] = useState([]) 
+    const [errors, setErrors] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const { setUser } = useContext(UserContext)
     const { setCart } = useContext(CartContext)
@@ -40,7 +41,8 @@ function SignUpForm() {
                     first_name: firstName,
                     last_name: lastName,
                     email: email,
-                    telephone: telephone
+                    telephone: telephone,
+                    isAdmin: isAdmin
                 })
             }).then((res) => {
                 setIsLoading(false);
