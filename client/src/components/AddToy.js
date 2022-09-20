@@ -1,17 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ToysContext } from '../context/toys';
+import { ToyToUpdateContext } from '../context/toyToUpdate';
+import { useNavigate } from 'react-router-dom';
+
 
 function AddToy() {
 
-    const [name, setName] = useState("")
-    const [description, setDescription] = useState("")
-    const [sku, setSku] = useState("")
-    const [purchasePrice, setPurchasePrice] = useState("")
-    const [inventory, setInventory] = useState("")
-    const [ageRange, setAgeRange] = useState("")
-    const [imageUrl, setImageUrl] = useState("")
+ 
+
+    // const [name, setName] = useState("")
+    // const [description, setDescription] = useState("")
+    // const [sku, setSku] = useState("")
+    // const [purchasePrice, setPurchasePrice] = useState("")
+    // const [inventory, setInventory] = useState("")
+    // const [ageRange, setAgeRange] = useState("")
+    // const [imageUrl, setImageUrl] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState([])
 
+    const { toyToUpdate, setToyToUpdate } = useContext(ToyToUpdateContext)
+    const { toys, setToys } = useContext(ToysContext)
+    const navigate = useNavigate()
+
+       const [formData, setFormData] = useState(
+        toyToUpdate ? {
+            name: toyToUpdate.name,
+            description: toyToUpdate.description,
+            sku: toyToUpdate.sku,
+            purchase_price: toyToUpdate.purchase_price,
+            inventory: toyToUpdate.inventory,
+            age_range: toyToUpdate.age_range,
+            img_url: toyToUpdate.img_url
+        }
+         :
+        {
+            name: "",
+            description: "",
+            sku: "",
+            purchase_price: "",
+            inventory: "",
+            age_range: "",
+            img_url: ""
+        }
+    )
+
+    function handleChange(e) {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -20,88 +58,98 @@ function AddToy() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                name: name, 
-                description: description,
-                sku: sku,
-                purchase_price: purchasePrice,
-                inventory: inventory,
-                age_range: ageRange,
-                img_url: imageUrl
-            })
+            body: JSON.stringify(formData)
         })
     }
 
+    function handleUpdate(e) {
+        e.preventDefault();
+        // console.log(formData)
+        fetch(`/toys/${toyToUpdate.id}`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData)
+        })
+        .then((res) => res.json())
+        .then((updatedToy) => {
+            const newToyArray = toys.filter((toy) => toy.id !== updatedToy.id)
+            setToys([...newToyArray, updatedToy])
+            setToyToUpdate(null)
+            navigate(`/view_toys/${updatedToy.id}`)
+        })
+    }
 
     return (
         <div>
-        <h1>Add a Toy</h1>
-            <form onSubmit={handleSubmit}>
+        <h1>{toyToUpdate ? `Update ${toyToUpdate.name}` : "Add a Toy"}</h1>
+            <form onSubmit={toyToUpdate ? handleUpdate : handleSubmit}>
                 <label htmlFor="name">Name: </label>
                 <input 
                     type="text"
-                    id="name"
+                    name="name"
                     autoComplete="off"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={formData.name}
+                    onChange={handleChange}
                     required
                 />        
                 <br />
                 <label htmlFor="description">Description: </label>
                 <input 
                     type="textarea"
-                    id="description"
+                    name="description"
                     autoComplete="off"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={formData.description}
+                    onChange={handleChange}
                     required
                 />
                 <br />
                 <label htmlFor="sku">SKU: </label>
                 <input 
                     type="number"
-                    id="sku"
+                    name="sku"
                     autoComplete="off"
-                    value={sku}
-                    onChange={(e) => setSku(e.target.value)}
+                    value={formData.sku}
+                    onChange={handleChange}
                     required
                 />
                 <br />
                 <label htmlFor="purchase_price">Purchase Price: </label>
                 <input 
                     type="number"
-                    id="purchase_price"
+                    name="purchase_price"
                     autoComplete="off"
-                    value={purchasePrice}
-                    onChange={(e) => setPurchasePrice(e.target.value)}
+                    value={formData.purchase_price}
+                    onChange={handleChange}
                     required
                 />
                 <br />
                 <label htmlFor="inventory">Inventory: </label>
                 <input
                     type="number"
-                    id="inventory"
-                    value={inventory}
-                    onChange={(e) => setInventory(e.target.value)}
+                    name="inventory"
+                    value={formData.inventory}
+                    onChange={handleChange}
                 /> 
                 <br />
                 <label htmlFor="age_range">Age Range: </label>
                 <input
                     type="text"
-                    id="age_range"
-                    value={ageRange}
-                    onChange={(e) => setAgeRange(e.target.value)}
+                    name="age_range"
+                    value={formData.age_range}
+                    onChange={handleChange}
                 /> 
                 <br />
                 <label htmlFor="img_url">Image URL: </label>
                 <input
                     type="text"
-                    id="img_url"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
+                    name="img_url"
+                    value={formData.img_url}
+                    onChange={handleChange}
                 /> 
                 <br />
-                <button type='submit'> {isLoading ? "Loading..." : "Add Toy"} </button>
+                <button type='submit'> {isLoading ? "Loading..." : toyToUpdate ? "Update Toy" : "Add Toy"} </button>
                 {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
             </form>
         </div>
