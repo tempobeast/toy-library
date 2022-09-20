@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react'
-import { Outlet } from 'react-router-dom'
 import { ToysContext } from "../context/toys"
 import ToyCard from "./ToyCard"
 
@@ -24,7 +23,6 @@ function ToyContainer() {
 
     return(
         <div>
-            <Outlet/>
             <h2>Toys!!!</h2>
             <input type="text" placeholder='filter by age' onChange={(e) => setAge(e.target.value)}/>
             <div className='toy-container'>
