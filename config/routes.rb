@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     delete '/cancel_shopping_session/:id', to: 'shopping_sessions#cancel'
 
     resources :watch_lists, only: [:create, :destroy]
-    resources :toys, only: [:index, :create, :show]
+    resources :toys
     resources :users
 
 
