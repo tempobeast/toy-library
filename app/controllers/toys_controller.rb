@@ -13,7 +13,29 @@ class ToysController < ApplicationController
             toy = Toy.create!(toy_params)
             render json: toy, status: :created
         else
-            render json: { errors: ["Unauthorized"]}
+            render json: { errors: ["Unauthorized"]}, status: :unauthorized
+        end
+    end
+
+    def update 
+        user = find_user
+        if user.is_admin
+            toy = Toy.find(params[:id])
+            toy.update!(toy_params)
+            render json: toy, status: :ok
+        else
+            render json: { errors: ["Unauthorized"]}, status: :unauthorized
+        end
+    end
+
+    def destroy
+        user = find_user
+        if user.is_admin
+            toy = Toy.find(params[:id])
+            toy.destroy
+            head :no_content
+        else
+            render json: { errors: ["Unauthorized"]}, status: :unauthorized
         end
     end
 
