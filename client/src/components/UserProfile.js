@@ -36,23 +36,29 @@ function UserProfile() {
         <div>
             <h1>{`${first_name} ${last_name}'s Profile`}</h1>
             <h2>{`Hello, ${username}!`}</h2>
-            {previousOrders.length > 0 ? <button className="user-profile-button" onClick={() => setPreviousOrdersClick(!previousOrdersClick)}>{!previousOrdersClick ? "View Previous Orders" : "Close Previous Orders"}</button> : null}
-            {previousOrdersClick ? <PreviousOrdersCard /> : null}
-            {watch_lists.length > 0 ? 
-            <>
-                <h3>Watch List: </h3>
-                <div className="watch-list">
-                {watch_lists.map((watch) => 
-                    <div key={watch.toy.id} className="watch-list-toy">
-                        <p>{watch.queue === 1 ? `You're next in line for:` : watch.queue === 2 ? "There is 1 customer ahead of you for:" :`There are ${watch.queue - 1} customers in line ahead of you for:`}</p>
-                        <img src={watch.toy.img_url} alt={watch.toy.name} className="watch-item-image"/>
-                        <h4 >{watch.toy.name}</h4>
+            { user.is_admin ?
+                null 
+                : 
+                <div>
+                {previousOrders.length > 0 ? <button className="user-profile-button" onClick={() => setPreviousOrdersClick(!previousOrdersClick)}>{!previousOrdersClick ? "View Previous Orders" : "Close Previous Orders"}</button> : null}
+                {previousOrdersClick ? <PreviousOrdersCard /> : null}
+                {watch_lists.length > 0 ? 
+                <>
+                    <h3>Watch List: </h3>
+                    <div className="watch-list">
+                    {watch_lists.map((watch) => 
+                        <div key={watch.toy.id} className="watch-list-toy">
+                            <p>{watch.queue === 1 ? `You're next in line for:` : watch.queue === 2 ? "There is 1 customer ahead of you for:" :`There are ${watch.queue - 1} customers in line ahead of you for:`}</p>
+                            <img src={watch.toy.img_url} alt={watch.toy.name} className="watch-item-image"/>
+                            <h4 >{watch.toy.name}</h4>
+                        </div>
+                    
+                    )}
                     </div>
-                
-                )}
-                </div>
-            </>
-            : null
+                </>
+                : null
+                }
+            </div>
             }
             <br/>
             <button className="user-profile-button" onClick={handleDeleteClick}>Delete Account</button>

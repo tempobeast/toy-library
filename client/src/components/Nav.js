@@ -27,11 +27,21 @@ function Nav() {
                 <NavLink to="view_toys" className="nav-link">
                     View Toys
                 </NavLink>
-                {user.is_admin ?
-                <NavLink to="add_toy" className="nav-link">
-                    Add Toy
-                </NavLink>
-                : null
+                {
+                user.is_admin ?
+                    <NavLink to="add_toy" className="nav-link">
+                        Add Toy
+                    </NavLink>
+                : 
+                null
+                }
+                {
+                user.is_admin ?
+                    <NavLink to="view_orders" className="nav-link">
+                        View Orders
+                    </NavLink>
+                : 
+                null
                 }
                 <NavLink to={`user_profiles/${user.id}`} className="nav-link">
                     My Account
