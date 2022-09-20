@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ToysContext } from '../context/toys'
-import { useParams } from 'react-router-dom'
+import { ToyToUpdateContext } from '../context/toyToUpdate'
+import { useParams, useNavigate } from 'react-router-dom'
 import { CartContext } from '../context/cart'
 import { UserContext } from '../context/user'
 
@@ -10,9 +11,11 @@ function ToyPage() {
     const { toys, setToys } = useContext(ToysContext)
     const { setCart } = useContext(CartContext)
     const { user, setUser } = useContext(UserContext)
+    const { setToyToUpdate } = useContext(ToyToUpdateContext)
     const [selectedQuantity, setSelectedQuantity] = useState(1);
     const [toyToView, setToyToView] = useState({})
     const [errors, setErrors] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch(`/toys/${params.toyId}`)
@@ -82,6 +85,46 @@ function handleWatchListRemoveClick(e) {
     .then((res) => res.json())
     .then((user) => setUser(user))
 }
+
+    function handleUpdateToyClick(e) {
+        setToyToUpdate(toyToView);
+        navigate(`/update_toy/${toyToView.id}`)
+    }
+
+    function handleDeleteToyClick(e) {
+        fetch(`/toys/${toyToView.id}`, {
+            method: 'DELETE',
+        }) 
+        .then((res) => {
+            if (res.ok) {
+                const newToyArray = toys.filter((toy) => toy.id !== toyToView.id)
+                setToys(newToyArray)
+                navigate('/view_toys')
+            } else {
+                res.json().then((err) => setErrors(err.errors))
+            }
+        })
+    }
+
+
+    if (user && user.is_admin) {
+        return (
+            <div className="toy-page" >
+            <img className="toy-page-img" src={toyToView.img_url} alt={toyToView.name}/>
+            <div className='toy-page-details' id={toyToView.id}>
+                    <h3>{toyToView.name}</h3>
+                    <small>SKU: {toyToView.sku}</small>
+                    <p>{toyToView.description}</p>
+                    {/* <h5>Age Range: {toyToView.age_range}</h5> */}
+                    <h4>Inventory: {toyToView.inventory}</h4>
+                    <h5>Purchase Price: {toyToView.purchase_price}</h5>
+
+                    <button onClick={handleUpdateToyClick}>Update Toy</button>
+                    <button onClick={handleDeleteToyClick}>Delete Toy</button>
+            </div>
+        </div>
+        )
+    }
 
 
     return (

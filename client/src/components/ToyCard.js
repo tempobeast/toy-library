@@ -85,6 +85,19 @@ function ToyCard({toy}) {
         navigate(`/view_toys/${toy.id}`)
     }
 
+    if (user && user.is_admin) {
+        return(
+            <div className="toy-card" >
+            <div onClick={handleCardClick} id={toy.id}>
+                <img className="toy-card-img" src={toy.img_url} alt={toy.name}/>
+                <h3>{toy.name}</h3>
+                <h5>Inventory: {toy.inventory}</h5>
+            </div>
+        </div>
+
+        )
+    } else {
+
     return (
         <div className="toy-card" >
             <div onClick={handleCardClick} id={toy.id}>
@@ -112,5 +125,6 @@ function ToyCard({toy}) {
             }
         </div>
     )
+        }
 }
 export default ToyCard
