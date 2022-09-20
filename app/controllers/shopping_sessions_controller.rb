@@ -1,14 +1,14 @@
 class ShoppingSessionsController < ApplicationController
 
-    # def create
-    #     current_shopping_session = ShoppingSession.create(user_id: params[:user_id], status: "active")
-    #     render json: shopping_session, status: :ok
-    # end
-
     def index
         user = find_user
-        shopping_sessions = user.shopping_sessions.where.not(status: "active").order(created_at: :desc)
-        render json: shopping_sessions, status: :ok
+        if user.is_admin
+            shopping_sessions = ShoppingSession.all.where.not(status: "active")
+            render json: shopping_sessions, status: :ok
+        else
+            shopping_sessions = user.shopping_sessions.where.not(status: "active").order(created_at: :desc)
+            render json: shopping_sessions, status: :ok
+        end
     end
 
     def update
