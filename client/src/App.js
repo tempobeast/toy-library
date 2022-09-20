@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useContext} from "react"
+import React, { useEffect, useContext, useState } from "react"
 import { Routes, Route, Navigate } from 'react-router-dom';
 import ToyContainer from './components/ToyContainer';
 import LoginPage from './components/LoginPage';
@@ -15,6 +15,7 @@ import { UserContext } from "./context/user";
 import { ToysContext } from './context/toys';
 import { CartContext } from './context/cart';
 import { PreviousOrdersContext } from './context/previousOrders'
+import OrdersContainer from './components/OrdersContainer';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
   const { user, setUser } = useContext(UserContext);
   const { toys, setToys } = useContext(ToysContext)
   const { setPreviousOrders } = useContext(PreviousOrdersContext)
+  const { toyToUpdate, setToyToUpdate } = useState("")
   
 
   useEffect(() => {
@@ -39,19 +41,19 @@ function App() {
         res.json().then((err) => console.log(err))
       }
     })
-  }, [setCart, setUser])
+  }, [setCart])
 
   useEffect(() => {
     fetch("/toys")
       .then((res) => res.json())
       .then((data) => setToys(data))
-  }, [setToys])
+  }, [])
 
   useEffect(() => {
     fetch("/shopping_sessions")
       .then((res) => res.json())
       .then((orders) => setPreviousOrders(orders))
-  }, [setPreviousOrders])
+  }, [])
 
   if (!user) {
     return (
@@ -84,6 +86,8 @@ function App() {
             <Route path="cart" element={<CartPage />} />
             <Route path="update_user" element={<UpdateUserInfo />} />
             <Route path="add_toy" element={user.is_admin ? <AddToy/> : <Navigate replace to={"/home"}/>} />
+            <Route path="view_orders" element={user.is_admin ? <OrdersContainer/> : <Navigate replace to={"/home"}/> } />
+            <Route path="update_toy/:toyId" element={user.is_admin ? <AddToy/> : <Navigate replace to={"/home"}/>} />
             <Route path="home" element={<Home/>} />
           </Routes>
         </div>
