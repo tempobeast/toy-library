@@ -53,7 +53,7 @@ function App() {
     fetch("/shopping_sessions")
       .then((res) => res.json())
       .then((orders) => setPreviousOrders(orders))
-  }, [])
+  }, [user])
 
   if (!user) {
     return (
