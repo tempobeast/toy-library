@@ -38,7 +38,10 @@ function PreviousOrdersCard({ order }) {
 
     return (
         <div key={order.id} className="previous-order-card">
-            <h3>Order #: {order.id}</h3>
+            <div className='order-header'>
+                <h3>Order #: {order.id}</h3>
+                {user.is_admin ? <h3>User: {order.user.username}</h3> : null}
+            </div>
             <h3 className="previous-card-titles">Order Status: </h3>
             <h3 className="previous-card-titles" style={{color: orderStatusColor(order.status)}}>{order.status}</h3>
             {order.cart_items.map((item) => {
@@ -52,7 +55,7 @@ function PreviousOrdersCard({ order }) {
             })}
             <h4>Order submitted: {order.when_created}</h4>
             {order.status === "processing" ? null : <h4>Order {order.status}: {order.last_update}</h4>}
-            {user.is_admin ? 
+            {user.is_admin && order.status !== "restocked" ? 
                 <div>
                     <select defaultValue={statusSelect} onChange={(e) => setStatusSelect(e.target.value)}>
                         <option value="processing" >processing</option>
