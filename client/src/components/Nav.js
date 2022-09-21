@@ -2,12 +2,14 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import {useContext} from 'react'
 import { UserContext } from '../context/user'
 import { CartContext } from '../context/cart'
+import { PreviousOrdersContext } from '../context/previousOrders'
 import '../App.css';
 
 
 function Nav() {
     const { user, setUser } = useContext(UserContext)
     const {setCart} = useContext(CartContext)
+    const { setPreviousOrders } = useContext(PreviousOrdersContext)
     const navigate = useNavigate()
 
     function handleLogout() {
@@ -15,7 +17,8 @@ function Nav() {
         { method: "DELETE" }).then((res) => {
             if (res.ok) {
                 setUser(null);
-                setCart(null)
+                setCart(null);
+                setPreviousOrders([]);
                 navigate("/home")
             }
         });
