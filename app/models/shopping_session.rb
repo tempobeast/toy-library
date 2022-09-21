@@ -31,9 +31,6 @@ class ShoppingSession < ApplicationRecord
         end
     end
 
-    
-    
-
     belongs_to :user
     has_many :cart_items, dependent: :destroy
     has_many :toys, through: :cart_items, dependent: :destroy
