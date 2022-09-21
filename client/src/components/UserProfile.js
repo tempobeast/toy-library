@@ -4,6 +4,7 @@ import { UserContext } from "../context/user"
 import { CartContext } from "../context/cart"
 import { PreviousOrdersContext } from "../context/previousOrders"
 import PreviousOrdersCard from "./PreviousOrderCard"
+import OrdersContainer from "./OrdersContainer"
 
 function UserProfile() {
 
@@ -41,7 +42,7 @@ function UserProfile() {
                 : 
                 <div>
                 {previousOrders.length > 0 ? <button className="user-profile-button" onClick={() => setPreviousOrdersClick(!previousOrdersClick)}>{!previousOrdersClick ? "View Previous Orders" : "Close Previous Orders"}</button> : null}
-                {previousOrdersClick ? <PreviousOrdersCard /> : null}
+                {previousOrdersClick ? <OrdersContainer /> : null}
                 {watch_lists.length > 0 ? 
                 <>
                     <h3>Watch List: </h3>
