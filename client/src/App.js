@@ -22,7 +22,7 @@ function App() {
   const { cart, setCart} = useContext(CartContext)
   const { user, setUser } = useContext(UserContext);
   const { toys, setToys } = useContext(ToysContext)
-  const { setPreviousOrders } = useContext(PreviousOrdersContext)
+  const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
   const { toyToUpdate, setToyToUpdate } = useState("")
   
 
@@ -47,7 +47,7 @@ function App() {
     fetch("/toys")
       .then((res) => res.json())
       .then((data) => setToys(data))
-  }, [])
+  }, [previousOrders])
 
   useEffect(() => {
     fetch("/shopping_sessions")

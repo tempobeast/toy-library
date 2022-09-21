@@ -118,9 +118,10 @@ function handleWatchListRemoveClick(e) {
                     {/* <h5>Age Range: {toyToView.age_range}</h5> */}
                     <h4>Inventory: {toyToView.inventory}</h4>
                     <h5>Purchase Price: {toyToView.purchase_price}</h5>
-
-                    <button onClick={handleUpdateToyClick}>Update Toy</button>
-                    <button onClick={handleDeleteToyClick}>Delete Toy</button>
+                    <div className='toy-page-admin-buttons'>
+                        <button onClick={handleUpdateToyClick}>Update Toy</button>
+                        <button onClick={handleDeleteToyClick}>Delete Toy</button>
+                    </div>
             </div>
         </div>
         )

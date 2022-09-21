@@ -304,3 +304,8 @@ button[type=submit]{
 .toy-page-details h5{
   font-size: 1rem;
 }
+
+.toy-page-admin-buttons{
+  display: flex;
+  flex-direction: row;
+}
