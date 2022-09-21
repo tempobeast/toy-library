@@ -30,6 +30,8 @@ class ShoppingSession < ApplicationRecord
             item.toy.update(inventory: new_inventory)
         end
     end
+
+    
     
 
     belongs_to :user
