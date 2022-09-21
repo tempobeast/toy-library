@@ -16,17 +16,17 @@ function UserProfile() {
 
     const {first_name, last_name, watch_lists, username, id} = user
 
-    function handleDeleteClick(e) {
-        fetch(`/users/${id}`, {
-            method: "DELETE",
-        }).then((res) => {
-            if (res.ok) {
-                setUser(null)
-                setCart(null)
-                navigate('/')  
-            }
-        })
-    }
+    // function handleDeleteClick(e) {
+    //     fetch(`/users/${id}`, {
+    //         method: "DELETE",
+    //     }).then((res) => {
+    //         if (res.ok) {
+    //             setUser(null)
+    //             setCart(null)
+    //             navigate('/')  
+    //         }
+    //     })
+    // }
 
     function handleUpdateClick(e) {
         navigate("/update_user")
@@ -61,7 +61,7 @@ function UserProfile() {
             </div>
             }
             <br/>
-            <button className="user-profile-button" onClick={handleDeleteClick}>Delete Account</button>
+            {/* <button className="user-profile-button" onClick={handleDeleteClick}>Delete Account</button> */}
             <button className="user-profile-button" onClick={handleUpdateClick}> Update Account </button>
         </div>
     )
