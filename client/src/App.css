@@ -52,7 +52,7 @@
 .last-cart-item {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 12px
 }
@@ -308,4 +308,11 @@ button[type=submit]{
 .toy-page-admin-buttons{
   display: flex;
   flex-direction: row;
+}
+
+.order-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 5%
 }
