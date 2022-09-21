@@ -60,6 +60,16 @@ function AddToy() {
             },
             body: JSON.stringify(formData)
         })
+        .then((res) => {
+            if (res.ok) {
+                res.json().then((newToy) => {
+                    setToys([...toys, newToy])
+                    navigate('/view_toys')
+                })
+            } else {
+                res.json().then((err) => setErrors(err.errors))
+            }
+        })
     }
 
     function handleUpdate(e) {
