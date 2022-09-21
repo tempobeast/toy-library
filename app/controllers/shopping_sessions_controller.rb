@@ -13,15 +13,22 @@ class ShoppingSessionsController < ApplicationController
 
     def update
         user = find_user
-        order = user.shopping_sessions.find(params[:id])
-        if order.status == "active"
-            order.update!(status: params[:status])
-            OrderDetailsMailer.with(user: user, order: order).details.deliver_later
-            shopping_session = user.shopping_sessions.create(status: "active")
+        if user.is_admin
+            order = ShoppingSession.find(params[:id])
+            order.update!({status: params[:status]})
+            if order.status == "restocked"
+                order.restock
+            end
+            render json: order, status: :ok
         else
-            order.update!(status: params[:status])
+            order = user.shopping_sessions.find(params[:id])
+            if order.status == "active"
+                order.update!(status: params[:status])
+                OrderDetailsMailer.with(user: user, order: order).details.deliver_later
+                shopping_session = user.shopping_sessions.create(status: "active")
+                render json: [order, shopping_session], status: :ok
+            end
         end
-        render json: [order, shopping_session], status: :ok
     end
 
     def cancel
