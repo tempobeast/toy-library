@@ -211,7 +211,7 @@ hr {
   border-style: solid;
   width: 80%;
   margin: 10px auto;
-  padding-top: 20px;
+  padding: 20px 0 20px;
 }
 
 .previous-order-item{

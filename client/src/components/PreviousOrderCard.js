@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react'
 import { UserContext } from '../context/user'
-import { ToysContext } from '../context/toys'
+// import { ToysContext } from '../context/toys'
 import { PreviousOrdersContext } from '../context/previousOrders'
 
 function PreviousOrdersCard({ order }) {
     const { user } = useContext(UserContext)
     const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
-    const { setToys } = useContext(ToysContext)
+    // const { setToys } = useContext(ToysContext)
     const [ statusSelect, setStatusSelect ] = useState(order.status) 
 
     function orderStatusColor(status) {
@@ -56,7 +56,7 @@ function PreviousOrdersCard({ order }) {
             <h4>Order submitted: {order.when_created}</h4>
             {order.status === "processing" ? null : <h4>Order {order.status}: {order.last_update}</h4>}
             {user.is_admin && order.status !== "restocked" ? 
-                <div>
+                <div className='previous-order-button'>
                     <select defaultValue={statusSelect} onChange={(e) => setStatusSelect(e.target.value)}>
                         <option value="processing" >processing</option>
                         <option value="shipped">shipped</option>

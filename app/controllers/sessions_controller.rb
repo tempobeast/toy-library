@@ -19,11 +19,3 @@ class SessionsController < ApplicationController
     end
 
 end
-
-            # if session[:shopping_session] == false
-            #     shop_sesh = ShoppingSession.create(user_id = user.id)
-            #     session[:shopping_session] = shop_sesh.id
-            # else 
-            #     shop_sesh = user.shopping_sessions.last_name
-            #     session[:shopping_session] = shop_sesh.id
-            # end 
