@@ -16,7 +16,7 @@ function Header() {
 
   return (
     <div id="header">
-      <Link to="/" id="logo">
+      <Link to="/home" id="logo">
         <h1>Library of Toys</h1>
       </Link>
       {user && user.is_admin ? null : user ? (
