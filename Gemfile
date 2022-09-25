@@ -37,6 +37,9 @@ gem "bootsnap", require: false
 # gem "rack-cors"
 
 gem 'figaro'
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
 
 
 group :development, :test do
