@@ -180,6 +180,9 @@ DEPENDENCIES
   byebug
   figaro
   listen (~> 3.3)
+  net-imap
+  net-pop
+  net-smtp
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
