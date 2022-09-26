@@ -71,31 +71,7 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.delivery_method = :smtp
-  # host = 'localhost:3000'
-  # config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
 
-
-  config.action_mailer.delivery_method = :sendmail
-  # Defaults to:
-  # config.action_mailer.sendmail_settings = {
-  #   location: '/usr/sbin/sendmail',
-  #   arguments: '-i'
-  # }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'toy.library.app@gmail.com'}
-
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'https://toy-library.herokuapp.com/',
-    user_name: ENV['gmail_username'],
-    password: ENV['gmail_password'],
-    authentication: 'plain',
-    enable_starttls_auto: true  
-  }
 
   # Use a different logger for distributed setups.
   # require "syslog/logger"
@@ -106,6 +82,32 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'toy.library.app@gmail.com'}
+  # host = 'localhost:3000'
+  # config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
+  config.action_mailer.default_url_options = { :host => 'toy-library.herokuapp.com/'}
+
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: ENV['gmail_username'],
+    password: ENV['gmail_password'],
+    authentication: 'plain',
+    enable_starttls_auto: true  
+  }
+
+  # config.action_mailer.delivery_method = :sendmail
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i'
+  # }
+ 
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
