@@ -19,9 +19,9 @@ function CartItemCard({ item, id }) {
       />
       <h3>{item.toy.name}</h3>
       <h4>Quantity: {item.quantity}</h4>
-      {id === "order-confirmation" ? null : (
+      {/* {id === "order-confirmation" ? null : (
         <button className="cart-item-card-button">edit selection</button>
-      )}
+      )} */}
     </div>
   );
 }
