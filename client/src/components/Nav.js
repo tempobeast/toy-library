@@ -61,25 +61,3 @@ function Nav() {
 }
 
 export default Nav;
-
-//     <button className='nav-button'>
-//         <Link to= "/view_all_toys">View Toys</Link>
-//     </button>
-//     {user ?
-//         <button className='nav-button'>
-//             <Link to={`/user_profiles/${user.id}`}>{user.first_name}'s Account</Link>
-//         </button>
-//         :
-//         null
-//     }
-//     {
-//     user ?
-//         <button className='nav-button' onClick={handleLogout}>
-//             Logout
-//         </button>
-//         :
-//         <button className='nav-button'>
-//             <Link to="user_login">Login</Link>
-//         </button>
-//         }
-// </div>

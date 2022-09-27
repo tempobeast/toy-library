@@ -44,11 +44,6 @@ function UpdateUserInfo() {
     });
   }
 
-  // function handlePhoneChange(e) {
-  //     const phone = e.target.value.replace(/\D/g, '');
-  //     setTelephone(poh)
-  // }
-
   return (
     <div>
       <h1>Update Account Information</h1>

@@ -4,13 +4,6 @@ import { ToyToUpdateContext } from "../context/toyToUpdate";
 import { useNavigate } from "react-router-dom";
 
 function AddToy() {
-  // const [name, setName] = useState("")
-  // const [description, setDescription] = useState("")
-  // const [sku, setSku] = useState("")
-  // const [purchasePrice, setPurchasePrice] = useState("")
-  // const [inventory, setInventory] = useState("")
-  // const [ageRange, setAgeRange] = useState("")
-  // const [imageUrl, setImageUrl] = useState("")
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
@@ -48,6 +41,7 @@ function AddToy() {
   }
 
   function handleSubmit(e) {
+    setIsLoading(true)
     e.preventDefault();
     fetch("/toys", {
       method: "POST",
@@ -60,16 +54,20 @@ function AddToy() {
         res.json().then((newToy) => {
           setToys([...toys, newToy]);
           navigate("/view_toys");
+          setIsLoading(false)
         });
       } else {
-        res.json().then((err) => setErrors(err.errors));
+        res.json().then((err) => {
+            setErrors(err.errors)
+            setIsLoading(false)
+        });
       }
     });
   }
 
   function handleUpdate(e) {
+    setIsLoading(true)
     e.preventDefault();
-    // console.log(formData)
     fetch(`/toys/${toyToUpdate.id}`, {
       method: "PATCH",
       headers: {
@@ -82,6 +80,7 @@ function AddToy() {
         const newToyArray = toys.filter((toy) => toy.id !== updatedToy.id);
         setToys([...newToyArray, updatedToy]);
         setToyToUpdate(null);
+        setIsLoading(false)
         navigate(`/view_toys/${updatedToy.id}`);
       });
   }

@@ -1,31 +1,17 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/user";
-import { CartContext } from "../context/cart";
 import { PreviousOrdersContext } from "../context/previousOrders";
 import PreviousOrdersCard from "./PreviousOrderCard";
 import OrdersContainer from "./OrdersContainer";
 
 function UserProfile() {
   const { user, setUser } = useContext(UserContext);
-  const { setCart } = useContext(CartContext);
   const { previousOrders } = useContext(PreviousOrdersContext);
   const [previousOrdersClick, setPreviousOrdersClick] = useState(false);
   const navigate = useNavigate();
 
   const { first_name, last_name, watch_lists, username, id } = user;
-
-  // function handleDeleteClick(e) {
-  //     fetch(`/users/${id}`, {
-  //         method: "DELETE",
-  //     }).then((res) => {
-  //         if (res.ok) {
-  //             setUser(null)
-  //             setCart(null)
-  //             navigate('/')
-  //         }
-  //     })
-  // }
 
   function handleUpdateClick(e) {
     navigate("/update_user");

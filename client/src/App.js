@@ -20,11 +20,10 @@ import OrdersContainer from "./components/OrdersContainer";
 function App() {
   const { cart, setCart } = useContext(CartContext);
   const { user, setUser } = useContext(UserContext);
-  const { toys, setToys } = useContext(ToysContext);
+  const { setToys } = useContext(ToysContext);
   const { previousOrders, setPreviousOrders } = useContext(
     PreviousOrdersContext
   );
-  const { toyToUpdate, setToyToUpdate } = useState("");
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -62,9 +61,7 @@ function App() {
         <Routes>
           <Route path="home" element={<Home />} />
           <Route path="user_login" element={<LoginPage />} />
-          {/* <Route path="/view_all_toys" element={<ToyContainer/>}/> */}
           <Route path="view_toys/:toyId" element={<ToyPage />} />
-
           <Route path="view_toys" element={<ToyContainer />} />
         </Routes>
       </div>
@@ -76,9 +73,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="view_toys/:toyId" element={<ToyPage />} />
-          {/* <Route path="/view_all_toys" element={<ToyContainer/>}/> */}
           <Route path="view_toys" element={<ToyContainer />}>
-            {/* <Route path=":toyId" element={<ToyPage />}/> */}
           </Route>
           <Route path="user_profiles/:id" element={<UserProfile />} />
           <Route path="cart" element={<CartPage />} />

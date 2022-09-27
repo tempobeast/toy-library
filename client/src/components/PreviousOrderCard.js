@@ -1,12 +1,10 @@
 import { useContext, useState } from 'react'
 import { UserContext } from '../context/user'
-// import { ToysContext } from '../context/toys'
 import { PreviousOrdersContext } from '../context/previousOrders'
 
 function PreviousOrdersCard({ order }) {
     const { user } = useContext(UserContext)
     const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
-    // const { setToys } = useContext(ToysContext)
     const [ statusSelect, setStatusSelect ] = useState(order.status) 
 
     function orderStatusColor(status) {
