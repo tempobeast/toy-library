@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:create]
     resources :shopping_sessions, only: [:create, :index, :update]
     delete '/cancel_shopping_session/:id', to: 'shopping_sessions#cancel'
+    patch '/change_user_admin_status/:id', to: 'users#user_admin_status'
+
 
     resources :watch_lists, only: [:create, :destroy]
     resources :toys

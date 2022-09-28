@@ -1,24 +1,21 @@
-# README
+# The Library of Toys
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Library of Toys is a subscription based platform for users to rent toys for their children. A user can create an account, add toys to their cart, add unavaible toys to their watchlist, and view order status. Administrators can upload new toys, update existing toys, update existing order statuses.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+Action mailer: 
+Automated emails are generated to welcome a newly created user and to inform existing users that their order status has changed. 
 
-* System dependencies
+## Future Features
 
-* Configuration
+In the future this app will include resources to pay subscription fees online and report broken toys.
 
-* Database creation
+## Running the server
 
-* Database initialization
+```bundle install```
+```rails s```
+```rails db:migrate db:seed```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```npm install --prefix client```
+```npm start --prefix client```

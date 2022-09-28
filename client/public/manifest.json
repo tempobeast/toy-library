@@ -1,0 +1,9 @@
+{
+    "short_name": "Library of Toys",
+    "name": "The Library of Toys",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }
+  

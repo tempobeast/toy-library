@@ -11,6 +11,7 @@ import CartPage from "./components/CartPage";
 import UpdateUserInfo from "./components/UpdateUserInfo";
 import ToyPage from "./components/ToyPage";
 import AddToy from "./components/AddToy";
+import UserList from "./components/UserList";
 import { UserContext } from "./context/user";
 import { ToysContext } from "./context/toys";
 import { CartContext } from "./context/cart";
@@ -82,6 +83,12 @@ function App() {
             path="add_toy"
             element={
               user.is_admin ? <AddToy /> : <Navigate replace to={"/home"} />
+            }
+          />
+          <Route
+            path="manage_users"
+            element={
+              user.is_admin ? <UserList /> : <Navigate replace to={"/home"} />
             }
           />
           <Route

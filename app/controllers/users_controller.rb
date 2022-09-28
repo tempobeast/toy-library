@@ -2,6 +2,16 @@ class UsersController < ApplicationController
 
     skip_before_action :authorize, only: [:create]
 
+    def index 
+        user = find_user
+        if user.is_admin
+            users = User.all
+            render json: users, status: :ok
+        else
+            render json: { errors: ["Not Authorized"]}, status: :unauthorized
+        end
+    end
+
     def create
         user = User.create!(user_params)
         session[:user_id] = user.id
@@ -31,6 +41,18 @@ class UsersController < ApplicationController
         user.destroy
         head :no_content
     end 
+
+    def user_admin_status
+        user = find_user
+        user_to_update = User.find(params[:id])
+        if user.is_admin && user != user_to_update
+            user_to_update.update(is_admin: params[:is_admin])
+            users = User.all
+            render json: users, status: :ok
+        else
+            render json: { errors: ["Not Authorized"]}
+        end
+    end
 
     private
 

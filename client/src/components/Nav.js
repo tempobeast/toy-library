@@ -25,6 +25,11 @@ function Nav() {
   if (user) {
     return (
       <div id="nav">
+        {user.is_admin ? (
+        <NavLink to="manage_users" className="nav-link">
+          Manage Users
+        </NavLink>
+        ) : null}
         <NavLink to="view_toys" className="nav-link">
           View Toys
         </NavLink>
