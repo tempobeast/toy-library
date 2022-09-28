@@ -17,8 +17,6 @@ function SubmitOrderConfirmation({ setSubmitClick, handleCancelOrderClick }) {
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
-  console.log(previousOrders);
-
   function handleConfirmSubmitCartClick(e) {
     setErrors([]);
     setIsLoading(true);
