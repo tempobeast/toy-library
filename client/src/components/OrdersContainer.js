@@ -6,7 +6,9 @@ function OrdersContainer() {
   const { previousOrders } = useContext(PreviousOrdersContext);
   const [ filterStatus, setFilterStatus ] = useState("all")
 
-  const filterOrders = previousOrders.filter((order) => {
+  const sortOrders = previousOrders.sort((a, b) => a.id < b.id ? 1 : a.id > b.id ? -1 : 0)
+
+  const filterOrders = sortOrders.filter((order) => {
     if (filterStatus === "all") {
       return true
     } else {
