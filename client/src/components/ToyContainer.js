@@ -23,7 +23,7 @@ function ToyContainer() {
 
   return (
     <div>
-      <h2>Toys!!!</h2>
+      <h2 className="toy-container-header">View our inventory</h2>
       <input
         type="text"
         placeholder="filter by age"

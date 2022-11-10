@@ -25,6 +25,7 @@ function App() {
   const { previousOrders, setPreviousOrders } = useContext(
     PreviousOrdersContext
   );
+  const [ errors, setErrors ] = useState("")
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -36,7 +37,7 @@ function App() {
           setCart(currentCart);
         });
       } else {
-        res.json().then((err) => console.log(err));
+        res.json().then((err) => setErrors(err.errors));
       }
     });
   }, [setCart]);

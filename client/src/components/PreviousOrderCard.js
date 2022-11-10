@@ -34,6 +34,8 @@ function PreviousOrdersCard({ order }) {
         })
     }
 
+    console.log(order)
+
     return (
         <div key={order.id} className="previous-order-card">
             <div className='order-header'>
@@ -45,8 +47,8 @@ function PreviousOrdersCard({ order }) {
             {order.cart_items.map((item) => {
                 return (
                 <div key={item.id} className="previous-order-item">
-                    <img src={item.toy.img_url} alt={item.toy.name} className='cart-item-image'/>
-                    <p>{item.toy.name}</p>
+                    {item.toy ? <img src={item.toy.img_url} alt={item.toy.name} className='cart-item-image'/> : null}
+                    {item.toy ? <p>{item.toy.name}</p> : <p>Toy removed from stock</p>}
                     <p>{item.quantity}</p>
                 </div>
                 )

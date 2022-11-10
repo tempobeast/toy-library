@@ -46,8 +46,8 @@ function LoginForm() {
   }
 
   return (
-    <div>
-      <h1>Login:</h1>
+    <div >
+      <h1 className="login-form">Login:</h1>
       <form onSubmit={handleSubmit}>
         <label className="label" htmlFor="username">
           Username:{" "}
