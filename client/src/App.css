@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  margin-bottom: 50px;
 }
 
 #header {
@@ -20,15 +19,21 @@
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 20px;
   flex: start;
+  margin-left: 10px;
 }
 
 #cart-thumb {
   text-align: right;
   flex: end;
+  margin-right: 10px;
 }
 
 #cart-thumb:hover{
   cursor: pointer;
+}
+
+.toy-container-header{
+  text-align: center;
 }
 
 .all-cart-items{
@@ -248,10 +253,6 @@ button[type=submit]{
   margin: 10px 15% 0px
 }
 
-.PhoneInputFlag{
-  background-color: green;
-}
-
 .previous-card-titles{
   display: inline;
   padding: 25px
@@ -270,7 +271,7 @@ button[type=submit]{
 .toy-page{
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   margin: 5%;
 }
@@ -359,4 +360,8 @@ button[type=submit]{
 
 .disable:hover{
   background-color: rgb(53, 136, 53)
+}
+
+.login-form {
+  margin: 10px 15%
 }
