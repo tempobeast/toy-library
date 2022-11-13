@@ -17,7 +17,7 @@ function Nav() {
         setUser(null);
         setCart(null);
         setPreviousOrders([]);
-        navigate("/home");
+        navigate("/");
       }
     });
   }
