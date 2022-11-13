@@ -10,16 +10,36 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin: 0 15px
   }
 
-#logo{
-  text-decoration: none;
-  color:rgb(53, 136, 53);
-  text-shadow: 1px 2px rgb(94, 93, 93);
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 20px;
-  flex: start;
-  margin-left: 10px;
+  #home {
+    text-align: center;
+  }
+
+  .how-to-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto
+  }
+
+  .how-to-data{
+    width: 20%;
+    /* border: solid black 3px; */
+    padding: 10px
+  }
+
+  .how-to-image {
+    width: 80%
+  }
+
+  
+.logo{
+  width: 50%
 }
 
 #cart-thumb {
