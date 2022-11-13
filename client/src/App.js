@@ -61,7 +61,7 @@ function App() {
         <Header />
         <Nav />
         <Routes>
-          <Route path="home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="user_login" element={<LoginPage />} />
           <Route path="view_toys/:toyId" element={<ToyPage />} />
           <Route path="view_toys" element={<ToyContainer />} />
@@ -83,13 +83,13 @@ function App() {
           <Route
             path="add_toy"
             element={
-              user.is_admin ? <AddToy /> : <Navigate replace to={"/home"} />
+              user.is_admin ? <AddToy /> : <Navigate replace to={"/"} />
             }
           />
           <Route
             path="manage_users"
             element={
-              user.is_admin ? <UserList /> : <Navigate replace to={"/home"} />
+              user.is_admin ? <UserList /> : <Navigate replace to={"/"} />
             }
           />
           <Route
@@ -98,14 +98,14 @@ function App() {
               user.is_admin ? (
                 <OrdersContainer />
               ) : (
-                <Navigate replace to={"/home"} />
+                <Navigate replace to={"/"} />
               )
             }
           />
           <Route
             path="update_toy/:toyId"
             element={
-              user.is_admin ? <AddToy /> : <Navigate replace to={"/home"} />
+              user.is_admin ? <AddToy /> : <Navigate replace to={"/"} />
             }
           />
           <Route path="home" element={<Home />} />
