@@ -16,8 +16,8 @@ function Header() {
 
   return (
     <div id="header">
-      <Link to="/home" id="logo">
-        <h1>Library of Toys</h1>
+      <Link to="/">
+        <img src="/ToyLibLogo-adjusted-01-01.png" alt="Toy Library Logo" className="logo"/>
       </Link>
       {user && user.is_admin ? null : user ? (
         <h2
