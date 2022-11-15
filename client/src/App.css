@@ -37,11 +37,8 @@
   .how-to-image {
     width: 80%
   }
-
   
-.logo{
-  width: 300px
-}
+
 
 #cart-thumb {
   text-align: right;
@@ -385,4 +382,18 @@ button[type=submit]{
 
 .login-form {
   margin: 10px 15%
+}
+
+.logo{
+  width: 300px
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    width: 70%
+  }
+
+  #cart-thumb {
+    font-size: 1.25rem;
+  }
 }
