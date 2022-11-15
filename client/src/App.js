@@ -108,7 +108,7 @@ function App() {
               user.is_admin ? <AddToy /> : <Navigate replace to={"/"} />
             }
           />
-          <Route path="home" element={<Home />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </div>
     );
