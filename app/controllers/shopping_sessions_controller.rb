@@ -27,6 +27,8 @@ class ShoppingSessionsController < ApplicationController
                 OrderDetailsMailer.with(user: user, order: order).details.deliver_later
                 shopping_session = user.shopping_sessions.create(status: "active")
                 render json: [order, shopping_session], status: :ok
+            else
+                render json: {errors: ["Cannot process request until outstanding items are returned"]}, status: :unauthorized
             end
         end
     end
