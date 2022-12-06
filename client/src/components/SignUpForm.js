@@ -80,7 +80,7 @@ function SignUpForm() {
           id="password"
           autoComplete="current-password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.targetvalue)}
           required
         />
         <br />
