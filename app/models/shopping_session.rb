@@ -20,13 +20,7 @@ class ShoppingSession < ApplicationRecord
             item.toy.update(inventory: new_inventory)
         end
     end
-
-    def subscription_validation
-        total_toys_at_once = 2
-        outstanding = self.user.shopping_sessions.where(status: "processing").cart_items +
-        shipped = 
-    end
-
+    
     belongs_to :user
     has_many :cart_items, dependent: :destroy
     has_many :toys, through: :cart_items, dependent: :destroy
