@@ -22,7 +22,7 @@ They can update existing order statuses from processing to shipped, shipped to r
 
 ![gif of update order status](https://media.giphy.com/media/5M7CTpPRQ6djwG4BsX/giphy.gif)
 
- Administrators can also give other users administrative access.
+ Administrators can also give other users administrative access. The first user will default to admin status, subsequent users will default to non-admin.
 
  ![gif of changing admin status](https://media.giphy.com/media/xieqL8H6JqZgCf279V/giphy.gif)
 
