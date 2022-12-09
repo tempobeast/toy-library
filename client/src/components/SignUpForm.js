@@ -15,7 +15,6 @@ function SignUpForm() {
   const [telephone, setTelephone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [isAdmin, setIsAdmin] = useState(false);
 
   const { setUser } = useContext(UserContext);
   const { setCart } = useContext(CartContext);
@@ -41,7 +40,7 @@ function SignUpForm() {
           last_name: lastName,
           email: email,
           telephone: telephone,
-          isAdmin: isAdmin,
+          isAdmin: false,
         }),
       }).then((res) => {
         setIsLoading(false);
@@ -80,7 +79,7 @@ function SignUpForm() {
           id="password"
           autoComplete="current-password"
           value={password}
-          onChange={(e) => setPassword(e.targetvalue)}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <br />
