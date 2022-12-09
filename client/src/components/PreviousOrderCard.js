@@ -34,8 +34,6 @@ function PreviousOrdersCard({ order }) {
         })
     }
 
-    console.log(order)
-
     return (
         <div key={order.id} className="previous-order-card">
             <div className='order-header'>
