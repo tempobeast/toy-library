@@ -9,6 +9,11 @@ class User < ApplicationRecord
 
     validates :telephone, presence: true, numericality: true, :length => { minimum: 11, maximum: 16}
 
+    def create_first_admin 
+        if self == User.first
+            self.is_admin = true
+        end
+    end
 
     has_one :user_address
     has_many :shopping_sessions
