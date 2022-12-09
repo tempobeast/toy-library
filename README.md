@@ -45,5 +45,5 @@ In the future this app will include a resource like Stripe or Paypal to pay subs
 
 View a demo at https://youtu.be/0d6rHnPyPCo
 
-The app can be toured at https://toy-library.herokuapp.com/.
+The customer view of the app can be toured at https://toy-library.herokuapp.com/.
 
