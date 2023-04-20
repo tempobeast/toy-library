@@ -17,15 +17,15 @@ function Header() {
   return (
     <div id="header">
       <Link to="/">
-        <img src="/ToyLibLogo-adjusted-01-01.png" alt="Toy Library Logo" className="logo"/>
+        <img src="/ToyLibLogo-adjusted-01-01.png" alt="Toy Library Logo" className="header-logo"/>
       </Link>
       {user && user.is_admin ? null : user ? (
         <h2
           onClick={handleCartClick}
-          id="cart-thumb"
+          id="header__cart-thumb"
         >{`🛒 ${cart.total_items} items`}</h2>
       ) : (
-        <h2 id="cart-thumb" onClick={() => navigate("/user_login")}>
+        <h2 id="header__cart-thumb" onClick={() => navigate("/user_login")}>
           Signup/login
         </h2>
       )}
