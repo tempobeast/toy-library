@@ -61,8 +61,8 @@ function SignUpForm() {
 
   return (
     <div>
-      <h1>Signup: </h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className="signup-form__title">Signup: </h1>
+      <form onSubmit={handleSubmit} className="signup-form">
         <label htmlFor="username">Username: </label>
         <input
           type="text"
@@ -72,7 +72,6 @@ function SignUpForm() {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="password">Password: </label>
         <input
           type="password"
@@ -82,7 +81,6 @@ function SignUpForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="password">Password Confirmation: </label>
         <input
           type="password"
@@ -92,7 +90,6 @@ function SignUpForm() {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="first-name">First Name: </label>
         <input
           type="first-name"
@@ -102,7 +99,6 @@ function SignUpForm() {
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="last-name">Last Name: </label>
         <input
           type="last-name"
@@ -112,7 +108,6 @@ function SignUpForm() {
           onChange={(e) => setLastName(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="email">Email: </label>
         <input
           type="email"
@@ -122,15 +117,14 @@ function SignUpForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <br />
-        <label htmlFor="telephone">Telephone: </label>
+        {/* <label htmlFor="telephone">Telephone: </label>
         <PhoneInput
           id="telephone"
           defaultCountry="US"
           value={telephone}
           onChange={setTelephone}
         />
-        <br />
+        <br /> */}
         <button type="submit"> {isLoading ? "Loading..." : "Sign Up"} </button>
         {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
       </form>

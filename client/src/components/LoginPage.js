@@ -6,12 +6,12 @@ function LoginPage({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <div>
+    <div className="login-signup">
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
           <br />
-          <p className="login-form">
+          <p className="login-page">
             Don't have an account? &nbsp;
             <button onClick={() => setShowLogin(false)}>Sign Up</button>
           </p>
@@ -19,7 +19,7 @@ function LoginPage({ onLogin }) {
       ) : (
         <>
           <SignUpForm onLogin={onLogin} />
-          <p className="login-form">
+          <p className="login-page">
             Already have an account? &nbsp;
             <button onClick={() => setShowLogin(true)}>Log In</button>
           </p>

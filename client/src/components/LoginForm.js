@@ -46,8 +46,8 @@ function LoginForm() {
   }
 
   return (
-    <div >
-      <h1 className="login-form">Login:</h1>
+    <div className="login-form">
+      <h1 className="login-form__title">Login:</h1>
       <form onSubmit={handleSubmit}>
         <label className="label" htmlFor="username">
           Username:{" "}
@@ -60,7 +60,6 @@ function LoginForm() {
           onChange={handleUsernameChange}
           required
         />
-        <br />
         <label className="label" htmlFor="password">
           Password:{" "}
         </label>
@@ -72,7 +71,6 @@ function LoginForm() {
           onChange={handlePasswordChange}
           required
         />
-        <br />
         <button type="submit"> {isLoading ? "Loading..." : "Login"} </button>
         {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
       </form>
