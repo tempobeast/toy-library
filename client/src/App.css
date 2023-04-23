@@ -1,58 +1,206 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
 
-#header {
+/* shared */
+
+form {
+  background-color: rgb(240, 238, 238);
+  /* margin: 0 15%; */
+  padding: 25px;
+  /* border-radius: 15px; */
+}
+
+input {
+  width: 70%;
+  padding: 5px 10px;
+  margin: 8px 15%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 2.5rem
+}
+
+label{
+  margin: 15%;
+  padding: 0px
+}
+
+button[type=submit]{
+  margin: 10px 15% 0px
+}
+
+/* Header.js */
+
+.header {
   background-color: white;
   color: rgb(53, 136, 53);
-  text-align: left;
+  /* text-align: left; */
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  margin: 0 15px
-  }
+  justify-content: space-between;
+  padding-right: 20px;
+  /* width: 100%; */
+}
 
-  #home {
-    text-align: center;
-    margin: 0 10%
-  }
+#header-logo{
+  width: 80%;
+  max-width: 350px;
+}
 
-  .how-to-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: baseline;
-    flex-wrap: wrap;
-    width: 80%;
-    margin: auto
-  }
+#header__signup-login {
+  max-height: 1.5rem;
+  text-align: center;
+  word-wrap: normal;
+}
 
-  .how-to-data{
-    width: 200px;
-    /* border: solid black 3px; */
-    padding: 10px
-  }
-
-  .how-to-image {
-    width: 80%
-  }
-  
-
-
-#cart-thumb {
+#header__cart-thumb {
   text-align: right;
   flex: end;
   margin-right: 10px;
 }
 
-#cart-thumb:hover{
+#header__cart-thumb:hover{
   cursor: pointer;
 }
 
-.toy-container-header{
-  text-align: center;
+  /* Nav.js */
+
+#nav {
+  background-color:rgb(53, 136, 53);
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
 }
+
+.toggle-button {
+  display: active;
+  width: 4.4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+  align-items: left;
+}
+
+.toggle-button:focus{
+  outline: none
+}
+
+.toggle-button__bar {
+  width: 100%;
+  height: 0.15rem;
+  background: white;
+  display: block;
+  margin: 0.4rem 0;
+  border-radius: 2px; 
+}
+
+.main__nav-link {
+  display: none;
+}
+
+.main__nav-link:hover {
+  display: none;
+}
+
+.main__nav-logout {
+  text-decoration: none;
+  color: white;
+  background-color:rgb(53, 136, 53);
+  padding: 12px 12px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+/* Home.js */
+
+#home {
+  text-align: center;
+  margin: 0 10%
+}
+
+.home__how-to-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto
+}
+
+.home__how-to-data{
+  width: 250px;
+  background: rgb(241, 241, 241);
+  box-shadow: 5px 5px 8px rgb(159, 159, 159);
+  border-radius: 0.5rem;
+  margin: 20px 0;
+}
+
+.home__how-to-data h3 {
+  margin-bottom: 2rem
+}
+
+.home__how-to-image {
+  width: 100%
+}
+
+/* LoginForm.js and LoginPage.js */
+
+.login-form__title,
+.signup-form__title {
+  margin: 10px 5%;
+  padding: 0 25px;
+}
+
+.login-form form,
+.signup-form form {
+  background-color: rgb(240, 238, 238);
+  padding: 25px;
+}
+
+.login-form input,
+.signup-form input {
+  width: 90%;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.login-form label,
+.login-form button,
+.signup-form label,
+.signup-form button {
+  margin: 5px 5%;
+  display: block;
+}
+
+.login-form button,
+.signup-form button {
+  width: 6rem;
+}
+
+.login-page {
+  padding: 0 25px;
+  margin: 5px 5%
+}
+
+.login-page button {
+  display: block;
+  margin-top: 10px;
+  width: 6rem;
+  padding: 10px 0;
+}
+
+/* CartItemCard.js */
 
 .all-cart-items{
   width: 70%;
@@ -102,7 +250,7 @@ button{
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
-  margin: 0 3px 0 3px;
+  /* margin: 0 3px 0 3px; */
   border-radius: 10px;
   transition: 0.3s;
 }
@@ -116,24 +264,9 @@ button:hover{
   background-color: rgb(174, 202, 177);
 }
 
-#nav {
-  background-color:rgb(53, 136, 53);
-  text-align: right;
-  padding: 12px;
-}
 
-.nav-link {
-  text-decoration: none;
-  color: white;
-  background-color:rgb(53, 136, 53);
-  padding: 12px 12px;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 10px
-}
-
-.nav-link:hover {
-  background-color: rgb(174, 202, 177);
+.toy-container-header{
+  text-align: center;
 }
 
 .toy-container{
@@ -245,7 +378,7 @@ hr {
   margin-right: 10%
 }
 
-form {
+/* form {
   background-color: rgb(240, 238, 238);
   margin: 0 15%;
   padding: 25px;
@@ -269,7 +402,7 @@ label{
 
 button[type=submit]{
   margin: 10px 15% 0px
-}
+} */
 
 .previous-card-titles{
   display: inline;
@@ -281,7 +414,7 @@ button[type=submit]{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  border: 1px dashed; 
+  border: 1px dashed;
   width: 80%;
   margin: 10px auto;
 }
@@ -368,27 +501,21 @@ button[type=submit]{
 .user-list-item-checkbox{
   width: 40px;
   height: 40px;
-  
+
 }
 
 .disable{
   opacity: 40%;
-  
+
 }
 
 .disable:hover{
   background-color: rgb(53, 136, 53)
 }
 
-.login-form {
-  margin: 10px 15%
-}
 
-.logo{
-  width: 300px
-}
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
   .logo {
     width: 70%
   }
@@ -396,4 +523,166 @@ button[type=submit]{
   #cart-thumb {
     font-size: 1.25rem;
   }
+} */
+
+@media (min-width: 40rem) {
+
+  /* shared */
+
+  form {
+    background-color: rgb(240, 238, 238);
+    /* margin: 0 15%; */
+    padding: 25px;
+    /* border-radius: 15px; */
+  }
+  
+  /* input {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 15%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  } */
+  
+  label{
+    margin: 15%;
+    padding: 0px
+  }
+  
+  /* button[type=submit]{
+    margin: 10px 15% 0px
+  } */
+
+  /* Header.js */
+
+  .header {
+    background-color: white;
+    color: rgb(53, 136, 53);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* margin: 0 15px */
+  }
+
+  #header-logo{
+    max-width: 350px;
+  }
+
+  #header__cart-thumb {
+    text-align: right;
+    flex: end;
+    margin-right: 10px;
+  }
+
+  #header__cart-thumb:hover{
+    cursor: pointer;
+  }
+
+  /* Home.js */
+
+  #home {
+    text-align: center;
+    margin: 0 10%
+  }
+
+  .home__how-to-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    /* margin: auto; */
+    width: 90%;
+  }
+
+  .home__how-to-data{
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    padding: 10px
+  }
+
+  .home__how-to-data h3{
+    font-size: 100%;
+  }
+
+  .home__how-to-image {
+    max-width: 10rem;
+    width: 100%;
+  }
+
+  /* LoginForm.js */
+
+  .login-signup {
+    max-width: 40rem;
+    margin: auto;
+  }
+
+  .login-form__title,
+  .signup-form__title {
+    margin: 10px 0;
+    padding: 0;
+  }
+
+  .login-form form,
+  .signup-form form { 
+    background-color: rgb(240, 238, 238);
+    width: 40rem;
+    margin: auto;
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  .login-form input 
+  .signup-form input {
+    width: 32.5rem;
+  }
+
+  .login-form label,
+  .login-form button,
+  .signup-form label,
+  .signup-form button {
+    margin: 0.5rem 2rem
+  }
+
+  .login-page {
+    margin: 0;
+    padding: 0;
+  }
+
+  .login-page button {
+    display: inline;
+  }
+
+  /* Nav.js */
+
+  #nav {
+    display: block;
+    text-align: right;
+    padding: 12px;
+  }  
+
+  .main__nav-link {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color:rgb(53, 136, 53);
+    padding: 12px 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px
+  }
+  
+  .main__nav-link:hover {
+    display: inline-block;
+    background-color: rgb(174, 202, 177);
+  }
+
+  .toggle-button {
+    display: none;
+  }
+  
+
 }
