@@ -59,10 +59,10 @@ function MobileNav() {
   } else {
     return (
       <div id="nav">
-        <button class="toggle-button">
-          <span class="toggle-button__bar"></span>
-          <span class="toggle-button__bar"></span>
-          <span class="toggle-button__bar"></span>
+        <button className="toggle-button">
+          <span className="toggle-button__bar"></span>
+          <span className="toggle-button__bar"></span>
+          <span className="toggle-button__bar"></span>
         </button>
         <NavLink to="/view_toys" className="mobile__nav-link">
           View Toys
