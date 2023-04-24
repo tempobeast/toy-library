@@ -24,8 +24,6 @@ function Nav() {
     });
   }
 
-  console.log(openNav)
-
   if (user) {
     return (
       <div id="nav">
@@ -34,13 +32,12 @@ function Nav() {
           <span className="toggle-button__bar"></span>
           <span className="toggle-button__bar"></span>
         </button>
-        {openNav ? <MobileNav /> : null}
         {user.is_admin ? (
-        <NavLink to="manage_users" className="main__nav-link">
+        <NavLink to="manage_users" className="main__nav-link" >
           Manage Users
         </NavLink>
         ) : null}
-        <NavLink to="view_toys" className="main__nav-link">
+        <NavLink to="view_toys" className="main__nav-link" >
           View Toys
         </NavLink>
         {user.is_admin ? (
@@ -59,6 +56,8 @@ function Nav() {
         <button onClick={handleLogout} className="main__nav-logout">
           Logout
         </button>
+        {openNav ? <MobileNav setOpenNav={setOpenNav} openNav={openNav}/> : null}
+        {openNav ? <div onClick={() => setOpenNav(!openNav)} className="backdrop"></div> : null}
       </div>
     );
   } else {
