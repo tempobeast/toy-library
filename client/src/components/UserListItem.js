@@ -17,12 +17,12 @@ function UserListItem({userToUpdate, onAdminConfirmClick}) {
   return (
     <div>
         <div key={userToUpdate.id} className="user-list">
-            <p className="user-list-item">{userToUpdate.last_name}, {userToUpdate.first_name}</p>
-            <p className="user-list-item">{userToUpdate.username}</p>
-            <p className="user-list-item">{userToUpdate.is_admin ? "Yes" : "No"}</p>
-            <div className="user-list-item-end">
+            <p className="user-list-item user-list__name">{userToUpdate.last_name}, {userToUpdate.first_name}</p>
+            <p className="user-list-item user-list__username">{userToUpdate.username}</p>
+            <p className="user-list-item user-list__admin">{userToUpdate.is_admin ? "Yes" : "No"}</p>
+            <div className="user-list-item-end ">
             {!adminClick ?
-                <button onClick={user.id !== userToUpdate.id ? handleAdminClick : null} className={user.id !== userToUpdate.id ? "user-list-item-button" : "disable"}>{userToUpdate.is_admin ? "remove admin" : "make admin"}</button>
+                <button onClick={user.id !== userToUpdate.id ? handleAdminClick : null} className={user.id !== userToUpdate.id ? "user-list-item-button user-list__button" : "disable user-list__button"}>{userToUpdate.is_admin ? "remove admin" : "make admin"}</button>
                 :
                 <div>
                     <button onClick={handleAdminConfirmClick}>Confirm</button>
