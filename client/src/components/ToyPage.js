@@ -135,41 +135,43 @@ function ToyPage() {
   }
 
   return (
-    <div className="toy-page">
-      <img
-        className="toy-page-img"
-        src={toyToView.img_url}
-        alt={toyToView.name}
-      />
-      <div className="toy-page-details" id={toyToView.id}>
-        <h3>{toyToView.name}</h3>
-        <p>{toyToView.description}</p>
-        <h5>Age Range: {toyToView.age_range}</h5>
-        {user && toyToView.inventory > 0 ? (
-          <div>
-            <label>Quantity: </label>
-            <select onChange={(e) => setSelectedQuantity}>
-              {selectOptions}
-            </select>
-            <button onClick={handleAddToCartClick} id={toyToView.id}>
-              add to cart
-            </button>
-            {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
-          </div>
-        ) : user && toyToView.inventory === 0 ? (
-          <div>
-            <label>Unavailble: </label>
-            {user.watch_lists.some((watch) => watch.toy.id === toyToView.id) ? (
-              <button onClick={handleWatchListRemoveClick}>
-                Remove from Watch List
+    <div className="content">
+      <div className="toy-page ">
+        <img
+          className="toy-page-img"
+          src={toyToView.img_url}
+          alt={toyToView.name}
+        />
+        <div className="toy-page-details" id={toyToView.id}>
+          <h3>{toyToView.name}</h3>
+          <p>{toyToView.description}</p>
+          <h5>Age Range: {toyToView.age_range}</h5>
+          {user && toyToView.inventory > 0 ? (
+            <div>
+              <label>Quantity: </label>
+              <select onChange={(e) => setSelectedQuantity}>
+                {selectOptions}
+              </select>
+              <button onClick={handleAddToCartClick} id={toyToView.id}>
+                add to cart
               </button>
-            ) : (
-              <button onClick={handleWatchListClick} id={toyToView.id}>
-                Add to Watch List
-              </button>
-            )}
-          </div>
-        ) : null}
+              {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
+            </div>
+          ) : user && toyToView.inventory === 0 ? (
+            <div>
+              <label>Unavailble: </label>
+              {user.watch_lists.some((watch) => watch.toy.id === toyToView.id) ? (
+                <button onClick={handleWatchListRemoveClick}>
+                  Remove from Watch List
+                </button>
+              ) : (
+                <button onClick={handleWatchListClick} id={toyToView.id}>
+                  Add to Watch List
+                </button>
+              )}
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );
