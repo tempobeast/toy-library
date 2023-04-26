@@ -86,7 +86,7 @@ function AddToy() {
   }
 
   return (
-    <div>
+    <div className="content">
       <h1>{toyToUpdate ? `Update ${toyToUpdate.name}` : "Add a Toy"}</h1>
       <form onSubmit={toyToUpdate ? handleUpdate : handleSubmit}>
         <label htmlFor="name">Name: </label>

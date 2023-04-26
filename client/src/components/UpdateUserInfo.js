@@ -45,7 +45,7 @@ function UpdateUserInfo() {
   }
 
   return (
-    <div>
+    <div className="content">
       <h1>Update Account Information</h1>
       <form onSubmit={handleUpdateSubmit}>
         <label htmlFor="username">{`Username: ${user.username}`}</label>

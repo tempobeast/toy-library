@@ -18,7 +18,7 @@ function UserProfile() {
   }
 
   return (
-    <div>
+    <div className="content">
       <h1>{`${first_name} ${last_name}'s Profile`}</h1>
       <h2>{`Hello, ${username}!`}</h2>
       {user.is_admin ? null : (

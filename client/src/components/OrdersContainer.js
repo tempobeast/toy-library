@@ -17,7 +17,7 @@ function OrdersContainer() {
   })
 
   return (
-    <div>
+    <div className="content">
       <h1>Orders</h1>
       <label>filter by status:
         <select onChange={(e) => setFilterStatus(e.target.value)}>
