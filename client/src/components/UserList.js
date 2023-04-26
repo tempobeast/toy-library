@@ -54,7 +54,7 @@ function UserList() {
     }
 
   return (
-    <div>
+    <div className="content">
       <h1>Users</h1>
       <div className="user-list-header">
             <h3 className="user-list-item user-list__name">Name</h3>
