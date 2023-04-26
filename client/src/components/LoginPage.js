@@ -6,7 +6,7 @@ function LoginPage({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <div className="login-signup">
+    <div className="login-signup content">
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
