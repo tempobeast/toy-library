@@ -25,32 +25,34 @@ function MobileNav({openNav, setOpenNav}) {
 
   if (user) {
     return (
-      <div id="mobile-nav">
-        {user.is_admin ? (
-        <NavLink to="manage_users" className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
-          Manage Users
-        </NavLink>
-        ) : null}
-        <NavLink to="view_toys" className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
-          View Toys
-        </NavLink>
-        {user.is_admin ? (
-          <NavLink to="add_toy" className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
-            Add Toy
-          </NavLink>
-        ) : null}
-        {user.is_admin ? (
-          <NavLink to="view_orders" className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
-            View Orders
-          </NavLink>
-        ) : null}
-        <NavLink to={`user_profiles/${user.id}`} className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
-          My Account
-        </NavLink>
-        <button onClick={handleLogout} className="mobile__nav-logout" >
-          Logout
-        </button>
-      </div>
+        <div className="modal">
+            <div id="mobile-nav">
+                {user.is_admin ? (
+                <NavLink to="manage_users" className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
+                Manage Users
+                </NavLink>
+                ) : null}
+                <NavLink to="view_toys" className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
+                View Toys
+                </NavLink>
+                {user.is_admin ? (
+                <NavLink to="add_toy" className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
+                    Add Toy
+                </NavLink>
+                ) : null}
+                {user.is_admin ? (
+                <NavLink to="view_orders" className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
+                    View Orders
+                </NavLink>
+                ) : null}
+                <NavLink to={`user_profiles/${user.id}`} className="mobile__nav-link" onClick={() => setOpenNav(!openNav)}>
+                My Account
+                </NavLink>
+                <button onClick={handleLogout} className="mobile__nav-logout" >
+                Logout
+                </button>
+            </div>
+        </div>
     );
   } else {
     return (
