@@ -22,7 +22,7 @@ function ToyContainer() {
   });
 
   return (
-    <div>
+    <div className="content">
       <h2 className="toy-container-header">View our inventory</h2>
       <input
         type="text"
