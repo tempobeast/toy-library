@@ -16,7 +16,7 @@ form {
 }
 
 input {
-  width: 70%;
+  width: 80%;
   padding: 5px 10px;
   margin: 8px 15%;
   display: inline-block;
@@ -40,24 +40,24 @@ button[type=submit]{
   background-color: white;
   color: rgb(53, 136, 53);
   /* text-align: left; */
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+  top: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding-right: 20px;
+  height: 6rem;
   /* width: 100%; */
 }
 
 #header-logo{
+  top: 0;
+  left: 0;
   width: 80%;
   max-width: 350px;
-  min-width: 280px
-}
-
-#header__signup-login {
-  max-height: 1.5rem;
-  text-align: center;
-  word-wrap: normal;
 }
 
 #header__cart-thumb {
@@ -74,14 +74,26 @@ button[type=submit]{
 
 #nav {
   background-color:rgb(53, 136, 53);
+  position: fixed;
+  z-index: 25;
+  top: 5.5rem;
+  width: 100vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   padding: 12px;
+}
+
+.content{
+  position: relative;
+  top: 120px;
+  z-index: 1;
 }
 
 .toggle-button {
   display: active;
-  width: 4.4rem;
+  position: fixed;
+  top: 1.5rem;
+  width: 5rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -97,8 +109,8 @@ button[type=submit]{
 
 .toggle-button__bar {
   width: 100%;
-  height: 0.15rem;
-  background: white;
+  height: 0.25rem;
+  background:rgb(53, 136, 53);
   display: block;
   margin: 0.4rem 0;
   border-radius: 2px; 
@@ -113,13 +125,29 @@ button[type=submit]{
 }
 
 .main__nav-logout {
+  display: none
+}
+
+#nav.no-login {
+  display: block;
+  text-align: right;
+  padding: 12px;
+}  
+
+.main__nav-link.no-login {
+  display: inline-block;
   text-decoration: none;
   color: white;
   background-color:rgb(53, 136, 53);
   padding: 12px 12px;
   font-size: 15px;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 10px
+}
+
+.main__nav-link.no-login:hover {
+  display: inline-block;
+  background-color: rgb(174, 202, 177);
 }
 
 /* Home.js */
@@ -240,16 +268,24 @@ button[type=submit]{
 
 /* MobileNav.js */
 
+.modal {
+  position: fixed;
+  top: 54px;
+  left: 0;
+  /* width: 1vw;
+  height: 1vh; */
+}
+
 #mobile-nav {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   position: fixed;
   z-index: 101;
   left: 0;
   margin-top: 54px;
-  background: white;
-  width: 80%;
+  background:rgb(53, 136, 53);
+  width: 100vw;
   height: 100vh;
   padding: 2rem 1rem 0 1rem;
   text-align: left;
@@ -257,7 +293,7 @@ button[type=submit]{
 
 .mobile__nav-link {
   text-decoration: none;
-  color: rgb(53, 136, 53);
+  color: white;
   font-weight: bolder;
   font-size: 1.25rem;
   margin: 1rem 0;
@@ -265,10 +301,12 @@ button[type=submit]{
 
 .mobile__nav-logout {
   margin-top: 2rem;
-  width: 10rem
+  width: 10rem;
+  background-color:#ccc;
+  color:rgb(53, 136, 53)
 }
 
-.backdrop {
+/* .backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -276,7 +314,7 @@ button[type=submit]{
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
-}
+} */
 
 .watch-item-image {
   width: 150px;
@@ -321,9 +359,7 @@ button:hover{
 .toy-card {
   text-align: center;
   width: 225px;
-  /* float: left; */
   background-color: rgb(238, 238, 238);
-  /* margin: 1%; */
   padding-top: 10px;
   border-radius: 12px;
   margin: 8px 5px
@@ -462,21 +498,20 @@ button[type=submit]{
 
 .toy-page{
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 5%;
+  flex-direction: column;
+  align-items: center;
+  margin: 130px 5% 0 5%;
 }
 
 .toy-page-img{
-  width: 55%
+  width: 100%
 }
 
 .toy-page-details{
-  width: 35%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 90%;
+  /* display: flex; */
+  /* flex-direction: column; */
+  text-align: center;
   background-color: rgb(235, 233, 233);
   border-radius: 10px;
   padding-bottom: 30px
@@ -614,10 +649,15 @@ button.disable:hover{
     justify-content: space-between;
     align-items: center;
     /* margin: 0 15px */
+
   }
 
   #header-logo{
     max-width: 350px;
+  }
+
+  .main__nav-logout {
+    display: inline-block;
   }
 
   #header__cart-thumb {
@@ -628,6 +668,10 @@ button.disable:hover{
 
   #header__cart-thumb:hover{
     cursor: pointer;
+  }
+
+  .content{
+    top: 150px;
   }
 
   /* Home.js */
@@ -736,6 +780,16 @@ button.disable:hover{
     display: none;
   }
 
+  .main__nav-logout {
+    text-decoration: none;
+    color: white;
+    background-color:rgb(53, 136, 53);
+    padding: 12px 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+
   /* UserList.js UserListItem.js */
 
   /* .user-list-header{
@@ -757,4 +811,35 @@ button.disable:hover{
     text-align: right;
   }
 
+  /* ToyPage.js */
+
+  .toy-page{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 200px 5% 0 5%;
+  }
+
+  .toy-page-img{
+    width: 55%
+  }
+
+  .toy-page-details{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(235, 233, 233);
+    border-radius: 10px;
+    padding-bottom: 30px
+  
+  }
+
+}
+
+@media (max-width: 40rem) {
+  #header__signup-login {
+    font-size: 1.125rem;
+  }
 }
