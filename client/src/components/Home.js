@@ -1,6 +1,6 @@
 function Home() {
   return (
-    <div id="home">
+    <div id="home" className="content">
       <h2>Welcome to the Library of Toys!</h2>
       <p>
         View our selection of engaging toys. When you find one you like selected it and we'll send it to you for free. Keep things fresh for your kids while managing your home clutter. Let's limit our plastic waste and encourage a circular economy for our toys.  
