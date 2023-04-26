@@ -62,16 +62,11 @@ function Nav() {
     );
   } else {
     return (
-      <div id="nav">
-        <button className="toggle-button">
-          <span className="toggle-button__bar"></span>
-          <span className="toggle-button__bar"></span>
-          <span className="toggle-button__bar"></span>
-        </button>
-        <NavLink to="/view_toys" className="main__nav-link">
+      <div id="nav" className="no-login">
+        <NavLink to="/view_toys" className="main__nav-link no-login">
           View Toys
         </NavLink>
-        <NavLink to="/user_login" className="main__nav-link">
+        <NavLink to="/user_login" className="main__nav-link no-login">
           Login
         </NavLink>
       </div>
