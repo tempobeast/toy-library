@@ -22,9 +22,10 @@ function ToyContainer() {
   });
 
   return (
-    <div className="content">
+    <div className="toy-container__page content">
       <h2 className="toy-container-header">View our inventory</h2>
       <input
+        className="toy-container__filter"
         type="text"
         placeholder="filter by age"
         onChange={(e) => setAge(e.target.value)}
