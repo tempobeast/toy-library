@@ -7,11 +7,11 @@ class User < ApplicationRecord
     validates :first_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, message: "only allows letters" }
     validates :last_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, message: "only allows letters" }
 
-    validates :telephone, presence: true, numericality: true, :length => { minimum: 11, maximum: 16}
+    # validates :telephone, presence: true, numericality: true, :length => { minimum: 11, maximum: 16}
 
     def create_first_admin 
         if self == User.first
-            self.is_admin = true
+            self.update(is_admin: true)
         end
     end
 
