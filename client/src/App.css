@@ -39,7 +39,7 @@ button[type=submit]{
 .header {
   background-color: white;
   color: rgb(53, 136, 53);
-  /* text-align: left; */
+  text-align: left;
   position: fixed;
   z-index: 10;
   width: 100vw;
@@ -56,7 +56,7 @@ button[type=submit]{
 #header-logo{
   top: 0;
   left: 0;
-  width: 80%;
+  width: 70%;
   max-width: 350px;
 }
 
@@ -511,7 +511,8 @@ button[type=submit]{
 }
 
 .toy-page-img{
-  width: 100%
+  /* width: 80%; */
+  height: 40vh;
 }
 
 .toy-page-details{
@@ -521,28 +522,32 @@ button[type=submit]{
   text-align: center;
   background-color: rgb(235, 233, 233);
   border-radius: 10px;
-  padding-bottom: 30px
-
+  padding: 1rem;
+  margin-top: 1rem
 }
 
 .toy-page-details h3{
+  margin: .5rem auto;
   font-size: 2rem;
+}
+
+.toy-page-details small{
+  margin: .25rem
 }
 
 .toy-page-details p{
   font-size: 1.25rem;
-  margin: 20px;
+  margin: .5rem;
   text-align: center;
-  padding: 5px 0
 }
 
 .toy-page-details h5{
   font-size: 1rem;
+  margin: .5rem;
 }
 
 .toy-page-admin-buttons{
-  display: flex;
-  flex-direction: row;
+  color: black;
 }
 
 .order-header{
@@ -823,24 +828,58 @@ button.disable:hover{
   .toy-page{
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     margin: 200px 5% 0 5%;
   }
 
   .toy-page-img{
-    width: 55%
+    height: 100%;
+    width: 60%
   }
 
   .toy-page-details{
     width: 35%;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     align-items: center;
     background-color: rgb(235, 233, 233);
     border-radius: 10px;
-    padding-bottom: 30px
+    padding-bottom: 30px;
+    margin: 0; 
+    padding: 10px 0;
+  }
+
+  .toy-page-details h3{
+    margin: .5rem auto;
+    font-size: 2rem;
+  }
   
+  .toy-page-details small{
+    margin: .25rem
+  }
+  
+  .toy-page-details p{
+    font-size: 1.25rem;
+    margin: .5rem;
+    text-align: center;
+  }
+  
+  .toy-page-details h5{
+    font-size: 1rem;
+    margin: .5rem;
+  }
+
+  .toy-page-admin-buttons {
+    margin: .5rem;
+  }
+  
+  .toy-page-admin-buttons button{
+    margin: 2rem 2.5%;
+    width: 45%;
+    max-width: 7rem;
+    font-size: 85%;
+    padding: 5% 
   }
 
   .toy-container{
