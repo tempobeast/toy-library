@@ -344,25 +344,31 @@ button:hover{
 }
 
 
-.toy-container-header{
-  text-align: center;
-}
+/* ToyContainer.js and ToyCard.js */
 
 .toy-container{
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
   margin: 2% 10%;
+}
+
+.toy-container__filter {
+  width: 6rem;
 }
 
 .toy-card {
   text-align: center;
-  width: 225px;
+  width: 80%;
   background-color: rgb(238, 238, 238);
-  padding-top: 10px;
+  /* padding-top: 10px; */
   border-radius: 12px;
   margin: 8px 5px
+}
+
+.toy-card:hover{
+  cursor: pointer;
 }
 
 .toy-card h3 {
@@ -370,7 +376,7 @@ button:hover{
 }
 
 .toy-card h5{
-  margin: 8px;
+  margin: 8px auto 5% auto;
 }
 
 .toy-card-quantity {
@@ -385,7 +391,8 @@ button:hover{
 
 .toy-card-img {
   width: 90%;
-  border-radius: 12px
+  border-radius: 12px;
+  margin-top: 5%
 }
 
 .order-confirmation {
@@ -834,6 +841,50 @@ button.disable:hover{
     border-radius: 10px;
     padding-bottom: 30px
   
+  }
+
+  .toy-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2% 10%;
+  }
+  
+  .toy-container__filter {
+    margin: 0 10% 0 70%
+  }
+  
+  .toy-card {
+    text-align: center;
+    width: 225px;
+    background-color: rgb(238, 238, 238);
+    padding-top: 10px;
+    border-radius: 12px;
+    margin: 8px 5px
+  }
+  
+  .toy-card h3 {
+    margin: 8px
+  }
+  
+  .toy-card h5{
+    margin: 8px;
+  }
+  
+  .toy-card-quantity {
+    margin: 30px
+  }
+  
+  
+  .toy-card button{
+    padding: 5px 10px;
+    margin: 12px 8px 15px 8px
+  }
+  
+  .toy-card-img {
+    width: 90%;
+    border-radius: 12px
   }
 
 }
