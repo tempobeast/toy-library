@@ -86,7 +86,7 @@ function AddToy() {
   }
 
   return (
-    <div className="content">
+    <div className="add-toy content">
       <h1>{toyToUpdate ? `Update ${toyToUpdate.name}` : "Add a Toy"}</h1>
       <form onSubmit={toyToUpdate ? handleUpdate : handleSubmit}>
         <label htmlFor="name">Name: </label>
@@ -98,7 +98,6 @@ function AddToy() {
           onChange={handleChange}
           required
         />
-        <br />
         <label htmlFor="description">Description: </label>
         <input
           type="textarea"
@@ -108,7 +107,6 @@ function AddToy() {
           onChange={handleChange}
           required
         />
-        <br />
         <label htmlFor="sku">SKU: </label>
         <input
           type="number"
@@ -118,7 +116,6 @@ function AddToy() {
           onChange={handleChange}
           required
         />
-        <br />
         <label htmlFor="purchase_price">Purchase Price: </label>
         <input
           type="number"
@@ -128,7 +125,6 @@ function AddToy() {
           onChange={handleChange}
           required
         />
-        <br />
         <label htmlFor="inventory">Inventory: </label>
         <input
           type="number"
@@ -136,7 +132,6 @@ function AddToy() {
           value={formData.inventory}
           onChange={handleChange}
         />
-        <br />
         <label htmlFor="age_range">Age Range: </label>
         <input
           type="text"
@@ -144,7 +139,6 @@ function AddToy() {
           value={formData.age_range}
           onChange={handleChange}
         />
-        <br />
         <label htmlFor="img_url">Image URL: </label>
         <input
           type="text"
@@ -152,7 +146,6 @@ function AddToy() {
           value={formData.img_url}
           onChange={handleChange}
         />
-        <br />
         <button type="submit">
           {" "}
           {isLoading
