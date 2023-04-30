@@ -19,7 +19,6 @@ input {
   width: 80%;
   padding: 5px 10px;
   margin: 8px 15%;
-  display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   height: 2.5rem
@@ -27,11 +26,13 @@ input {
 
 label{
   margin: 15%;
+  text-align: left;
   padding: 0px
 }
 
 button[type=submit]{
-  margin: 10px 15% 0px
+  margin: 10px 15% 0px;
+  vertical-align: center;
 }
 
 /* Header.js */
@@ -87,6 +88,10 @@ button[type=submit]{
   position: relative;
   top: 120px;
   z-index: 1;
+}
+
+.content.login-signup {
+  top: 150px
 }
 
 .toggle-button {
@@ -164,6 +169,7 @@ button[type=submit]{
   align-items: center;
   flex-wrap: wrap;
   width: 80%;
+  max-width: 60rem;
   margin: auto
 }
 
@@ -191,23 +197,19 @@ button[type=submit]{
   padding: 0 25px;
 }
 
-.login-form form,
-.signup-form form {
+form {
   background-color: rgb(240, 238, 238);
   padding: 25px;
 }
 
-.login-form input,
-.signup-form input {
+input {
   width: 90%;
   margin: 0 auto 1rem;
   display: block;
 }
 
-.login-form label,
-.login-form button,
-.signup-form label,
-.signup-form button {
+label,
+button {
   margin: 5px 5%;
   display: block;
 }
@@ -467,24 +469,24 @@ hr {
   margin: 0 15%;
   padding: 25px;
   border-radius: 15px;
-}
+} */
 
-input {
-  width: 70%;
+/* input {
+  width: 90%; 
   padding: 12px 20px;
   margin: 8px 15%;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box
-}
+} */
 
-label{
+/* label{
   margin: 15%;
   padding: 0px
-}
+} */
 
-button[type=submit]{
+/* button[type=submit]{
   margin: 10px 15% 0px
 } */
 
@@ -546,8 +548,8 @@ button[type=submit]{
   margin: .5rem;
 }
 
-.toy-page-admin-buttons{
-  color: black;
+.toy-page-admin-buttons button{
+  margin: 0 1% 
 }
 
 .order-header{
@@ -560,12 +562,21 @@ button[type=submit]{
 .user-list-item{
   /* width: 20%; */
   height: 1rem;
+  font-size: 0.8rem;
 }
 
 .user-list-item-end{
   width: 25%;
-  height: 1rem;
+  height: 1.5rem;
   /* background: blue; */
+}
+
+.user-list-item-end button {
+  vertical-align: center;
+  margin: 0;
+  width: 100px;
+  padding: 5px;
+  font-size: 0.8rem
 }
 
 .user-list-header{
@@ -597,10 +608,6 @@ button[type=submit]{
   width: 10%;
 }
 
-.user-list__button {
-  padding: 6px 12px;
-}
-
 button.disable{
   opacity: 40%;
 
@@ -627,29 +634,14 @@ button.disable:hover{
   /* shared */
 
   form {
-    background-color: rgb(240, 238, 238);
-    /* margin: 0 15%; */
-    padding: 25px;
-    /* border-radius: 15px; */
+    max-width: 40rem;
+    margin: auto;
+    border-radius: 12px;
   }
-  
-  /* input {
-    width: 70%;
-    padding: 12px 20px;
-    margin: 8px 15%;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  } */
-  
-  label{
-    margin: 15%;
-    padding: 0px
+
+  .content{
+    top: 150px;
   }
-  
-  /* button[type=submit]{
-    margin: 10px 15% 0px
-  } */
 
   /* Header.js */
 
@@ -670,6 +662,8 @@ button.disable:hover{
 
   .main__nav-logout {
     display: inline-block;
+    padding: 0;
+    margin: 0;
   }
 
   #header__cart-thumb {
@@ -682,9 +676,7 @@ button.disable:hover{
     cursor: pointer;
   }
 
-  .content{
-    top: 150px;
-  }
+  
 
   /* Home.js */
 
@@ -721,9 +713,9 @@ button.disable:hover{
 
   /* LoginForm.js */
 
-  .login-signup {
+  .content.login-signup {
     max-width: 40rem;
-    margin: auto;
+    margin: 0 auto;
   }
 
   .login-form__title,
@@ -734,8 +726,7 @@ button.disable:hover{
 
   .login-form form,
   .signup-form form { 
-    background-color: rgb(240, 238, 238);
-    width: 40rem;
+    /* width: 40rem; */
     margin: auto;
     padding: 25px;
     border-radius: 15px;
@@ -821,6 +812,18 @@ button.disable:hover{
 
   .user-list-item-end {
     text-align: right;
+  }
+
+  .user-list-item{
+    /* width: 20%; */
+    height: 1rem;
+    font-size: 1rem;
+  }
+  
+  .user-list-item-end button{
+   padding: 0.4rem 0.8rem;
+   width: 8rem;
+   font-size: 1rem;
   }
 
   /* ToyPage.js */
