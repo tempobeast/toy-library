@@ -45,11 +45,10 @@ function UpdateUserInfo() {
   }
 
   return (
-    <div className="content">
+    <div className="content update-user">
       <h1>Update Account Information</h1>
       <form onSubmit={handleUpdateSubmit}>
         <label htmlFor="username">{`Username: ${user.username}`}</label>
-        <br />
         <br />
         <label htmlFor="first-name">First Name: </label>
         <input
@@ -60,7 +59,6 @@ function UpdateUserInfo() {
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="last-name">Last Name: </label>
         <input
           type="last-name"
@@ -70,7 +68,6 @@ function UpdateUserInfo() {
           onChange={(e) => setLastName(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="email">Email: </label>
         <input
           type="email"
@@ -80,7 +77,6 @@ function UpdateUserInfo() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="telephone">Telephone: </label>
         <input
           type="text"
@@ -89,7 +85,6 @@ function UpdateUserInfo() {
           value={telephone}
           onChange={(e) => setTelephone(e.target.value)}
         />
-        <br />
         <button type="submit">
           {" "}
           {isLoading ? "Loading..." : "Update Info"}{" "}
