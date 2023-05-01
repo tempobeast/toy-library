@@ -59,12 +59,14 @@ button[type=submit]{
   left: 0;
   width: 70%;
   max-width: 350px;
+  min-width: 200px;
 }
 
 #header__cart-thumb {
   text-align: right;
   flex: end;
-  margin-right: 10px;
+  margin-right: 3rem;
+  font-size: 1.25rem;
 }
 
 #header__cart-thumb:hover{
@@ -98,11 +100,12 @@ button[type=submit]{
   display: active;
   position: fixed;
   top: 1.5rem;
-  width: 5rem;
+  margin: 0; 
+  width: 2.5rem;
   background: transparent;
   border: none;
   cursor: pointer;
-  padding-top: 0;
+  padding: 0;
   padding-bottom: 0;
   vertical-align: middle;
   align-items: left;
