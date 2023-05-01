@@ -237,11 +237,11 @@ button {
 /* CartItemCard.js */
 
 .all-cart-items{
-  width: 70%;
+  width: 95%;
   margin: 30px auto;
   border-style: solid;
   border-width: 2px;
-  padding: 15px;
+  /* padding: 15px; */
   position: relative;
 }
 
@@ -251,15 +251,17 @@ button {
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid grey;
-  padding: 12px
+  padding: 12px 12px 12px 0;
+  width: 100%;
 }
 
 .last-cart-item {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 12px
+  /* padding: .5rem .5rem .5rem 0; */
+  padding: 12px 12px 12px 0;
 }
 
 .cart-item-card-button{
@@ -269,6 +271,7 @@ button {
 
 .cart-item-image {
   width: 100px;
+  
 }
 
 /* MobileNav.js */
@@ -941,6 +944,45 @@ button.disable:hover{
     width: 90%;
     border-radius: 12px
   }
+
+  /* CartItemCard.js */
+
+.all-cart-items{
+  width: 95%;
+  margin: 30px auto;
+  border-style: solid;
+  border-width: 2px;
+  /* padding: 15px; */
+  position: relative;
+}
+
+.cart-item-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding: 12px 12px 12px 0;
+  width: 100%;
+}
+
+.last-cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem 2rem 1rem;
+}
+
+.cart-item-card-button{
+  font-size: 14px;
+  padding: 5px 10px
+}
+
+.cart-item-image {
+  width: 200px;
+  
+}
 
 }
 
