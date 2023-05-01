@@ -394,6 +394,16 @@ button:hover{
   margin: 12px 8px 15px 8px
 }
 
+/* .toy-card__qty {
+  display: flex;
+  flex-direction: row;
+} */
+
+label.toy-card__qty {
+  width: 50%;
+  display: inline;
+}
+
 .toy-card-img {
   width: 90%;
   border-radius: 12px;

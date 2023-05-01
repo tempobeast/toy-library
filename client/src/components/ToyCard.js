@@ -111,8 +111,8 @@ function ToyCard({ toy }) {
         </div>
         {user && toy.inventory > 0 ? (
           <>
-            <label>Quantity: </label>
-            <select onChange={handleQuantityChange}>{selectOptions}</select>
+            <label className="toy-card__qty">Quantity: </label>
+            <select className="toy-card__qty" onChange={handleQuantityChange}>{selectOptions}</select>
             <button onClick={handleAddToCartClick} id={toy.id}>
               add to cart
             </button>
