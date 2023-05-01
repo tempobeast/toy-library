@@ -23,7 +23,7 @@ function Header() {
         <h2
           onClick={handleCartClick}
           id="header__cart-thumb"
-        >{`🛒 ${cart.total_items} items`}</h2>
+        >{`🛒 (${cart.total_items})`}</h2>
       ) : (
         <h2 id="header__signup-login" onClick={() => navigate("/user_login")}>
           Signup/login
