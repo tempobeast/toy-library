@@ -962,8 +962,12 @@ button.disable:hover{
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid grey;
-  padding: 12px 12px 12px 0;
+  padding: 2rem 2rem 2rem 1rem;
   width: 100%;
+}
+
+.cart-item-card h4{
+  padding: 0 2.5rem;
 }
 
 .last-cart-item {
@@ -971,7 +975,7 @@ button.disable:hover{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 5rem 2rem 1rem;
+  /* padding: 2rem 2rem 2rem 1rem; */
 }
 
 .cart-item-card-button{
@@ -981,7 +985,11 @@ button.disable:hover{
 
 .cart-item-image {
   width: 200px;
-  
+}
+
+.cart-page__buttons {
+  display: flex;
+  justify-content: center;
 }
 
 }

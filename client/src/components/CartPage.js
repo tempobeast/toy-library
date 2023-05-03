@@ -44,8 +44,10 @@ function CartPage() {
               <CartItemCard key={item.id} item={item} />
             ))}
           </div>
-          <button onClick={() => setSubmitClick(true)}>Confirm Order</button>
-          <button onClick={handleCancelOrderClick}>Cancel Order</button>
+          <div className="cart-page__buttons">
+            <button classname="cart-page__button" onClick={() => setSubmitClick(true)}>Confirm Order</button>
+            <button classname="cart-page__button" onClick={handleCancelOrderClick}>Cancel Order</button>
+          </div>
         </>
       )}
     </div>

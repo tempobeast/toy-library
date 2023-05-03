@@ -8,7 +8,7 @@ function CartItemCard({ item, id }) {
     <div
       className={
         cart.cart_items[cart.cart_items.length - 1].id === item.id
-          ? "last-cart-item"
+          ? "last-cart-item cart-item-card"
           : "cart-item-card"
       }
     >
