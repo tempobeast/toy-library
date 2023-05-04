@@ -72,7 +72,7 @@ function SubmitOrderConfirmation({ setSubmitClick, handleCancelOrderClick }) {
           setEditAddress={setEditAddress}
         />
       ) : null}
-      <hr />
+      <br />
       <button
         id="order-confirmation-button"
         onClick={handleConfirmSubmitCartClick}
@@ -83,7 +83,7 @@ function SubmitOrderConfirmation({ setSubmitClick, handleCancelOrderClick }) {
         Cancel Order
       </button>
       {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
-      <hr />
+      <br />
       <button
         id="order-confirmation-button"
         onClick={() => setSubmitClick(false)}

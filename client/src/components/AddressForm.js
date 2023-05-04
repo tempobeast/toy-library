@@ -77,7 +77,6 @@ function AddressForm({ editAddress, setEditAddress }) {
           onChange={(e) => setStreet(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="city">City: </label>
         <input
           type="city"
@@ -87,7 +86,6 @@ function AddressForm({ editAddress, setEditAddress }) {
           onChange={(e) => setCity(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="state">State: </label>
         <input
           type="state"
@@ -97,7 +95,6 @@ function AddressForm({ editAddress, setEditAddress }) {
           onChange={(e) => setState(e.target.value)}
           required
         />
-        <br />
         <label htmlFor="zip">Zip: </label>
         <input
           type="zip"
@@ -107,7 +104,6 @@ function AddressForm({ editAddress, setEditAddress }) {
           onChange={(e) => setZip(e.target.value)}
           required
         />
-        <br />
         <button type="submit">
           {" "}
           {isLoading
