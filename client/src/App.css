@@ -992,6 +992,19 @@ button.disable:hover{
   justify-content: center;
 }
 
+.footer {
+  padding: 2rem;
+  margin-top: 22rem;
+  color: #ccc;
+  background: black;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: white;
+}
+
+
 }
 
 @media (max-width: 40rem) {
