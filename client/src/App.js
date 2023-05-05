@@ -17,6 +17,7 @@ import { ToysContext } from "./context/toys";
 import { CartContext } from "./context/cart";
 import { PreviousOrdersContext } from "./context/previousOrders";
 import OrdersContainer from "./components/OrdersContainer";
+import Footer from "./components/Footer";
 
 function App() {
   const { cart, setCart } = useContext(CartContext);
@@ -66,6 +67,7 @@ function App() {
           <Route path="view_toys/:toyId" element={<ToyPage />} />
           <Route path="view_toys" element={<ToyContainer />} />
         </Routes>
+        <Footer />
       </div>
     );
   } else {
@@ -110,6 +112,7 @@ function App() {
           />
           <Route path="/" element={<Home />} />
         </Routes>
+        <Footer />
       </div>
     );
   }
