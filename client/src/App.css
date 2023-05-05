@@ -33,6 +33,7 @@ label{
 button[type=submit]{
   margin: 10px 15% 0px;
   vertical-align: center;
+  cursor: pointer;
 }
 
 /* Header.js */
@@ -255,14 +256,13 @@ button {
   width: 100%;
 }
 
-.last-cart-item {
+/* .last-cart-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* padding: .5rem .5rem .5rem 0; */
   padding: 12px 12px 12px 0;
-}
+} */
 
 .cart-item-card-button{
   font-size: 14px;
@@ -633,6 +633,18 @@ button.disable:hover{
   background-color: rgb(53, 136, 53)
 }
 
+.footer {
+  padding: 1rem;
+  margin-top: 10rem;
+  color: #ccc;
+  background: black;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: white;
+}
+
 
 
 /* @media screen and (max-width: 500px) {
@@ -970,13 +982,12 @@ button.disable:hover{
   padding: 0 2.5rem;
 }
 
-.last-cart-item {
+/* .last-cart-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* padding: 2rem 2rem 2rem 1rem; */
-}
+} */
 
 .cart-item-card-button{
   font-size: 14px;
@@ -993,7 +1004,7 @@ button.disable:hover{
 }
 
 .footer {
-  padding: 2rem;
+  padding: 4rem;
   margin-top: 22rem;
   color: #ccc;
   background: black;
