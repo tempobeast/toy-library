@@ -413,7 +413,7 @@ label.toy-card__qty {
   margin-top: 5%
 }
 
-.order-confirmation {
+.order-confirmation__card {
   position: absolute;
   background-color: white;
   width: 60%;
@@ -422,7 +422,18 @@ label.toy-card__qty {
   border-style: solid;
   border-width: 5px;
   border-radius: 5px;
-  z-index: 1;
+  z-index: 12;
+}
+
+.backdrop {
+  display: block;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 11;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 .user-profile-button{
@@ -454,6 +465,7 @@ label.toy-card__qty {
 }
 
 #edit-address{
+  display: inline-block;
   color: blue;
   text-decoration: underline;
   margin-top: 0;
@@ -503,14 +515,11 @@ hr {
 }
 
 .toy-page-img{
-  /* width: 80%; */
   height: 40vh;
 }
 
 .toy-page-details{
   width: 90%;
-  /* display: flex; */
-  /* flex-direction: column; */
   text-align: center;
   background-color: rgb(235, 233, 233);
   border-radius: 10px;
@@ -693,7 +702,6 @@ button.disable:hover{
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: nowrap;
-    /* margin: auto; */
     width: 90%;
   }
 
@@ -780,8 +788,7 @@ button.disable:hover{
   }
 
   .toggle-button,
-  #mobile-nav,
-  .backdrop {
+  #mobile-nav {
     display: none;
   }
 
@@ -796,14 +803,6 @@ button.disable:hover{
   }
 
   /* UserList.js UserListItem.js */
-
-  /* .user-list-header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    text-align: left;
-    font-size: .8rem;
-  } */
   
   .user-list-header,
   .user-list{

@@ -25,6 +25,8 @@ function CartPage() {
     });
   }
 
+  console.log(submitClick)
+
   return (
     <div className="cart-page content">
       {cart.total_items < 1 ? (
@@ -32,10 +34,13 @@ function CartPage() {
       ) : (
         <>
           {submitClick ? (
-            <SubmitOrderConfirmation
-              setSubmitClick={setSubmitClick}
-              handleCancelOrderClick={handleCancelOrderClick}
-            />
+            <div>
+              <SubmitOrderConfirmation
+                setSubmitClick={setSubmitClick}
+                handleCancelOrderClick={handleCancelOrderClick}
+              />
+              <div onClick={() => setSubmitClick(false)} className="backdrop"></div>
+            </div>
           ) : null}
           <div
             className={submitClick ? "inactive-cart-items" : "all-cart-items"}
@@ -45,8 +50,8 @@ function CartPage() {
             ))}
           </div>
           <div className="cart-page__buttons">
-            <button classname="cart-page__button" onClick={() => setSubmitClick(true)}>Confirm Order</button>
-            <button classname="cart-page__button" onClick={handleCancelOrderClick}>Cancel Order</button>
+            <button className="cart-page__button" onClick={() => setSubmitClick(true)}>Confirm Order</button>
+            <button className="cart-page__button" onClick={handleCancelOrderClick}>Cancel Order</button>
           </div>
         </>
       )}

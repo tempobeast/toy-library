@@ -44,53 +44,53 @@ function SubmitOrderConfirmation({ setSubmitClick, handleCancelOrderClick }) {
   }
 
   return (
-    <div className="order-confirmation">
-      <h2>Order Confirmation</h2>
-      {cart.cart_items.map((item) => (
-        <CartItemCard id="order-confirmation" key={item.id} item={item} />
-      ))}
-      {user.user_address ? (
-        <>
-          <hr />
-          <p className="order-confirmation-shipping">
-            Ship to: {user.user_address.street}, {user.user_address.city},{" "}
-            {user.user_address.state} {user.user_address.zip}{" "}
-          </p>
-          <p id="edit-address" onClick={() => setEditAddress(true)}>
-            Edit Shipping Information
-          </p>
-        </>
-      ) : (
-        <AddressForm
-          editAddress={editAddress}
-          setEditAddress={setEditAddress}
-        />
-      )}
-      {editAddress ? (
-        <AddressForm
-          editAddress={editAddress}
-          setEditAddress={setEditAddress}
-        />
-      ) : null}
-      <br />
-      <button
-        id="order-confirmation-button"
-        onClick={handleConfirmSubmitCartClick}
-      >
-        {isLoading ? "Loading..." : "Submit Order"}
-      </button>
-      <button id="order-confirmation-button" onClick={handleCancelOrderClick}>
-        Cancel Order
-      </button>
-      {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
-      <br />
-      <button
-        id="order-confirmation-button"
-        onClick={() => setSubmitClick(false)}
-      >
-        Back
-      </button>
-    </div>
+      <div className="order-confirmation__card">
+        <h2>Order Confirmation</h2>
+        {cart.cart_items.map((item) => (
+          <CartItemCard id="order-confirmation" key={item.id} item={item} />
+        ))}
+        {user.user_address ? (
+          <>
+            <hr />
+            <p className="order-confirmation-shipping">
+              Ship to: {user.user_address.street}, {user.user_address.city},{" "}
+              {user.user_address.state} {user.user_address.zip}{" "}
+            </p>
+            <p id="edit-address" onClick={() => setEditAddress(true)}>
+              Edit Shipping Information
+            </p>
+          </>
+        ) : (
+          <AddressForm
+            editAddress={editAddress}
+            setEditAddress={setEditAddress}
+          />
+        )}
+        {editAddress ? (
+          <AddressForm
+            editAddress={editAddress}
+            setEditAddress={setEditAddress}
+          />
+        ) : null}
+        <br />
+        <button
+          id="order-confirmation-button"
+          onClick={handleConfirmSubmitCartClick}
+        >
+          {isLoading ? "Loading..." : "Submit Order"}
+        </button>
+        <button id="order-confirmation-button" onClick={handleCancelOrderClick}>
+          Cancel Order
+        </button>
+        {errors ? errors.map((err) => <p key={err}>{err}</p>) : null}
+        <br />
+        <button
+          id="order-confirmation-button"
+          onClick={() => setSubmitClick(false)}
+        >
+          Back
+        </button>
+      </div>
   );
 }
 export default SubmitOrderConfirmation;
