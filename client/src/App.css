@@ -418,7 +418,7 @@ label.toy-card__qty {
   background-color: white;
   width: 60%;
   left: 20%;
-  top: 20%;
+  top: 2rem;
   border-style: solid;
   border-width: 5px;
   border-radius: 5px;
@@ -479,32 +479,6 @@ hr {
   align-items: center;
   margin-right: 10%
 }
-
-/* form {
-  background-color: rgb(240, 238, 238);
-  margin: 0 15%;
-  padding: 25px;
-  border-radius: 15px;
-} */
-
-/* input {
-  width: 90%; 
-  padding: 12px 20px;
-  margin: 8px 15%;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box
-} */
-
-/* label{
-  margin: 15%;
-  padding: 0px
-} */
-
-/* button[type=submit]{
-  margin: 10px 15% 0px
-} */
 
 .previous-card-titles{
   display: inline;
