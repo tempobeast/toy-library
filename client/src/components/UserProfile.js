@@ -65,8 +65,7 @@ function UserProfile() {
       <br />
       {/* <button className="user-profile-button" onClick={handleDeleteClick}>Delete Account</button> */}
       <button className="user-profile-button" onClick={handleUpdateClick}>
-        {" "}
-        Update Account{" "}
+        Update Account
       </button>
     </div>
   );
