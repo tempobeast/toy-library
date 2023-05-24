@@ -58,61 +58,61 @@ function App() {
 
   if (!user) {
     return (
-      <div>
-        <Header />
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="user_login" element={<LoginPage />} />
-          <Route path="view_toys/:toyId" element={<ToyPage />} />
-          <Route path="view_toys" element={<ToyContainer />} />
-        </Routes>
-        <Footer />
+      <div className="no-user App">
+        <Header className="header"/>
+        <Nav className="nav"/>
+          <Routes >
+            <Route path="/" element={<Home />} />
+            <Route path="user_login" element={<LoginPage />} />
+            <Route path="view_toys/:toyId" element={<ToyPage />} />
+            <Route path="view_toys" element={<ToyContainer />} />
+          </Routes>
+          <Footer className="footer"/>
       </div>
     );
   } else {
     return (
       <div className="App">
-        <Header cart={cart} user={user} />
-        <Nav />
-        <Routes>
-          <Route path="view_toys/:toyId" element={<ToyPage />} />
-          <Route path="view_toys" element={<ToyContainer />}>
-          </Route>
-          <Route path="user_profiles/:id" element={<UserProfile />} />
-          <Route path="cart" element={<CartPage />} />
-          <Route path="update_user" element={<UpdateUserInfo />} />
-          <Route
-            path="add_toy"
-            element={
-              user.is_admin ? <AddToy /> : <Navigate replace to={"/"} />
-            }
-          />
-          <Route
-            path="manage_users"
-            element={
-              user.is_admin ? <UserList /> : <Navigate replace to={"/"} />
-            }
-          />
-          <Route
-            path="view_orders"
-            element={
-              user.is_admin ? (
-                <OrdersContainer />
-              ) : (
-                <Navigate replace to={"/"} />
-              )
-            }
-          />
-          <Route
-            path="update_toy/:toyId"
-            element={
-              user.is_admin ? <AddToy /> : <Navigate replace to={"/"} />
-            }
-          />
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Footer />
+        <Header className="header" cart={cart} user={user} />
+        <Nav className="nav"/>
+          <Routes className="main">
+            <Route path="view_toys/:toyId" element={<ToyPage />} />
+            <Route path="view_toys" element={<ToyContainer />}>
+            </Route>
+            <Route path="user_profiles/:id" element={<UserProfile />} />
+            <Route path="cart" element={<CartPage />} />
+            <Route path="update_user" element={<UpdateUserInfo />} />
+            <Route
+              path="add_toy"
+              element={
+                user.is_admin ? <AddToy /> : <Navigate replace to={"/"} />
+              }
+            />
+            <Route
+              path="manage_users"
+              element={
+                user.is_admin ? <UserList /> : <Navigate replace to={"/"} />
+              }
+            />
+            <Route
+              path="view_orders"
+              element={
+                user.is_admin ? (
+                  <OrdersContainer />
+                ) : (
+                  <Navigate replace to={"/"} />
+                )
+              }
+            />
+            <Route
+              path="update_toy/:toyId"
+              element={
+                user.is_admin ? <AddToy /> : <Navigate replace to={"/"} />
+              }
+            />
+            <Route path="/" element={<Home />} />
+          </Routes>
+          <Footer className="footer"/>
       </div>
     );
   }
