@@ -25,8 +25,6 @@ function CartPage() {
     });
   }
 
-  console.log(submitClick)
-
   return (
     <div className="cart-page content">
       {cart.total_items < 1 ? (
