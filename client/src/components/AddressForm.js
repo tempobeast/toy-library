@@ -65,9 +65,9 @@ function AddressForm({ editAddress, setEditAddress }) {
   }
 
   return (
-    <div>
+    <div >
       <h2>{editAddress ? "Edit Address" : "Shipping Address"}</h2>
-      <form onSubmit={user.user_address ? handleUpdateSubmit : handleAddSubmit}>
+      <form className="address-form" onSubmit={user.user_address ? handleUpdateSubmit : handleAddSubmit}>
         <label htmlFor="street">Street: </label>
         <input
           type="text"
