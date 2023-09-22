@@ -148,10 +148,12 @@ function ToyPage() {
           <h5>Age Range: {toyToView.age_range}</h5>
           {user && toyToView.inventory > 0 ? (
             <div>
-              <label>Quantity: </label>
-              <select onChange={(e) => setSelectedQuantity}>
-                {selectOptions}
-              </select>
+              <div className="toy-page__quantity"> 
+                <label>Quantity: </label>
+                <select onChange={(e) => setSelectedQuantity}>
+                  {selectOptions}
+                </select>
+              </div>
               <button onClick={handleAddToCartClick} id={toyToView.id}>
                 add to cart
               </button>
