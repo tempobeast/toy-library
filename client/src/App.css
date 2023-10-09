@@ -20,15 +20,9 @@
 
 /* shared */
 
-/* .main {
-  margin-top: 1rem;
-} */
-
 form {
   background-color: rgb(240, 238, 238);
-  /* margin: 0 15%; */
   padding: 25px;
-  /* border-radius: 15px; */
 }
 
 input {
@@ -89,23 +83,12 @@ button[type=submit]{
 
 #nav {
   background-color:rgb(53, 136, 53);
-  /* position: fixed; */
   z-index: 25;
   width: 100vw;
   display: flex;
   justify-content: right;
   padding: 12px;
 }
-
-/* .content{
-  position: relative;
-  top: 120px;
-  z-index: 1;
-} */
-
-/* .content.login-signup {
-  top: 150px
-} */
 
 .toggle-button {
   display: active;
@@ -245,6 +228,18 @@ button {
   padding: 10px 0;
 }
 
+.login-error {
+ animation: shake 0.2s
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 1px )  }
+  25% { transform: translate(0, -1px )  }
+  50% { transform: translate(0, -3px )  }
+  75% { transform: translate(0, 3px )  }
+  100% { transform: translate(0, 1px)  }
+}
+
 /* CartItemCard.js */
 
 .all-cart-items{
@@ -252,7 +247,6 @@ button {
   margin: 30px auto;
   border-style: solid;
   border-width: 2px;
-  /* padding: 15px; */
   position: relative;
 }
 
@@ -265,14 +259,6 @@ button {
   padding: 12px 12px 12px 0;
   width: 100%;
 }
-
-/* .last-cart-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 12px 12px 0;
-} */
 
 .cart-item-card-button{
   font-size: 14px;
@@ -291,8 +277,6 @@ button {
   z-index: 50;
   top: 54px;
   left: 0;
-  /* width: 1vw;
-  height: 1vh; */
 }
 
 #mobile-nav {
@@ -325,16 +309,6 @@ button {
   color:rgb(53, 136, 53)
 }
 
-/* .backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-} */
-
 .watch-item-image {
   width: 150px;
 }
@@ -348,7 +322,6 @@ button{
   text-decoration: none;
   display: inline-block;
   font-size: 15px;
-  /* margin: 0 3px 0 3px; */
   border-radius: 10px;
   transition: 0.3s;
 }
@@ -381,7 +354,6 @@ button:hover{
   text-align: center;
   width: 80%;
   background-color: rgb(238, 238, 238);
-  /* padding-top: 10px; */
   border-radius: 12px;
   margin: 8px 5px
 }
@@ -407,11 +379,6 @@ button:hover{
   padding: 5px 10px;
   margin: 12px 8px 15px 8px
 }
-
-/* .toy-card__qty {
-  display: flex;
-  flex-direction: row;
-} */
 
 label.toy-card__qty {
   width: 50%;
@@ -577,7 +544,6 @@ hr {
 }
 
 .user-list-item{
-  /* width: 20%; */
   height: 1rem;
   font-size: 0.8rem;
 }
@@ -642,7 +608,6 @@ button.disable:hover{
   margin-top: 2rem;
   color: #ccc;
   background: black;
-  /* grid-area: footer; */
 }
 
 .footer__link {
@@ -662,7 +627,6 @@ button.disable:hover{
 
   form {
     width: 40rem;
-    /* max-width: 40rem; */
     margin: auto;
     border-radius: 12px;
   }
@@ -680,8 +644,6 @@ button.disable:hover{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* margin: 0 15px */
-
   }
 
   #header-logo{
@@ -752,7 +714,6 @@ button.disable:hover{
 
   .login-form form,
   .signup-form form { 
-    /* width: 40rem; */
     margin: auto;
     padding: 25px;
     border-radius: 15px;
@@ -832,7 +793,6 @@ button.disable:hover{
   }
 
   .user-list-item{
-    /* width: 20%; */
     height: 1rem;
     font-size: 1rem;
   }
@@ -860,8 +820,6 @@ button.disable:hover{
 
   .toy-page-details{
     width: 35%;
-    /* display: flex;
-    flex-direction: column; */
     align-items: center;
     background-color: rgb(235, 233, 233);
     border-radius: 10px;
@@ -951,7 +909,6 @@ button.disable:hover{
   margin: 30px auto;
   border-style: solid;
   border-width: 2px;
-  /* padding: 15px; */
   position: relative;
 }
 
@@ -968,13 +925,6 @@ button.disable:hover{
 .cart-item-card h4{
   padding: 0 2.5rem;
 }
-
-/* .last-cart-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-} */
 
 .cart-item-card-button{
   font-size: 14px;
@@ -1002,7 +952,6 @@ button.disable:hover{
 
 .footer {
   padding: 1.5rem;
-  /* margin-top: 22rem; */
   color: #ccc;
   background: black;
 }
