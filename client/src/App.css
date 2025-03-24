@@ -454,6 +454,31 @@ hr {
   width: 60%
 }
 
+.orders_table {
+
+  width: 90%;
+  margin: 40px auto;
+  border: 2px solid black ;
+}
+
+td {
+  padding: 20px;
+}
+
+td:hover {
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #ebeeee;
+}
+
+th {
+  background-color: lightgrey;
+  padding: 20px;
+}
+
+
 .previous-order-card{
   border-width: 2px;
   border-style: solid;
@@ -473,6 +498,26 @@ hr {
 .previous-card-titles{
   display: inline;
   padding: 25px
+}
+
+.order_search_label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order_search_bar {
+  width: 20rem;
+  height: 1.6rem;
+  margin: 0 0 0 1rem;
+  border-color: black;
+}
+
+.order_container_filters{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .watch-list{
@@ -781,27 +826,11 @@ button.disable:hover{
 
   /* UserList.js UserListItem.js */
   
-  .user-list-header,
-  .user-list{
-    margin: 0 8%;
-    font-size: 1.2rem;
-    justify-content: space-evenly;
-  }
-
-  .user-list-item-end {
-    text-align: right;
-  }
-
-  .user-list-item{
-    height: 1rem;
-    font-size: 1rem;
-  }
-  
-  .user-list-item-end button{
-   padding: 0.4rem 0.8rem;
-   width: 8rem;
-   font-size: 1rem;
-  }
+ .user-list-table {
+  width: 98%;
+  margin: auto;
+  border: rgb(135, 135, 135) 2px solid
+ }
 
   /* ToyPage.js */
 
@@ -839,6 +868,7 @@ button.disable:hover{
     font-size: 1.25rem;
     margin: .5rem;
     text-align: center;
+    padding: .5rem;
   }
   
   .toy-page-details h5{
@@ -902,6 +932,31 @@ button.disable:hover{
     border-radius: 12px
   }
 
+  .review-container {
+    margin-top: 1rem;
+  }
+
+  .review {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .user-reviewed {
+    color: green;
+  }
+
+  .user-rating-text {
+    color: green;
+  }
+
+  .average-rating-text {
+    color: black
+  }
+
+  .stars-admin {
+    cursor: default;
+  }
+
   /* CartItemCard.js */
 
 .all-cart-items{
@@ -943,6 +998,26 @@ button.disable:hover{
 .order-confirmation__card {
   width: 75%;
   left: 12.5%;
+}
+
+.order_search_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.order_search_bar {
+  width: 20rem;
+  height: 1.6rem;
+  margin: 0 0 0 1rem;
+  border-color: black;
+}
+
+.order_container_filters{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .address-form {

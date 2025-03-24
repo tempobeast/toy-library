@@ -11,6 +11,15 @@ class ShoppingSessionsController < ApplicationController
         end
     end
 
+    def show
+        user = find_user
+        if user.is_admin
+            shopping_session = ShoppingSession.find(params[:id])
+            render json: shopping_session, status: :ok
+        end
+    end
+
+
     def update
         user = find_user
         if user.is_admin
@@ -23,10 +32,17 @@ class ShoppingSessionsController < ApplicationController
         else
             order = user.shopping_sessions.find(params[:id])
             if order.status == "active"
-                order.update!(status: params[:status])
-                OrderDetailsMailer.with(user: user, order: order).details.deliver_later
+                new_previous_order = PreviousOrder.create!(user_id: user.id, status: "processing", total: order.total, ship_date: nil, return_date: nil, restock_date: nil)
+                order.cart_items.each { |item| new_previous_order.cart_items.create(
+                    shopping_session_id: order.id,
+                    toy_id: item.toy_id,
+                    quantity: item.quantity,
+                    previous_order_id: new_previous_order,
+                    )}
+                order.update!(status: "inactive")
+                #OrderDetailsMailer.with(user: user, order: order).details.deliver_later
                 shopping_session = user.shopping_sessions.create(status: "active")
-                render json: [order, shopping_session], status: :ok
+                render json: [new_previous_order, shopping_session], status: :ok
             else
                 render json: {errors: ["Cannot process request until outstanding items are returned"]}, status: :unauthorized
             end

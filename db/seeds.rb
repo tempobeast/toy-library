@@ -12,5 +12,10 @@ Toy.create({name: "Bullseye", description: "Trusty Steed", sku: 2328, purchase_p
 Toy.create({name: "Mr. Potato Head", description: "Potato with removable appendages and facial features", sku: 2329, purchase_price: 22, inventory: 5, age_range: "3-6", img_url: "https://secure.img1-cg.wfcdn.com/im/91321703/resize-h445%5Ecompr-r85/8377/83778475/Mr+Potato+Head+Disney/Pixar+Toy+Story+4+Cardboard+Standup.jpg"})
 Toy.create({name: "Slinky Dog", description: "Slinky/Dog", sku: 2330, purchase_price: 22, inventory: 5, age_range: "8+", img_url: "https://m.media-amazon.com/images/I/71H0Jyg5uUL._AC_SX425_.jpg"})
 
+StatusOfOrder.create(orderStatus: "all")
+StatusOfOrder.create(orderStatus: "processing")
+StatusOfOrder.create(orderStatus: "shipped")
+StatusOfOrder.create(orderStatus: "returned")
+StatusOfOrder.create(orderStatus: "restocked")
 
 puts "done seeding"

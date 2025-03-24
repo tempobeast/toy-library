@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   # namespace :api do
+    resources :poly_reviews
+    resources :previous_orders
+    resources :carts
+    resources :status_of_orders, only: [:index]
     resources :user_addresses, only: [:update, :create]
     resources :cart_items, only: [:create]
-    resources :shopping_sessions, only: [:create, :index, :update]
+    resources :shopping_sessions
     delete '/cancel_shopping_session/:id', to: 'shopping_sessions#cancel'
     patch '/change_user_admin_status/:id', to: 'users#user_admin_status'
 

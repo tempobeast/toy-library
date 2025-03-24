@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :first_name, :last_name, :email, :telephone, :shopping_sessions, :is_admin
+  attributes :id, :username, :first_name, :last_name, :email, :telephone, :shopping_sessions, :is_admin, :poly_reviews
 
   has_many :shopping_sessions
   has_many :watch_lists

@@ -55,14 +55,21 @@ function UserList() {
 
   return (
     <div className="content">
-      <h1>Users</h1>
-      <div className="user-list-header">
-            <h3 className="user-list-item user-list__name">Name</h3>
-            <h3 className="user-list-item user-list__username">Username</h3>
-            <h3 className="user-list-item user-list__admin">Admin? </h3>
-            <div className="user-list-item-end user__list-end"></div>
-        </div>
-      {alphaUsers.map((userToUpdate) => <UserListItem onAdminConfirmClick={onAdminConfirmClick} key={userToUpdate.id} userToUpdate={userToUpdate}/>)}
+        <h1>Users</h1>
+        <table className="user-list-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Rating </th>
+                    <th>Admin? </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {alphaUsers.map((userToUpdate) => <UserListItem onAdminConfirmClick={onAdminConfirmClick} key={userToUpdate.id} userToUpdate={userToUpdate}/>)}
+            </tbody>
+        </table>
     </div>
   );
 }

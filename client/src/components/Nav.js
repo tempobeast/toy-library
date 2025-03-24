@@ -45,11 +45,9 @@ function Nav() {
             Add Toy
           </NavLink>
         ) : null}
-        {user.is_admin ? (
           <NavLink to="view_orders" className="main__nav-link">
             View Orders
           </NavLink>
-        ) : null}
         <NavLink to={`user_profiles/${user.id}`} className="main__nav-link">
           My Account
         </NavLink>

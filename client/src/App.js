@@ -12,6 +12,7 @@ import UpdateUserInfo from "./components/UpdateUserInfo";
 import ToyPage from "./components/ToyPage";
 import AddToy from "./components/AddToy";
 import UserList from "./components/UserList";
+import PreviousOrderCard from "./components/PreviousOrderCard";
 import { UserContext } from "./context/user";
 import { ToysContext } from "./context/toys";
 import { CartContext } from "./context/cart";
@@ -50,9 +51,11 @@ function App() {
   }, [previousOrders]);
 
   useEffect(() => {
-    fetch("/shopping_sessions")
+    fetch("/previous_orders")
       .then((res) => res.json())
-      .then((orders) => setPreviousOrders(orders));
+      .then((orders) => {
+        setPreviousOrders(orders)
+    });
   }, [user]);
 
 
@@ -97,17 +100,19 @@ function App() {
             <Route
               path="view_orders"
               element={
-                user.is_admin ? (
                   <OrdersContainer />
-                ) : (
-                  <Navigate replace to={"/"} />
-                )
               }
             />
             <Route
               path="update_toy/:toyId"
               element={
                 user.is_admin ? <AddToy /> : <Navigate replace to={"/"} />
+              }
+            />
+            <Route
+              path="view_orders/:orderId"
+              element = {
+                <PreviousOrderCard />
               }
             />
             <Route path="/" element={<Home />} />

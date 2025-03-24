@@ -1,6 +1,16 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2022_09_19_182222) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_22_213932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -8,6 +18,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_182222) do
     t.integer "shopping_session_id"
     t.integer "toy_id"
     t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "previous_order_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "total"
+    t.string "status"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -20,9 +40,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_182222) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "poly_reviews", force: :cascade do |t|
+    t.integer "stars"
+    t.string "reviewable_type", null: false
+    t.bigint "reviewable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["reviewable_type", "reviewable_id"], name: "index_poly_reviews_on_reviewable"
+  end
+
+  create_table "previous_orders", force: :cascade do |t|
     t.integer "user_id"
     t.integer "total"
+    t.string "status"
+    t.datetime "ship_date", precision: nil
+    t.datetime "return_date", precision: nil
+    t.datetime "restock_date", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,6 +76,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_182222) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+  end
+
+  create_table "status_of_orders", force: :cascade do |t|
+    t.string "orderStatus"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "toys", force: :cascade do |t|

@@ -15,7 +15,9 @@ class User < ApplicationRecord
         end
     end
 
+    has_many :poly_reviews, as: :reviewable
     has_one :user_address
+    has_many :previous_orders
     has_many :shopping_sessions
     has_many :watch_lists
     has_many :watch_list_toys, through: :watch_lists, source: :toy

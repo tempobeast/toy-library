@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/cart";
 import { UserContext } from "../context/user";
 
+
 function ToyPage() {
   let params = useParams();
   const { toys, setToys } = useContext(ToysContext);
@@ -14,13 +15,40 @@ function ToyPage() {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [toyToView, setToyToView] = useState({});
   const [errors, setErrors] = useState([]);
+  const [stars, setStars] = useState([["☆","☆","☆","☆","☆"], "rating"])
+  const [userReviewed, setUserReviewed] = useState(false)
   const navigate = useNavigate();
 
+  function formatStars(num, type) {
+    if(num === 0) {
+      setStars([stars[0], "unrated"])
+    };
+    const updatedStars = num
+    const newStars = []
+    for(let i = 1; i <= 5; i++) {
+      if(i <= updatedStars) {
+        newStars.push("★")
+      } else {
+        newStars.push("☆")
+      }
+    }
+    setStars([newStars, type])
+  }
+
   useEffect(() => {
-    fetch(`/toys/${params.toyId}`)
-      .then((res) => res.json())
-      .then((toy) => setToyToView(toy));
-  }, []);
+      fetch(`/toys/${params.toyId}`)
+        .then((res) => res.json())
+        .then((toy) => {
+          setToyToView(toy)
+          if(toy.poly_reviews.find((review) => review.user_id === user.id)) {
+            formatStars(toy.poly_reviews.find((review) => review.user_id === user.id).stars, "user")
+            setUserReviewed(true)
+          } else {
+            formatStars(toy.review_average, "rating")
+            setUserReviewed(false)
+          }
+        });
+  }, [params.toyId]);
 
   const nums = [];
 
@@ -45,6 +73,7 @@ function ToyPage() {
       body: JSON.stringify({
         toy_id: toyToView.id,
         quantity: selectedQuantity,
+        previous_order_id: null
       }),
     }).then((res) => {
       if (res.ok) {
@@ -101,14 +130,38 @@ function ToyPage() {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
-        const newToyArray = toys.filter((toy) => toy.id !== toyToView.id);
-        setToys(newToyArray);
-        navigate("/view_toys");
+          const newToyArray = toys.filter((toy) => toy.id !== toyToView.id);
+          setToys(newToyArray);
+          navigate("/view_toys");
       } else {
         res.json().then((err) => setErrors(err.errors));
       }
     });
   }
+ 
+  function handleReviewClick(e) {
+    fetch('/poly_reviews/', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({stars: e.target.id, reviewable_id: toyToView.id, reviewable_type: "Toy"}),
+    })
+    .then((res) => res.json())
+    .then((rating) => {
+      formatStars(rating, "user")
+      setUserReviewed(true)
+
+    })
+  }
+
+  const renderStars = stars[0].map((star, index) => (
+    <span onClick={handleReviewClick} key={index} className={userReviewed ? "review user-reviewed" : "review"} id={index + 1}>{star}</span>
+  ))
+
+  const renderStarsAdmin = stars[0].map((star, index) => (
+    <span key={index} className="review stars-admin" id={index + 1}>{star}</span>
+  ))
 
   if (user && user.is_admin) {
     return (
@@ -129,6 +182,10 @@ function ToyPage() {
             <button onClick={handleUpdateToyClick}>Update Toy</button>
             <button onClick={handleDeleteToyClick}>Delete Toy</button>
           </div>
+          <div className="review-container">
+            {renderStarsAdmin}
+            {userReviewed ? <p className="user-rating-text">(Your rating)</p> : toyToView.review_average === 0 ? <p className="average-rating">No reviews</p> : <p className="average-rating">({toyToView.review_average} / 5 ★)</p>}
+          </div>
         </div>
       </div>
     );
@@ -146,6 +203,7 @@ function ToyPage() {
           <h3>{toyToView.name}</h3>
           <p>{toyToView.description}</p>
           <h5>Age Range: {toyToView.age_range}</h5>
+          
           {user && toyToView.inventory > 0 ? (
             <div>
               <div className="toy-page__quantity"> 
@@ -173,6 +231,10 @@ function ToyPage() {
               )}
             </div>
           ) : null}
+          <div className="review-container">
+            {renderStars}
+            {userReviewed ? <p className="user-rating-text">(Your rating)</p> : toyToView.review_average === 0 ? <p className="average-rating">No reviews</p> : <p className="average-rating">({toyToView.review_average} / 5 ★)</p>}
+          </div>
         </div>
       </div>
     </div>

@@ -36,6 +36,7 @@ function ToyCard({ toy }) {
       body: JSON.stringify({
         toy_id: toy.id,
         quantity: selectedQuantity,
+        previous_order_id: null
       }),
     }).then((res) => {
       if (res.ok) {

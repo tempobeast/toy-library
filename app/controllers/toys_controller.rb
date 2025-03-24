@@ -40,6 +40,7 @@ class ToysController < ApplicationController
     end
 
     def show
+        user = find_user
         toy = Toy.find(params[:id])
         render json: toy, status: :ok
     end

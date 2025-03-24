@@ -1,11 +1,42 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/user'
 import { PreviousOrdersContext } from '../context/previousOrders'
+import { useParams } from 'react-router-dom'
 
-function PreviousOrdersCard({ order }) {
+function PreviousOrdersCard() {
+
+    let params = useParams();
     const { user } = useContext(UserContext)
     const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext)
-    const [ statusSelect, setStatusSelect ] = useState(order.status) 
+    const [ order, setOrder ] = useState({
+        id: "",
+        cart_items: [],
+        last_update: "",
+        status: "",
+        total_items: "",
+        user: {},
+        when_created: ""
+    })
+    const [ statusSelect, setStatusSelect ] = useState(order.status)
+    const [ statusDropdown, setStatusDropdown] = useState(["processing"])
+
+    useEffect(() => {
+        fetch(`/previous_orders/${params.orderId}`)
+        .then((res) => res.json())
+        .then((order) => {
+            setOrder(order)
+            setStatusSelect(order.status)
+        }) 
+    }, [setStatusDropdown])
+
+    useEffect(() => {
+        fetch('/status_of_orders')
+        .then((res) => res.json())
+        .then((statusOptions) => {
+            statusOptions.shift();
+            setStatusDropdown(statusOptions)
+        })
+    }, [setOrder, setStatusSelect])
 
     function orderStatusColor(status) {
         if (status === "processing"){
@@ -20,7 +51,7 @@ function PreviousOrdersCard({ order }) {
     }
 
     function handleOrderUpdateSubmit(e) {
-        fetch(`/shopping_sessions/${order.id}`, {
+        fetch(`/previous_orders/${order.id}`, {
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",
@@ -31,13 +62,21 @@ function PreviousOrdersCard({ order }) {
         .then((updatedOrder) => {
             const updatedOrders = previousOrders.filter((prevOrder) => prevOrder.id !== updatedOrder.id);
             setPreviousOrders([ ...updatedOrders, updatedOrder ])
+            setOrder(updatedOrder)
         })
     }
 
+    function formatDates(timestamp) {
+        let date = timestamp.slice(0,10)
+        let splitDate = date.split("-")
+        let newFormat = [splitDate[1],splitDate[2], splitDate[0]]
+        return newFormat.join("-")
+    }
+
     return (
-        <div key={order.id} className="previous-order-card">
+        <div  className="previous-order-card">
+            <h1>Order # {order.order_number}</h1>
             <div className='order-header'>
-                <h3>Order #: {order.id}</h3>
                 {user.is_admin ? <h3>User: {order.user.username}</h3> : null}
             </div>
             <h3 className="previous-card-titles">Order Status: </h3>
@@ -51,15 +90,16 @@ function PreviousOrdersCard({ order }) {
                 </div>
                 )
             })}
-            <h4>Order submitted: {order.when_created}</h4>
-            {order.status === "processing" ? null : <h4>Order {order.status}: {order.last_update}</h4>}
-            {user.is_admin && order.status !== "restocked" ? 
+            <h4>Submitted: {order.when_created}</h4>
+            {order.ship_date ? <h4>Shipped: {formatDates(order.ship_date)}</h4> : null}
+            {order.return_date ? <h4>Returned: {formatDates(order.return_date)}</h4> : null}
+            {order.restock_date ? <h4>Restocked: {formatDates(order.restock_date)}</h4> : null}
+            {user.is_admin && order.status !== "restocked" ?
                 <div className='previous-order-button'>
                     <select defaultValue={statusSelect} onChange={(e) => setStatusSelect(e.target.value)}>
-                        <option value="processing" >processing</option>
-                        <option value="shipped">shipped</option>
-                        <option value="returned">returned</option>
-                        <option value="restocked">restocked</option>
+                        {statusDropdown.map((orderStatus) => (
+                            <option key={orderStatus} value={orderStatus}>{orderStatus}</option>
+                        ))}
                     </select>
                     <button onClick={handleOrderUpdateSubmit}>Submit</button>
                 </div>
