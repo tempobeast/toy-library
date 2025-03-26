@@ -604,6 +604,26 @@ th {
   margin: 0 1% 
 }
 
+.confirm-button-container {
+  position: relative;
+  background-color: white;
+  border: grey 2px solid;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  top: -100px;
+  width: 300px;
+  height: 100px;
+  margin: auto;
+}
+
+.confirm-button-container button {
+  margin: 12px 0;
+  cursor: pointer;
+  height: 50px;
+}
+
 .order-header{
   display: flex;
   flex-direction: row;
