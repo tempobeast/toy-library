@@ -22,6 +22,18 @@ function OrderList({ order }) {
         }
     }
 
+    function formatDates(timestamp) {
+        let stamp = new Date(timestamp)
+        let formatDate = stamp.toLocaleDateString("en-US", {
+            timeZone: "America/Los_Angeles"
+        })
+        let formatTime = stamp.toLocaleTimeString("en-US", {
+            timeZone: "America/Los_Angeles"
+        })
+        let formattedDate = formatDate + " - " + formatTime
+        return formattedDate
+    }
+
     function handleRowClick(e) {
         navigate(`/view_orders/${order.id}`);
     }
@@ -37,19 +49,12 @@ function OrderList({ order }) {
             return formatDates(order.restock_date)
         }
     }
-
-    function formatDates(timestamp) {
-        let date = timestamp.slice(0,10)
-        let splitDate = date.split("-")
-        let newFormat = [splitDate[1],splitDate[2], splitDate[0]]
-        return newFormat.join("-")
-    }
     
     
     return (
         <tr onClick={handleRowClick} className="orders_table_row" key={order.id}>
             <td>{order.order_number}</td>
-            <td>{order.when_created}</td>
+            <td>{formatDates(order.when_created) + " PST"}</td>
             <td>{order.user.username}</td>
             <td>{order.total_items}</td>
             <td style={{color: orderStatusColor(order.status)}}>{order.status}</td>
