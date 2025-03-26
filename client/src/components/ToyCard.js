@@ -12,6 +12,7 @@ function ToyCard({ toy }) {
   const { setCart } = useContext(CartContext);
   const { user, setUser } = useContext(UserContext);
   const [errors, setErrors] = useState([]);
+  const [toyAdded, setToyAdded] = useState(false)
 
   const nums = [];
 
@@ -49,6 +50,11 @@ function ToyCard({ toy }) {
             setCart(updatedCart);
             const newToyArray = toys.filter((toy) => toy.id !== updatedToy.id);
             setToys([...newToyArray, updatedToy]);
+            setToyAdded(true)
+            setTimeout(() => {
+              
+              setToyAdded(false)
+            }, 1000);
           });
       } else {
         res.json().then((err) => setErrors(err.errors));
@@ -106,6 +112,7 @@ function ToyCard({ toy }) {
       <div className="toy-card">
         <div onClick={handleCardClick} id={toy.id}>
           <img className="toy-card-img" src={toy.img_url} alt={toy.name} />
+          {toyAdded ? <div className="confirm-add-toy-container"> <div className="confirm-add-toy"><p>Toy added to cart!</p></div></div> : <div className="confirm-add-toy"><p>{errors[0]}</p></div>}
           <h3>{toy.name}</h3>
           {/* <h5>Inventory: {toy.inventory}</h5> */}
           <h5>Age Range: {toy.age_range}</h5>

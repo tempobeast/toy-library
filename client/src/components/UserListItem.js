@@ -59,7 +59,7 @@ function UserListItem({userToUpdate, onAdminConfirmClick}) {
             <td>{userToUpdate.is_admin ? "Yes" : "No"}</td>
             <td>
             {!adminClick ?
-                <button onClick={user.id !== userToUpdate.id ? handleAdminClick : null} className={user.id !== userToUpdate.id ? "user-list-item-button user-list__button" : "disable user-list__button"}>{userToUpdate.is_admin ? "remove admin" : "make admin"}</button>
+                <button onClick={user.id !== userToUpdate.id && userToUpdate.id !== 1 ? handleAdminClick : null} className={user.id !== userToUpdate.id && userToUpdate.id !== 1 ? "user-list-item-button user-list__button" : "disable user-list__button"}>{userToUpdate.is_admin ? "remove admin" : "make admin"}</button>
                 :
                 <div>
                     <button onClick={handleAdminConfirmClick}>Confirm</button>
