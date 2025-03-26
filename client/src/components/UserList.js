@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function UserList() {
     const [ users, setUsers ] = useState([]);
+    const [ search, setSearch ] = useState("")
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -31,6 +32,16 @@ function UserList() {
             return 0
         }
     })
+    
+    const searchFilteredUsers = alphaUsers.filter((user) => {
+        if(search === "") {
+          return true
+        } else if (user.last_name.toLowerCase().startsWith(search.toLowerCase())) {
+          return true
+        } else {
+          return false
+        }
+      })
 
     function onAdminConfirmClick(userId, updatedAdminStatus) {
         fetch(`/change_user_admin_status/${userId}`, {
@@ -56,6 +67,9 @@ function UserList() {
   return (
     <div className="content">
         <h1>Users</h1>
+        <label className="order_search_label">Search by last name:
+            <input type="text" className="order_search_bar" value={search} onChange={(e) => setSearch(e.target.value)}></input>
+          </label>
         <table className="user-list-table">
             <thead>
                 <tr>
@@ -67,9 +81,10 @@ function UserList() {
                 </tr>
             </thead>
             <tbody>
-                {alphaUsers.map((userToUpdate) => <UserListItem onAdminConfirmClick={onAdminConfirmClick} key={userToUpdate.id} userToUpdate={userToUpdate}/>)}
+                {searchFilteredUsers.map((userToUpdate) => <UserListItem onAdminConfirmClick={onAdminConfirmClick} key={userToUpdate.id} userToUpdate={userToUpdate}/>)}
             </tbody>
         </table>
+        {searchFilteredUsers.length < 1 ? <p>Search returned no results...</p> : null}
     </div>
   );
 }
