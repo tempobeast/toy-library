@@ -423,7 +423,7 @@ label.toy-card__qty {
 
 .confirm-add-toy {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.95);
   width: 150px;
   top: -20px;
   left: 35px;
