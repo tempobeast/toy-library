@@ -23,7 +23,6 @@ function OrdersContainer() {
     setSearch(e)
   }
 
-  
   const filterOrders = sortOrders.filter((order) => {
     if (filterStatus === "all") {
       return true
@@ -34,7 +33,7 @@ function OrdersContainer() {
   const searchOrders = filterOrders.filter((order) => {
     if(search === "") {
       return true
-    } else if (order.user.username.includes(search)) {
+    } else if (order.user.username.toLowerCase().includes(search.toLowerCase())) {
       return true
     } else {
       return false

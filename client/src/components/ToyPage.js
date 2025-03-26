@@ -86,6 +86,7 @@ function ToyPage() {
             setCart(updatedCart);
             const newToyArray = toys.filter((toy) => toy.id !== updatedToy.id);
             setToys([...newToyArray, updatedToy]);
+            setToyToView(data[1])
           });
       } else {
         res.json().then((err) => setErrors(err.errors));

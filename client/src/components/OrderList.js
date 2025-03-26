@@ -1,13 +1,7 @@
-import { useContext, useState } from 'react'
-import { UserContext } from '../context/user'
 import { useNavigate } from "react-router-dom";
-import { PreviousOrdersContext } from '../context/previousOrders'
 
 function OrderList({ order }) {
     const navigate = useNavigate()
-    const { user } = useContext(UserContext);
-    const { previousOrders, setPreviousOrders } = useContext(PreviousOrdersContext);
-    const [ statusSelect, setStatusSelect ] = useState(order.status);
     
 
     function orderStatusColor(status) {

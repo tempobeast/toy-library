@@ -35,7 +35,7 @@ function SubmitOrderConfirmation({ setSubmitClick, handleCancelOrderClick }) {
           const newCart = data[1];
           setCart(newCart);
           setSubmitClick(false);
-          navigate(`/user_profiles/${user.id}`);
+          navigate(`/view_orders`);
         });
       } else {
         res.json().then((err) => setErrors(err.errors));
