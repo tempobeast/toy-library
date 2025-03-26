@@ -67,10 +67,15 @@ function PreviousOrdersCard() {
     }
 
     function formatDates(timestamp) {
-        let date = timestamp.slice(0,10)
-        let splitDate = date.split("-")
-        let newFormat = [splitDate[1],splitDate[2], splitDate[0]]
-        return newFormat.join("-")
+        let stamp = new Date(timestamp)
+        let formatDate = stamp.toLocaleDateString("en-US", {
+            timeZone: "America/Los_Angeles"
+        })
+        let formatTime = stamp.toLocaleTimeString("en-US", {
+            timeZone: "America/Los_Angeles"
+        })
+        let formattedDate = formatDate + " - " + formatTime
+        return formattedDate
     }
 
     return (
@@ -90,7 +95,7 @@ function PreviousOrdersCard() {
                 </div>
                 )
             })}
-            <h4>Submitted: {order.when_created}</h4>
+            <h4>Submitted: {formatDates(order.when_created)}</h4>
             {order.ship_date ? <h4>Shipped: {formatDates(order.ship_date)}</h4> : null}
             {order.return_date ? <h4>Returned: {formatDates(order.return_date)}</h4> : null}
             {order.restock_date ? <h4>Restocked: {formatDates(order.restock_date)}</h4> : null}

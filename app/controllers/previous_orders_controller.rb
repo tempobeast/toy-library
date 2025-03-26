@@ -30,12 +30,13 @@ class PreviousOrdersController < ApplicationController
         if user.is_admin
             order = PreviousOrder.find(params[:id])
             status_change = params[:status]
+            current_time = Time.now.utc
             if status_change == "shipped"
-                order.update!({status: status_change, ship_date: order.updated_at})    
+                order.update!({status: status_change, ship_date: current_time})    
             elsif status_change == "returned"
-                order.update!({status: status_change, return_date: order.updated_at})
+                order.update!({status: status_change, return_date: current_time})
             else status_change == "restocked"
-                order.update!({status: status_change, restock_date: order.updated_at})
+                order.update!({status: status_change, restock_date: current_time})
                 order.restock
             end
             render json: order, status: :ok

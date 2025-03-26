@@ -8,8 +8,7 @@ class Cart < ApplicationRecord
     
 
     def when_created
-        date = self.created_at.to_s
-        split_date = date[0..9].split("-").rotate(1).join("-")
+        self.created_at
     end
 
     def restock
