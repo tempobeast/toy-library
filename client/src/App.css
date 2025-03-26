@@ -363,7 +363,7 @@ button:hover{
 }
 
 .toy-card h3 {
-  margin: 8px
+  margin: 0 8px
 }
 
 .toy-card h5{
@@ -412,6 +412,29 @@ label.toy-card__qty {
   left: 0;
   width: 100vw;
   height: 100vh;
+}
+
+.confirm-add-toy-container {
+  position: relative;
+
+  height: 0;
+  width: 0;
+}
+
+.confirm-add-toy {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 150px;
+  top: -20px;
+  left: 35px;
+  border: green 2px solid;
+  border-radius: 12px;
+}
+
+.confirm-add-toy p {
+  padding: 8px;
+  margin: 0;
+  color: green;
 }
 
 .user-profile-button{
@@ -827,7 +850,7 @@ button.disable:hover{
   /* UserList.js UserListItem.js */
   
  .user-list-table {
-  width: 98%;
+  width: 90%;
   margin: auto;
   border: rgb(135, 135, 135) 2px solid
  }
