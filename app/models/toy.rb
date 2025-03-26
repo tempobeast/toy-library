@@ -1,5 +1,12 @@
 class Toy < ApplicationRecord
 
+    validates :name, presence: :true, on: :create
+    validates :description, presence: :true, on: :create
+    validates :sku, presence: :true, on: :create, :numericality => {greater_than: 0}
+    validates :purchase_price, presence: :true, on: :create, :numericality => {greater_than: 0}
+    validates :inventory, presence: :true, on: :create, :numericality => {greater_than: 0}
+    validates :img_url, presence: :true, on: :create
+    
 
     def review_average 
         count = self.poly_reviews.length

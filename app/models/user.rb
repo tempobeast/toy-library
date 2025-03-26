@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
     validates :username, presence: true, uniqueness: true, on: :create
     validates :password, presence: true, :length => { minimum: 8, maximum: 16}, on: :create
-    validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP}
+    validates :email, presence: true, uniqueness: true, format: URI::MailTo::EMAIL_REGEXP
     validates :first_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, message: "only allows letters" }
     validates :last_name, presence: true, format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/, message: "only allows letters" }
 
