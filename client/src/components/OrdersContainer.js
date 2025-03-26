@@ -33,7 +33,7 @@ function OrdersContainer() {
   const searchOrders = filterOrders.filter((order) => {
     if(search === "") {
       return true
-    } else if (order.user.username.toLowerCase().includes(search.toLowerCase())) {
+    } else if (order.user.username.toLowerCase().startsWith(search.toLowerCase())) {
       return true
     } else {
       return false
