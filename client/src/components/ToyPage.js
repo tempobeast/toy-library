@@ -18,6 +18,7 @@ function ToyPage() {
   const [stars, setStars] = useState([["☆","☆","☆","☆","☆"], "rating"])
   const [userReviewed, setUserReviewed] = useState(false)
   const navigate = useNavigate();
+  const [deleteToyClick, setDeleteToyClick] = useState(false)
 
   function formatStars(num, type) {
     if(num === 0) {
@@ -181,8 +182,9 @@ function ToyPage() {
           <h5>Purchase Price: {toyToView.purchase_price}</h5>
           <div className="toy-page-admin-buttons">
             <button onClick={handleUpdateToyClick}>Update Toy</button>
-            <button onClick={handleDeleteToyClick}>Delete Toy</button>
+            <button onClick={() => setDeleteToyClick(true)}>Delete Toy</button>
           </div>
+          {deleteToyClick ? <div className="confirm-button-container"><button onClick={handleDeleteToyClick}>Confirm Delete</button><button onClick={() => setDeleteToyClick(false)}>Cancel</button></div> : null}
           <div className="review-container">
             {renderStarsAdmin}
             {userReviewed ? <p className="user-rating-text">(Your rating)</p> : toyToView.review_average === 0 ? <p className="average-rating">No reviews</p> : <p className="average-rating">({toyToView.review_average} / 5 ★)</p>}
