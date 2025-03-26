@@ -40,7 +40,7 @@ function OrderList({ order }) {
 
     function getOrderStatusDate(orderStatus) {
         if(orderStatus === "processing") {
-            return order.when_created
+            return formatDates(order.when_created)
         } else if (orderStatus === "shipped") {
             return formatDates(order.ship_date)
         } else if (orderStatus === "returned") {
